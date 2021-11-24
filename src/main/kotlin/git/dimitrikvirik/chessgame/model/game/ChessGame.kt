@@ -1,5 +1,6 @@
 package git.dimitrikvirik.chessgame.model.game
 
+
 class ChessGame(
     val whitePlayer: ChessPlayer,
     val blackPlayer: ChessPlayer,

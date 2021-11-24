@@ -8,19 +8,13 @@ import org.springframework.stereotype.Service
 @Service
 class ChessService() {
 
-    lateinit var chessGame: ChessGame
-
-    init {
-        chessGame = ChessGame(
-            ChessPlayer(ChessFigureColor.WHITE, User("wPlayer")),
-            ChessPlayer(ChessFigureColor.BLACK, User("bPlayer")),
-            false,
-            Invitation.PUBLIC,
-            ChessBoard()
-        )
-    }
-
-
+    var chessGame: ChessGame = ChessGame(
+        ChessPlayer(ChessFigureColor.WHITE, User("wPlayer")),
+        ChessPlayer(ChessFigureColor.BLACK, User("bPlayer")),
+        false,
+        Invitation.PUBLIC,
+        ChessBoard()
+    )
 
 
 }
