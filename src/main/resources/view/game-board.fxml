@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 <Pane xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
-      fx:controller="git.dimitrikvirik.chessgame.controller.GameBoardController">
+      fx:controller="git.dimitrikvirik.chessgamedesktop.controller.GameBoardController">
     <GridPane fx:id="gridPanel"   style="-fx-padding: 50">
 
     </GridPane>
