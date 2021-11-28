@@ -20,12 +20,12 @@ class ChessKing(
     fun shah(){
 
         Platform.runLater{
-            board.actionLayer[this.x to this.y] = Action.SHAH
+            board.actionLayer[this.x to this.y] = Action.KILL
             board.drawActionLayer()
         }
 
     }
-    override fun getMovableBlocks(): List<Pair<Int, Int>> {
+    override fun getAllMovableBlocks(): List<Pair<Int, Int>> {
         return getMovableBlocksForKnightKing(
             x, y, board, this, killableBlocks, listOf(
                 (x - 1 to y - 1),

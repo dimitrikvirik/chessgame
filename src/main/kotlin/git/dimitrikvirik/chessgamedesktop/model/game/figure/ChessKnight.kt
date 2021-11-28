@@ -19,7 +19,7 @@ class ChessKnight(
 
     }
 
-    override fun getMovableBlocks(): List<Pair<Int, Int>> {
+    override fun getAllMovableBlocks(): List<Pair<Int, Int>> {
 
         return getMovableBlocksForKnightKing(
             x, y, board, this, killableBlocks, listOf(

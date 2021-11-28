@@ -6,17 +6,21 @@ import git.dimitrikvirik.chessgamedesktop.model.game.figure.ChessFigure
 import git.dimitrikvirik.chessgamedesktop.model.game.figure.ChessFigureColor
 import git.dimitrikvirik.chessgamedesktop.model.game.figure.ChessKing
 import git.dimitrikvirik.chessgamedesktop.service.Action
-import javafx.application.Platform
 import javafx.event.EventHandler
 import javafx.scene.Cursor
 import javafx.scene.Node
 import javafx.scene.image.ImageView
 import javafx.scene.layout.GridPane
+import java.io.Serializable
+import java.util.*
+import kotlin.collections.ArrayList
+import kotlin.collections.HashMap
 
 
 class ChessBoard {
 
-    val figureLayer = HashMap<Pair<Int, Int>, ChessFigure?>()
+
+    var figureLayer = HashMap<Pair<Int, Int>, ChessFigure?>()
     val actionLayer = HashMap<Pair<Int, Int>, Action>()
     val squareLayer = HashMap<Pair<Int, Int>, SquareType>()
     val figureHistory = ArrayList<History<ChessFigure?>>()
@@ -49,6 +53,15 @@ class ChessBoard {
         }
     }
 
+
+    fun clearShahAction(){
+        val shah = actionLayer.filter { it.value == Action.SHAH }.keys.firstOrNull()
+        if(shah != null) {
+            val imageView = getNodeByRowColumnIndex(shah.second, shah.first, 2.0) as ImageView
+            gridPane.children.remove(imageView)
+            actionLayer.remove(shah)
+        }
+    }
 
     fun clearActionLayer() {
         actionLayer.filter { it.value == Action.KILL || it.value == Action.MOVE }.forEach {

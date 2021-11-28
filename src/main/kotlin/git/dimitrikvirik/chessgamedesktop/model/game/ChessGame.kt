@@ -5,9 +5,11 @@ import git.dimitrikvirik.chessgamedesktop.model.game.figure.ChessFigureColor
 import git.dimitrikvirik.chessgamedesktop.model.game.figure.ChessKing
 import git.dimitrikvirik.chessgamedesktop.service.Action
 import git.dimitrikvirik.chessgamedesktop.service.ChessMessage
+import javafx.application.Platform
 import javafx.scene.Cursor
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
+import java.io.Serializable
 import kotlin.properties.Delegates
 
 
@@ -39,31 +41,41 @@ class ChessGame {
     }
 
 
-    fun goNextPlayer() {
+    private fun goNextPlayer(color: ChessFigureColor) {
 
-        currentPlayer.canMove = false
-        currentPlayer.cursor.set(Cursor.DEFAULT)
+        when (color) {
+            ChessFigureColor.BLACK -> {
+                blackPlayer.canMove = false
+                blackPlayer.cursor.set(Cursor.DEFAULT)
 
-        currentPlayer = if (currentPlayer == whitePlayer) {
-            blackPlayer
-        } else whitePlayer
+                whitePlayer.canMove = true
+                whitePlayer.cursor.set(Cursor.HAND)
+            }
+            ChessFigureColor.WHITE -> {
+                whitePlayer.canMove = false
+                whitePlayer.cursor.set(Cursor.DEFAULT)
 
-
-
-        currentPlayer.canMove = true
-        currentPlayer.cursor.set(Cursor.HAND)
+                blackPlayer.canMove = true
+                blackPlayer.cursor.set(Cursor.HAND)
+            }
+        }
     }
 
     fun handleMessage(message: ChessMessage) {
+        goNextPlayer(message.playerColor)
 
-        when(message.action){
+
+        when (message.action) {
             Action.MOVE -> chessBoard.figureLayer[message.fromMove]?.move(message.toMove.first, message.toMove.second)
-            Action.KILL ->  chessBoard.figureLayer[message.fromMove]?.kill(message.toMove.first, message.toMove.second)
-            Action.SHAH ->{
+            Action.KILL -> chessBoard.figureLayer[message.fromMove]?.kill(message.toMove.first, message.toMove.second)
+            Action.SHAH -> {
                 (chessBoard.figureLayer[message.fromMove] as ChessKing).shah()
             }
             else -> {}
         }
+        println(message.playerColor)
+
+
 
 
     }

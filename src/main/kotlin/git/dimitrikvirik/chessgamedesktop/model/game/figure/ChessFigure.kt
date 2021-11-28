@@ -7,6 +7,7 @@ import git.dimitrikvirik.chessgamedesktop.service.Action
 import git.dimitrikvirik.chessgamedesktop.service.ChessMessage
 import git.dimitrikvirik.chessgamedesktop.service.ChessService
 import javafx.application.Platform
+import org.apache.commons.lang3.SerializationUtils
 
 
 abstract class ChessFigure(
@@ -21,11 +22,22 @@ abstract class ChessFigure(
     protected val killableBlocks: ArrayList<Pair<Int, Int>> = arrayListOf()
 
 
-
+    override fun getRealMovableBlocks(): List<Pair<Int, Int>> {
+        val allMovableBlocks = getAllMovableBlocks()
+        val save = this.x to this.y
+        val list = allMovableBlocks.filter {
+            checkShahOn(it)
+        }
+        this.x = save.first
+        this.y = save.second
+        return list
+    }
 
     override fun move(x: Int, y: Int) {
 
         Platform.runLater {
+
+            board.clearShahAction()
             board.figureHistory.add(History(this))
             if (!hasFirstMove) hasFirstMove = true
             board.removeFigure(this.x, this.y)
@@ -48,14 +60,21 @@ abstract class ChessFigure(
     private fun checkShah() {
         val chessService = BeanContext.getBean(ChessService::class.java)
         val figure = board.figureHistory.last().value
-        if(figure != null){
+        if (figure != null) {
             val king = figure.getKillableBlocks().firstOrNull {
                 board.figureLayer[it] is ChessKing
             }
-            if(king != null){
+            if (king != null) {
                 chessService.send(ChessMessage(king, king, color, Action.SHAH))
             }
         }
+    }
+
+
+    private fun checkShahOn(pair: Pair<Int, Int>): Boolean {
+
+        //TODO
+        return  true
     }
 
 
@@ -68,15 +87,13 @@ abstract class ChessFigure(
 
 
     override fun getKillableBlocks(): List<Pair<Int, Int>> {
-        if (killableBlocks.isEmpty()) getMovableBlocks()
+        if (killableBlocks.isEmpty()) getAllMovableBlocks()
         return killableBlocks
     }
 
     fun clearKillableBlocks() {
         killableBlocks.clear()
     }
-
-
 
 
     enum class Direction {

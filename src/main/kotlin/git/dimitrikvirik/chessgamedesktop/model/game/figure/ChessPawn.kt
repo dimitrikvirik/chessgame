@@ -31,7 +31,7 @@ class ChessPawn(
         board.addFigure(x, y, ChessQueen(color, board, x, y))
     }
 
-    override fun getMovableBlocks(): List<Pair<Int, Int>> {
+    override fun getAllMovableBlocks(): List<Pair<Int, Int>> {
         val list = if (!hasFirstMove) {
             if (color == ChessFigureColor.BLACK) {
                 listOf(x to (y + 1), x to (y + 2))

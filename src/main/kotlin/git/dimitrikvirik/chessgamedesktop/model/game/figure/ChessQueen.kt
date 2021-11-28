@@ -15,7 +15,7 @@ class ChessQueen(
 ) {
 
 
-    override fun getMovableBlocks(): List<Pair<Int, Int>> {
+    override fun getAllMovableBlocks(): List<Pair<Int, Int>> {
         val rook = ChessRook.getMovableBlocks(x, y, board, this, killableBlocks)
         val bishop = ChessBishop.getMovableBlocks(x, y, board, this, killableBlocks)
         val list = rook.toMutableList()

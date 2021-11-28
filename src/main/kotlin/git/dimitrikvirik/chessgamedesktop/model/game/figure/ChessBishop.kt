@@ -43,7 +43,7 @@ class ChessBishop(
 
     }
 
-    override fun getMovableBlocks(): List<Pair<Int, Int>> {
+    override fun getAllMovableBlocks(): List<Pair<Int, Int>> {
         //TODO replace with king
 
         return getMovableBlocks(x, y, board, this, killableBlocks)

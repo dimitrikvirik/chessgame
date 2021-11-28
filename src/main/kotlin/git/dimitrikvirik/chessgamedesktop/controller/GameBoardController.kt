@@ -83,7 +83,7 @@ class GameBoardController : Controller() {
             chessBoard.clearActionLayer()
             selectedFigure = figure
             if (figure != null) {
-                val movableBlocks = chessBoard.fixBlocks(figure.getMovableBlocks())
+                val movableBlocks = chessBoard.fixBlocks(figure.getRealMovableBlocks())
 
                 movableBlocks.forEach {
                     chessBoard.actionLayer[it.first to it.second] = Action.MOVE
@@ -107,7 +107,6 @@ class GameBoardController : Controller() {
 
         selectedFigure?.move(xIndex, yIndex, chessService)
         selectedFigure?.clearKillableBlocks()
-        chessGame.goNextPlayer()
 
     }
 
@@ -119,8 +118,6 @@ class GameBoardController : Controller() {
 
         selectedFigure?.kill(xIndex, yIndex, chessService)
         selectedFigure?.clearKillableBlocks()
-        chessGame.goNextPlayer()
-
 
     }
 
