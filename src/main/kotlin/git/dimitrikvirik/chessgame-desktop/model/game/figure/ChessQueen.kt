@@ -2,14 +2,13 @@ package git.dimitrikvirik.chessgame.model.game.figure
 
 import git.dimitrikvirik.chessgame.model.game.*
 
-
-class ChessKing(
+class ChessQueen(
     chessFigureColor: ChessFigureColor,
     board: ChessBoard,
     x: Int,
     y: Int
 ) : ChessFigure(
-    ChessFigureType.KING,
+    ChessFigureType.QUEEN,
     chessFigureColor,
     board,
     x, y
@@ -17,15 +16,11 @@ class ChessKing(
 
 
     override fun getMovableBlocks(): List<Pair<Int, Int>> {
-        TODO("Not yet implemented")
-    }
-
-    override fun getKillableBlocks(): List<Pair<Int, Int>> {
-        TODO("Not yet implemented")
-    }
-
-    override fun kill(x: Int, y: Int): Boolean {
-        TODO("Not yet implemented")
+        val rook = ChessRook.getMovableBlocks(x, y, board, this, killableBlocks)
+        val bishop = ChessBishop.getMovableBlocks(x, y, board, this, killableBlocks)
+        val list = rook.toMutableList()
+        list.addAll(bishop)
+        return list
     }
 
 

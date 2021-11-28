@@ -2,33 +2,36 @@ package git.dimitrikvirik.chessgame.model.game
 
 import git.dimitrikvirik.chessgame.controller.GameBoardController
 import git.dimitrikvirik.chessgame.core.BeanContext
-import javafx.collections.ObservableList
+import git.dimitrikvirik.chessgame.model.game.figure.ChessFigure
+import git.dimitrikvirik.chessgame.model.game.figure.ChessFigureColor
+import git.dimitrikvirik.chessgame.model.game.figure.ChessKing
 import javafx.event.EventHandler
 import javafx.scene.Cursor
 import javafx.scene.Node
 import javafx.scene.image.ImageView
 import javafx.scene.layout.GridPane
-import java.time.LocalDateTime
 import java.util.*
 import kotlin.collections.ArrayList
 import kotlin.collections.HashMap
+import kotlin.collections.HashSet
 
 
 class ChessBoard {
 
-    val figureLayer: HashMap<Pair<Int, Int>, ChessFigure?> = HashMap()
-    val actionLayer: HashMap<Pair<Int, Int>, Action> = HashMap()
-    val squareLayer: HashMap<Pair<Int, Int>, SquareType> = HashMap()
-    val figureHistory: ArrayList<History<ChessFigure?>> = ArrayList()
-    val actionsHistory: ArrayList<History<Action>> = ArrayList()
+    val figureLayer = HashMap<Pair<Int, Int>, ChessFigure?>()
+    val actionLayer = HashMap<Pair<Int, Int>, Action>()
+    val squareLayer = HashMap<Pair<Int, Int>, SquareType>()
+    val figureHistory = ArrayList<History<ChessFigure?>>()
+    val actionsHistory = ArrayList<History<Action>>()
+
     lateinit var gridPane: GridPane
+    lateinit var chessGame: ChessGame
 
     fun drawSquareLayer() {
-
         squareLayer.forEach {
             val imageView = ImageView("/assert/${it.value.resource}")
-            imageView.fitWidth = 80.0
-            imageView.fitHeight = 80.0
+            imageView.fitWidth = gridPane.prefWidth / 8
+            imageView.fitHeight = gridPane.prefHeight / 8
             imageView.viewOrder = 3.0
             GridPane.setConstraints(imageView, it.key.first, it.key.second)
             gridPane.children.add(imageView)
@@ -56,19 +59,28 @@ class ChessBoard {
         val imageView = getNodeByRowColumnIndex(y, x, 1.0) as ImageView
         gridPane.children.remove(imageView)
         figureLayer.remove(x to y)
+        figureLayer[x to y] = null
     }
 
     fun addFigure(x: Int, y: Int, chessFigure: ChessFigure) {
         val imageView = ImageView("/assert/${chessFigure.chessFigureType.getByColor(chessFigure.color)}")
-        imageView.fitWidth = 80.0
-        imageView.fitHeight = 80.0
+        imageView.fitWidth = gridPane.prefWidth / 8
+        imageView.fitHeight = gridPane.prefHeight / 8
         imageView.viewOrder = 1.0
-        imageView.cursor = Cursor.HAND
+
         imageView.onMouseClicked = EventHandler { event ->
             BeanContext.getBean(GameBoardController::class.java).onFigureClick(event)
         }
         GridPane.setConstraints(imageView, x, y)
         gridPane.children.add(imageView)
+        if (chessFigure.color == ChessFigureColor.BLACK) {
+            imageView.cursorProperty().bind(chessGame.blackPlayer.cursor)
+        } else {
+            imageView.cursorProperty().bind(chessGame.whitePlayer.cursor)
+        }
+        if (chessFigure is ChessKing) {
+            chessGame.currentPlayer.king = chessFigure
+        }
         if (figureLayer[x to y] == null) {
             figureLayer[x to y] = chessFigure
         }
@@ -77,15 +89,24 @@ class ChessBoard {
     fun drawActionLayer() {
         actionLayer.forEach {
             val imageView = ImageView("/assert/${it.value.resource}")
-            imageView.fitWidth = 80.0
-            imageView.fitHeight = 80.0
+            imageView.fitWidth = gridPane.prefWidth / 8
+            imageView.fitHeight = gridPane.prefHeight / 8
             imageView.viewOrder = 2.0
-            if (it.value == Action.MOVE) {
-                imageView.cursor = Cursor.HAND
-                imageView.onMouseClicked = EventHandler { event ->
-                    BeanContext.getBean(GameBoardController::class.java).onMoveBlockClick(event)
+            when (it.value) {
+                Action.MOVE -> {
+                    imageView.cursor = Cursor.HAND
+                    imageView.onMouseClicked = EventHandler { event ->
+                        BeanContext.getBean(GameBoardController::class.java).onMoveBlockClick(event)
+                    }
+                }
+                Action.KILL -> {
+                    imageView.cursor = Cursor.HAND
+                    imageView.onMouseClicked = EventHandler { event ->
+                        BeanContext.getBean(GameBoardController::class.java).onKillBlockClick(event)
+                    }
                 }
             }
+
             GridPane.setConstraints(imageView, it.key.first, it.key.second)
             gridPane.children.add(imageView)
         }
@@ -99,26 +120,13 @@ class ChessBoard {
         }
     }
 
-    fun canMove(list: List<Pair<Int, Int>>): List<Pair<Int, Int>>{
 
-      return  list.filter {
-            figureLayer[it] == null && it.first in 0..7 && it.second in 0..7
+    fun fixBlocks(blocks: List<Pair<Int, Int>>): List<Pair<Int, Int>> {
+        val list = blocks.toMutableList()
+        return list.filter {
+            it.first in 0..7 && it.second in 0..7
         }
     }
 
 }
 
-
-data class History<T>(val value: T, val time: LocalDateTime)
-
-enum class Action(val resource: String) {
-    MOVE("square_yellow_1x.png"),
-    KILL("square_red_1x.png"),
-    BLOCK("square_red_1x.png")
-}
-
-enum class SquareType(val resource: String) {
-    WHITE("square_white_1x.png"),
-    BLACK("square_black_1x.png")
-
-}

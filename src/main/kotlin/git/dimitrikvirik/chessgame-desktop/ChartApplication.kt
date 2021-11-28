@@ -16,13 +16,14 @@ class ChartApplication : Application() {
     override fun stop() {
         applicationContext!!.close()
         Platform.exit()
+
     }
 
     override fun start(stage: Stage) {
         applicationContext!!.publishEvent(StageReadyEvent(stage))
     }
 
-    class StageReadyEvent(stage: Stage?) : ApplicationEvent(stage!!) {
+    class StageReadyEvent(stage: Stage) : ApplicationEvent(stage) {
         val stage: Stage
             get() = getSource() as Stage
     }
