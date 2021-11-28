@@ -1,13 +1,12 @@
 package git.dimitrikvirik.chessgamedesktop.controller
 
 import git.dimitrikvirik.chessgamedesktop.core.Controller
-import git.dimitrikvirik.chessgamedesktop.model.game.Action
 import git.dimitrikvirik.chessgamedesktop.model.game.ChessBoard
 import git.dimitrikvirik.chessgamedesktop.model.game.ChessGame
 import git.dimitrikvirik.chessgamedesktop.model.game.ChessPlayer
 import git.dimitrikvirik.chessgamedesktop.model.game.figure.ChessFigure
 import git.dimitrikvirik.chessgamedesktop.model.game.figure.ChessFigureColor
-import git.dimitrikvirik.chessgamedesktop.service.ChessMessage
+import git.dimitrikvirik.chessgamedesktop.service.Action
 import git.dimitrikvirik.chessgamedesktop.service.ChessService
 import javafx.fxml.FXML
 import javafx.scene.control.Label
@@ -18,7 +17,6 @@ import lombok.RequiredArgsConstructor
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.beans.factory.annotation.Value
 import org.springframework.stereotype.Service
-import javax.annotation.PostConstruct
 
 @Service
 @RequiredArgsConstructor
@@ -110,7 +108,7 @@ class GameBoardController : Controller() {
         selectedFigure?.move(xIndex, yIndex, chessService)
         selectedFigure?.clearKillableBlocks()
         chessGame.goNextPlayer()
-        chessGame.checkShah()
+
     }
 
     fun onKillBlockClick(event: MouseEvent) {
@@ -119,10 +117,10 @@ class GameBoardController : Controller() {
         val yIndex = GridPane.getRowIndex(img)
 
 
-        selectedFigure?.kill(xIndex, yIndex)
+        selectedFigure?.kill(xIndex, yIndex, chessService)
         selectedFigure?.clearKillableBlocks()
         chessGame.goNextPlayer()
-        chessGame.checkShah()
+
 
     }
 

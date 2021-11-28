@@ -6,6 +6,7 @@ import git.dimitrikvirik.chessgamedesktop.model.game.ChessBoard
 import git.dimitrikvirik.chessgamedesktop.model.game.ChessGame
 import git.dimitrikvirik.chessgamedesktop.model.game.SquareType
 import git.dimitrikvirik.chessgamedesktop.model.game.figure.ChessFigure
+import git.dimitrikvirik.chessgamedesktop.model.game.figure.ChessFigureColor
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.beans.factory.annotation.Value
 import org.springframework.messaging.simp.stomp.StompSession
@@ -14,20 +15,21 @@ import org.springframework.stereotype.Service
 import org.springframework.web.socket.messaging.WebSocketStompClient
 
 
-enum class Action {
-    MOVE,
-    KILL,
-    SHAH,
-    ENDGAME
-}
+enum class Action(val resource: String) {
 
+    MOVE("square_yellow_1x.png"),
+    KILL("square_red_1x.png"),
+    SHAH("square_red_1x.png"),
+    ENDGAME("")
+}
 
 data class ChessMessage(
     var fromMove: Pair<Int, Int>,
     var toMove: Pair<Int, Int>,
-    var playerUsername: String,
+    var playerColor: ChessFigureColor,
     var action: Action
 )
+
 
 @Service
 class ChessService() {

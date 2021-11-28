@@ -20,26 +20,50 @@ abstract class ChessFigure(
     var hasFirstMove: Boolean = false
     protected val killableBlocks: ArrayList<Pair<Int, Int>> = arrayListOf()
 
+
+
+
     override fun move(x: Int, y: Int) {
 
         Platform.runLater {
+            board.figureHistory.add(History(this))
             if (!hasFirstMove) hasFirstMove = true
             board.removeFigure(this.x, this.y)
             board.clearActionLayer()
             this.x = x
             this.y = y
             board.addFigure(x, y, this)
-            board.figureHistory.add(History(this))
+            checkShah()
         }
     }
 
-     fun move(x: Int, y: Int, chessService: ChessService) {
-         chessService.send(ChessMessage(this.x to this.y, x to y, "Black Player", Action.MOVE))
+    fun move(x: Int, y: Int, chessService: ChessService) {
+        chessService.send(ChessMessage(this.x to this.y, x to y, color, Action.MOVE))
     }
 
+    fun kill(x: Int, y: Int, chessService: ChessService) {
+        chessService.send(ChessMessage(this.x to this.y, x to y, color, Action.KILL))
+    }
+
+    private fun checkShah() {
+        val chessService = BeanContext.getBean(ChessService::class.java)
+        val figure = board.figureHistory.last().value
+        if(figure != null){
+            val king = figure.getKillableBlocks().firstOrNull {
+                board.figureLayer[it] is ChessKing
+            }
+            if(king != null){
+                chessService.send(ChessMessage(king, king, color, Action.SHAH))
+            }
+        }
+    }
+
+
     override fun kill(x: Int, y: Int) {
-        board.removeFigure(x, y)
-        move(x, y)
+        Platform.runLater {
+            board.removeFigure(x, y)
+            move(x, y)
+        }
     }
 
 
@@ -51,6 +75,8 @@ abstract class ChessFigure(
     fun clearKillableBlocks() {
         killableBlocks.clear()
     }
+
+
 
 
     enum class Direction {

@@ -54,23 +54,17 @@ class ChessGame {
         currentPlayer.cursor.set(Cursor.HAND)
     }
 
-    fun checkShah() {
-//        logger.info("testing shah...")
-        val figure = chessBoard.figureHistory.last().value
-        if(figure != null){
-           if( figure.getKillableBlocks().any {
-                chessBoard.figureLayer[it] is ChessKing
-            }){
-               logger.warn("Shah!")
-           }
-        }
-    }
-
     fun handleMessage(message: ChessMessage) {
 
-        if(message.action == Action.MOVE) {
-            chessBoard.figureLayer[message.fromMove]?.move(message.toMove.first, message.toMove.second)
+        when(message.action){
+            Action.MOVE -> chessBoard.figureLayer[message.fromMove]?.move(message.toMove.first, message.toMove.second)
+            Action.KILL ->  chessBoard.figureLayer[message.fromMove]?.kill(message.toMove.first, message.toMove.second)
+            Action.SHAH ->{
+                (chessBoard.figureLayer[message.fromMove] as ChessKing).shah()
+            }
+            else -> {}
         }
+
 
     }
     //TODO filter movable and killable blocks on shah

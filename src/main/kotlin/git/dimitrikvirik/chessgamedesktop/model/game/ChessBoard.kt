@@ -5,6 +5,7 @@ import git.dimitrikvirik.chessgamedesktop.core.BeanContext
 import git.dimitrikvirik.chessgamedesktop.model.game.figure.ChessFigure
 import git.dimitrikvirik.chessgamedesktop.model.game.figure.ChessFigureColor
 import git.dimitrikvirik.chessgamedesktop.model.game.figure.ChessKing
+import git.dimitrikvirik.chessgamedesktop.service.Action
 import javafx.application.Platform
 import javafx.event.EventHandler
 import javafx.scene.Cursor
@@ -48,8 +49,9 @@ class ChessBoard {
         }
     }
 
+
     fun clearActionLayer() {
-        actionLayer.forEach {
+        actionLayer.filter { it.value == Action.KILL || it.value == Action.MOVE }.forEach {
             val imageView = getNodeByRowColumnIndex(it.key.second, it.key.first, 2.0) as ImageView
             gridPane.children.remove(imageView)
         }
@@ -105,6 +107,9 @@ class ChessBoard {
                     imageView.onMouseClicked = EventHandler { event ->
                         BeanContext.getBean(GameBoardController::class.java).onKillBlockClick(event)
                     }
+                }
+                Action.SHAH, Action.ENDGAME -> {
+
                 }
             }
 
