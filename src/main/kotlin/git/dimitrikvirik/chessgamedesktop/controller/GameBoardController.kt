@@ -7,6 +7,7 @@ import git.dimitrikvirik.chessgamedesktop.model.game.ChessGame
 import git.dimitrikvirik.chessgamedesktop.model.game.ChessPlayer
 import git.dimitrikvirik.chessgamedesktop.model.game.figure.ChessFigure
 import git.dimitrikvirik.chessgamedesktop.model.game.figure.ChessFigureColor
+import git.dimitrikvirik.chessgamedesktop.service.ChessMessage
 import git.dimitrikvirik.chessgamedesktop.service.ChessService
 import javafx.fxml.FXML
 import javafx.scene.control.Label
@@ -106,7 +107,7 @@ class GameBoardController : Controller() {
         val xIndex = GridPane.getColumnIndex(img)
         val yIndex = GridPane.getRowIndex(img)
 
-        selectedFigure?.move(xIndex, yIndex)
+        selectedFigure?.move(xIndex, yIndex, chessService)
         selectedFigure?.clearKillableBlocks()
         chessGame.goNextPlayer()
         chessGame.checkShah()

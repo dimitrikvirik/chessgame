@@ -1,9 +1,7 @@
-package git.dimitrikvirik.chessgame.config
+package git.dimitrikvirik.chessgamedesktop.config
 
-import git.dimitrikvirik.chessgamedesktop.controller.GameBoardController
 import git.dimitrikvirik.chessgamedesktop.model.game.ChessGame
 import git.dimitrikvirik.chessgamedesktop.service.ChessMessage
-import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.messaging.simp.stomp.StompCommand
 import org.springframework.messaging.simp.stomp.StompHeaders
 import org.springframework.messaging.simp.stomp.StompSession
@@ -13,8 +11,8 @@ import java.lang.reflect.Type
 
 
 @Component
-class ChessStompHandler(val chessGame: ChessGame) : StompSessionHandler{
-
+class ChessStompHandler : StompSessionHandler{
+    lateinit var chessGame: ChessGame
 
 
     override fun getPayloadType(p0: StompHeaders): Type {

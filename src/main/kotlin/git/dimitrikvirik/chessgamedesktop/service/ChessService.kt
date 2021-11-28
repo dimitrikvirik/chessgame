@@ -1,6 +1,6 @@
 package git.dimitrikvirik.chessgamedesktop.service
 
-import git.dimitrikvirik.chessgame.config.ChessStompHandler
+import git.dimitrikvirik.chessgamedesktop.config.ChessStompHandler
 import git.dimitrikvirik.chessgamedesktop.model.domain.User
 import git.dimitrikvirik.chessgamedesktop.model.game.ChessBoard
 import git.dimitrikvirik.chessgamedesktop.model.game.ChessGame
@@ -8,7 +8,6 @@ import git.dimitrikvirik.chessgamedesktop.model.game.SquareType
 import git.dimitrikvirik.chessgamedesktop.model.game.figure.ChessFigure
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.beans.factory.annotation.Value
-import org.springframework.context.annotation.Primary
 import org.springframework.messaging.simp.stomp.StompSession
 import org.springframework.messaging.simp.stomp.StompSessionHandler
 import org.springframework.stereotype.Service
@@ -54,7 +53,9 @@ class ChessService() {
     fun connect(gameId: String) {
         this.gameId = gameId
         startGame(gameId)
-        val sessionHandler: StompSessionHandler = ChessStompHandler(chessGame)
+        val chessStompHandler = ChessStompHandler()
+        chessStompHandler.chessGame = chessGame
+        val sessionHandler: StompSessionHandler = chessStompHandler
         session = websocket.connect("ws://$api/ws", sessionHandler).get()
         session.subscribe("/topic/chessgame/$gameId", sessionHandler)
     }

@@ -36,9 +36,9 @@ class StageInitializer : ApplicationListener<ChartApplication.StageReadyEvent> {
         fxmlScanner.scan()
 
 
-        val chessMessage = ChessMessage(1 to 1, 2 to 2, "Black Player", Action.MOVE)
-
-        chessService.send( chessMessage)
+//        val chessMessage = ChessMessage(1 to 1, 2 to 2, "Black Player", Action.MOVE)
+//
+//        chessService.send( chessMessage)
 
 
         val sceneContext = sceneContextHolder.getSceneContext("game-board")

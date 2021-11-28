@@ -1,7 +1,12 @@
 package git.dimitrikvirik.chessgamedesktop.model.game.figure
 
+import git.dimitrikvirik.chessgamedesktop.core.BeanContext
 import git.dimitrikvirik.chessgamedesktop.model.game.ChessBoard
 import git.dimitrikvirik.chessgamedesktop.model.game.History
+import git.dimitrikvirik.chessgamedesktop.service.Action
+import git.dimitrikvirik.chessgamedesktop.service.ChessMessage
+import git.dimitrikvirik.chessgamedesktop.service.ChessService
+import javafx.application.Platform
 
 
 abstract class ChessFigure(
@@ -16,13 +21,20 @@ abstract class ChessFigure(
     protected val killableBlocks: ArrayList<Pair<Int, Int>> = arrayListOf()
 
     override fun move(x: Int, y: Int) {
-        if (!hasFirstMove) hasFirstMove = true
-        board.removeFigure(this.x, this.y)
-        board.clearActionLayer()
-        this.x = x
-        this.y = y
-        board.addFigure(x, y, this)
-        board.figureHistory.add(History(this))
+
+        Platform.runLater {
+            if (!hasFirstMove) hasFirstMove = true
+            board.removeFigure(this.x, this.y)
+            board.clearActionLayer()
+            this.x = x
+            this.y = y
+            board.addFigure(x, y, this)
+            board.figureHistory.add(History(this))
+        }
+    }
+
+     fun move(x: Int, y: Int, chessService: ChessService) {
+         chessService.send(ChessMessage(this.x to this.y, x to y, "Black Player", Action.MOVE))
     }
 
     override fun kill(x: Int, y: Int) {

@@ -58,10 +58,7 @@ class ChessBoard {
 
     fun removeFigure(x: Int, y: Int) {
         val imageView = getNodeByRowColumnIndex(y, x, 1.0) as ImageView
-        Platform.runLater {
-            gridPane.children.remove(imageView)
-        }
-
+        gridPane.children.remove(imageView)
         figureLayer.remove(x to y)
         figureLayer[x to y] = null
     }
@@ -76,9 +73,7 @@ class ChessBoard {
             BeanContext.getBean(GameBoardController::class.java).onFigureClick(event)
         }
         GridPane.setConstraints(imageView, x, y)
-        Platform.runLater {
-            gridPane.children.add(imageView)
-        }
+        gridPane.children.add(imageView)
         if (chessFigure.color == ChessFigureColor.BLACK) {
             imageView.cursorProperty().bind(chessGame.blackPlayer.cursor)
         } else {

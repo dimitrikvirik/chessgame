@@ -18,6 +18,8 @@ class FXMLScanner {
         val resolver: ResourcePatternResolver = PathMatchingResourcePatternResolver(cl)
         val resources: Array<Resource> = resolver.getResources("classpath*:**/*.fxml")
         for (resource in resources) {
+
+            //TODO scene Name
             files.add(resource.url to "game-board.fxml")
         }
         for (file in files) {
