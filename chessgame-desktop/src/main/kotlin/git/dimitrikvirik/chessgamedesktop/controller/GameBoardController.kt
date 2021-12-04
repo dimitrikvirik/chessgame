@@ -9,10 +9,13 @@ import git.dimitrikvirik.chessgamedesktop.model.game.figure.ChessFigureColor
 import git.dimitrikvirik.chessgamedesktop.service.Action
 import git.dimitrikvirik.chessgamedesktop.service.ChessService
 import javafx.fxml.FXML
+import javafx.geometry.Pos
 import javafx.scene.control.Label
 import javafx.scene.image.ImageView
 import javafx.scene.input.MouseEvent
+import javafx.scene.layout.AnchorPane
 import javafx.scene.layout.GridPane
+import javafx.scene.text.Font
 import lombok.RequiredArgsConstructor
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.beans.factory.annotation.Value
@@ -34,9 +37,11 @@ class GameBoardController : Controller() {
     @FXML
     lateinit var blackPlayerUsername: Label
 
-
     @FXML
     lateinit var whitePlayerUsername: Label
+
+    @FXML
+    lateinit var pane: AnchorPane
 
     lateinit var chessBoard: ChessBoard
 
@@ -66,6 +71,7 @@ class GameBoardController : Controller() {
         chessBoard.drawSquareLayer()
         chessBoard.drawFigureLayer()
 
+
     }
 
 
@@ -83,13 +89,13 @@ class GameBoardController : Controller() {
             chessBoard.clearActionLayer()
             selectedFigure = figure
             if (figure != null) {
-                val movableBlocks = chessBoard.fixBlocks(figure.getRealMovableBlocks())
+                val movableBlocks = chessBoard.fixBlocks(figure.getMovableBlocks())
 
                 movableBlocks.forEach {
                     chessBoard.actionLayer[it.first to it.second] = Action.MOVE
                 }
 
-                val killableBlocks = figure.getKillableBlocks()
+                val killableBlocks = chessBoard.fixBlocks(figure.getKillableBlocks())
 
                 killableBlocks.forEach {
                     chessBoard.actionLayer[it.first to it.second] = Action.KILL
@@ -121,4 +127,18 @@ class GameBoardController : Controller() {
 
     }
 
+    fun endgame() {
+        val winner = chessGame.currentPlayer.user.username
+        val winnerText = Label("GG! $winner has won!")
+        winnerText.font = Font.font(40.0)
+        winnerText.viewOrder = 20.0
+        winnerText.maxWidth = Double.MAX_VALUE;
+        AnchorPane.setLeftAnchor(winnerText, 0.0);
+        AnchorPane.setRightAnchor(winnerText, 0.0);
+//        AnchorPane.setBottomAnchor(winnerText, 0.0);
+//        AnchorPane.setTopAnchor(winnerText, 0.0);
+
+        winnerText.alignment = Pos.CENTER;
+        pane.children.add(winnerText)
+    }
 }

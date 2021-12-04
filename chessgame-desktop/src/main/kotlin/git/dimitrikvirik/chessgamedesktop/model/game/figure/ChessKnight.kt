@@ -21,8 +21,8 @@ class ChessKnight(
 
     override fun getAllMovableBlocks(): List<Pair<Int, Int>> {
 
-        return getMovableBlocksForKnightKing(
-            x, y, board, this, killableBlocks, listOf(
+        return board.fixBlocks(ChessFigureUtil.Movable.knightAndKing(
+            board, this, listOf(
                 (x + 1 to y - 2),
                 (x + 2 to y - 1),
                 (x + 2 to y + 1),
@@ -32,7 +32,7 @@ class ChessKnight(
                 (x - 2 to y + 1),
                 (x - 1 to y + 2)
             )
-        )
+        ))
 
     }
 

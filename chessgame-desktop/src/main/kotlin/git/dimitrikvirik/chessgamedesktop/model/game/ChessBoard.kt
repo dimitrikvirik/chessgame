@@ -11,8 +11,6 @@ import javafx.scene.Cursor
 import javafx.scene.Node
 import javafx.scene.image.ImageView
 import javafx.scene.layout.GridPane
-import java.io.Serializable
-import java.util.*
 import kotlin.collections.ArrayList
 import kotlin.collections.HashMap
 
@@ -54,21 +52,25 @@ class ChessBoard {
     }
 
 
-    fun clearShahAction(){
+    fun clearShahAction() {
         val shah = actionLayer.filter { it.value == Action.SHAH }.keys.firstOrNull()
-        if(shah != null) {
+        if (shah != null) {
             val imageView = getNodeByRowColumnIndex(shah.second, shah.first, 2.0) as ImageView
             gridPane.children.remove(imageView)
-            actionLayer.remove(shah)
+
         }
+        actionLayer.values.removeIf { it == Action.SHAH }
+
     }
 
     fun clearActionLayer() {
-        actionLayer.filter { it.value == Action.KILL || it.value == Action.MOVE }.forEach {
+        actionLayer.filter { it.value != Action.SHAH }.forEach {
             val imageView = getNodeByRowColumnIndex(it.key.second, it.key.first, 2.0) as ImageView
             gridPane.children.remove(imageView)
+
         }
-        actionLayer.clear()
+        actionLayer.values.removeIf { it != Action.SHAH }
+
     }
 
     fun removeFigure(x: Int, y: Int) {
@@ -102,8 +104,8 @@ class ChessBoard {
         }
     }
 
-    fun drawActionLayer() {
-        actionLayer.forEach {
+    fun drawActionLayer(noShah: Boolean = true) {
+        actionLayer.filter { it.value != Action.SHAH || !noShah }.forEach {
             val imageView = ImageView("/assert/${it.value.resource}")
             imageView.fitWidth = gridPane.prefWidth / 8
             imageView.fitHeight = gridPane.prefHeight / 8

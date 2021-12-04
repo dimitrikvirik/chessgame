@@ -2,22 +2,22 @@
 
 
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
-<Pane xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
-      fx:controller="git.dimitrikvirik.chessgamedesktop.controller.GameBoardController">
-    <GridPane fx:id="gridPanel"   style="-fx-padding: 50">
+<AnchorPane xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="git.dimitrikvirik.chessgamedesktop.controller.GameBoardController" fx:id="pane">
+    <GridPane fx:id="gridPanel" style="-fx-padding: 50" >
 
     </GridPane>
-    <Label fx:id="blackPlayerUsername" layoutX="14.0" layoutY="10.0" >
+    <Label fx:id="blackPlayerUsername" layoutX="14.0" layoutY="10.0">
         <font>
             <Font size="22.0"/>
         </font>
     </Label>
-    <Label fx:id="whitePlayerUsername" layoutX="14.0" layoutY="650.0" >
+    <Label fx:id="whitePlayerUsername" layoutX="14.0" layoutY="650.0">
         <font>
             <Font size="22.0"/>
         </font>
     </Label>
-</Pane>
+</AnchorPane>

@@ -19,8 +19,7 @@ class ChessRook(
             x: Int,
             y: Int,
             board: ChessBoard,
-            figure: ChessFigure,
-            killableBlocks: ArrayList<Pair<Int, Int>>
+            figure: ChessFigure
         ): List<Pair<Int, Int>> {
 
             val job: (HashMap<Direction, Pair<Int, Int>>, Int) -> Unit = { moveJobs, i ->
@@ -38,16 +37,18 @@ class ChessRook(
                 }
 
             }
-            return movableBlocksForRookBishop(x, y, board, figure, killableBlocks, job)
+            return board.fixBlocks(ChessFigureUtil.Movable.rookAndBishop(board, figure, job))
         }
     }
 
 
     override fun getAllMovableBlocks(): List<Pair<Int, Int>> {
         //TODO replace with king
-        return getMovableBlocks(x, y, board, this, killableBlocks)
+        return getMovableBlocks(x, y, board, this)
 
     }
+
+
 
 
 

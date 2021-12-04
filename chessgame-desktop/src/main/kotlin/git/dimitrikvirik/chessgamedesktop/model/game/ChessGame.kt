@@ -1,5 +1,7 @@
 package git.dimitrikvirik.chessgamedesktop.model.game
 
+import git.dimitrikvirik.chessgamedesktop.controller.GameBoardController
+import git.dimitrikvirik.chessgamedesktop.core.BeanContext
 import git.dimitrikvirik.chessgamedesktop.model.domain.User
 import git.dimitrikvirik.chessgamedesktop.model.game.figure.ChessFigureColor
 import git.dimitrikvirik.chessgamedesktop.model.game.figure.ChessKing
@@ -62,7 +64,7 @@ class ChessGame {
     }
 
     fun handleMessage(message: ChessMessage) {
-        goNextPlayer(message.playerColor)
+
 
 
         when (message.action) {
@@ -71,8 +73,15 @@ class ChessGame {
             Action.SHAH -> {
                 (chessBoard.figureLayer[message.fromMove] as ChessKing).shah()
             }
-            else -> {}
+            Action.ENDGAME ->{
+                Platform.runLater {
+                    winnerPlayer = this.currentPlayer
+                    BeanContext.getBean(GameBoardController::class.java).endgame()
+                }
+                return
+            }
         }
+        goNextPlayer(message.playerColor)
         println(message.playerColor)
 
 

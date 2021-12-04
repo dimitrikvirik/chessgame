@@ -7,6 +7,7 @@ import git.dimitrikvirik.chessgamedesktop.model.game.ChessGame
 import git.dimitrikvirik.chessgamedesktop.model.game.SquareType
 import git.dimitrikvirik.chessgamedesktop.model.game.figure.ChessFigure
 import git.dimitrikvirik.chessgamedesktop.model.game.figure.ChessFigureColor
+import git.dimitrikvirik.chessgamedesktop.model.game.figure.ChessFigureUtil
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.beans.factory.annotation.Value
 import org.springframework.messaging.simp.stomp.StompSession
@@ -71,7 +72,7 @@ class ChessService() {
         for (i in 0..7) {
             for (j in 0..7) {
                 chessGame.chessBoard.squareLayer[i to j] = if ((i + j) % 2 == 0) SquareType.WHITE else SquareType.BLACK
-                chessGame.chessBoard.figureLayer[i to j] = ChessFigure.getByNumber(i, j, chessGame.chessBoard)
+                chessGame.chessBoard.figureLayer[i to j] = ChessFigureUtil.getByNumber(i, j, chessGame.chessBoard)
 
             }
         }

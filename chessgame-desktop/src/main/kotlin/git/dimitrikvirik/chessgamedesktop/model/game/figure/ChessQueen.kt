@@ -16,8 +16,8 @@ class ChessQueen(
 
 
     override fun getAllMovableBlocks(): List<Pair<Int, Int>> {
-        val rook = ChessRook.getMovableBlocks(x, y, board, this, killableBlocks)
-        val bishop = ChessBishop.getMovableBlocks(x, y, board, this, killableBlocks)
+        val rook = board.fixBlocks(ChessRook.getMovableBlocks(x, y, board, this))
+        val bishop = board.fixBlocks(ChessBishop.getMovableBlocks(x, y, board, this))
         val list = rook.toMutableList()
         list.addAll(bishop)
         return list

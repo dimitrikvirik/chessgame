@@ -1,6 +1,7 @@
 package git.dimitrikvirik.chessgamedesktop.model.game.figure
 
 import git.dimitrikvirik.chessgamedesktop.model.game.ChessBoard
+import javafx.application.Platform
 import kotlin.math.abs
 
 class ChessPawn(
@@ -18,6 +19,14 @@ class ChessPawn(
     var onDoubleMove = false
 
 
+    private fun become() {
+        Platform.runLater {
+            board.removeFigure(x, y)
+            board.addFigure(x, y, ChessQueen(color, board, x, y))
+        }
+    }
+
+
     override fun move(x: Int, y: Int) {
         onDoubleMove = !onDoubleMove && abs(y - this.y) == 2
         super.move(x, y)
@@ -26,10 +35,6 @@ class ChessPawn(
         }
     }
 
-    fun become() {
-        board.removeFigure(x, y)
-        board.addFigure(x, y, ChessQueen(color, board, x, y))
-    }
 
     override fun getAllMovableBlocks(): List<Pair<Int, Int>> {
         val list = if (!hasFirstMove) {
@@ -46,7 +51,7 @@ class ChessPawn(
         }
     }
 
-    override fun getKillableBlocks(): List<Pair<Int, Int>> {
+    override fun getAllKillableBlocks(): List<Pair<Int, Int>> {
         val list = if (color == ChessFigureColor.BLACK) {
             listOfNotNull(board.figureLayer[(x + 1) to (y + 1)], board.figureLayer[(x - 1) to (y + 1)])
         } else {
