@@ -46,9 +46,15 @@ class ChessPawn(
                 listOf(x to (y + 1))
             } else listOf(x to (y - 1))
         }
-        return list.filter {
-            board.figureLayer[it] == null && it.first in 0..7 && it.second in 0..7
+
+        val checkedList = mutableListOf<Pair<Int, Int>>()
+        for (i in list.indices){
+            if(board.figureLayer[list[i]] != null) break
+            checkedList.add(list[i])
         }
+
+        return checkedList
+
     }
 
     override fun getAllKillableBlocks(): List<Pair<Int, Int>> {

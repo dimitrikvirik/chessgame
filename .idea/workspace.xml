@@ -4,23 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f1434a4a-6c70-48d3-a432-e8ea8568c679" name="Changes" comment="Fixed git">
-      <change afterPath="$PROJECT_DIR$/chessgame-desktop/src/main/kotlin/git/dimitrikvirik/chessgamedesktop/model/game/figure/ChessFigureUtil.kt" afterDir="false" />
+    <list default="true" id="f1434a4a-6c70-48d3-a432-e8ea8568c679" name="Changes" comment="Added endgame">
+      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chessgame-desktop/src/main/kotlin/git/dimitrikvirik/chessgamedesktop/controller/GameBoardController.kt" beforeDir="false" afterPath="$PROJECT_DIR$/chessgame-desktop/src/main/kotlin/git/dimitrikvirik/chessgamedesktop/controller/GameBoardController.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chessgame-desktop/src/main/kotlin/git/dimitrikvirik/chessgamedesktop/core/Controller.kt" beforeDir="false" afterPath="$PROJECT_DIR$/chessgame-desktop/src/main/kotlin/git/dimitrikvirik/chessgamedesktop/core/Controller.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chessgame-desktop/src/main/kotlin/git/dimitrikvirik/chessgamedesktop/model/game/ChessBoard.kt" beforeDir="false" afterPath="$PROJECT_DIR$/chessgame-desktop/src/main/kotlin/git/dimitrikvirik/chessgamedesktop/model/game/ChessBoard.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chessgame-desktop/src/main/kotlin/git/dimitrikvirik/chessgamedesktop/model/game/ChessGame.kt" beforeDir="false" afterPath="$PROJECT_DIR$/chessgame-desktop/src/main/kotlin/git/dimitrikvirik/chessgamedesktop/model/game/ChessGame.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chessgame-desktop/src/main/kotlin/git/dimitrikvirik/chessgamedesktop/model/game/figure/ChessBishop.kt" beforeDir="false" afterPath="$PROJECT_DIR$/chessgame-desktop/src/main/kotlin/git/dimitrikvirik/chessgamedesktop/model/game/figure/ChessBishop.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chessgame-desktop/src/main/kotlin/git/dimitrikvirik/chessgamedesktop/model/game/figure/ChessFigure.kt" beforeDir="false" afterPath="$PROJECT_DIR$/chessgame-desktop/src/main/kotlin/git/dimitrikvirik/chessgamedesktop/model/game/figure/ChessFigure.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chessgame-desktop/src/main/kotlin/git/dimitrikvirik/chessgamedesktop/model/game/figure/ChessFigureMove.kt" beforeDir="false" afterPath="$PROJECT_DIR$/chessgame-desktop/src/main/kotlin/git/dimitrikvirik/chessgamedesktop/model/game/figure/ChessFigureMove.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chessgame-desktop/src/main/kotlin/git/dimitrikvirik/chessgamedesktop/model/game/figure/ChessKing.kt" beforeDir="false" afterPath="$PROJECT_DIR$/chessgame-desktop/src/main/kotlin/git/dimitrikvirik/chessgamedesktop/model/game/figure/ChessKing.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chessgame-desktop/src/main/kotlin/git/dimitrikvirik/chessgamedesktop/model/game/figure/ChessKnight.kt" beforeDir="false" afterPath="$PROJECT_DIR$/chessgame-desktop/src/main/kotlin/git/dimitrikvirik/chessgamedesktop/model/game/figure/ChessKnight.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/chessgame-desktop/src/main/kotlin/git/dimitrikvirik/chessgamedesktop/model/game/figure/ChessPawn.kt" beforeDir="false" afterPath="$PROJECT_DIR$/chessgame-desktop/src/main/kotlin/git/dimitrikvirik/chessgamedesktop/model/game/figure/ChessPawn.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chessgame-desktop/src/main/kotlin/git/dimitrikvirik/chessgamedesktop/model/game/figure/ChessQueen.kt" beforeDir="false" afterPath="$PROJECT_DIR$/chessgame-desktop/src/main/kotlin/git/dimitrikvirik/chessgamedesktop/model/game/figure/ChessQueen.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chessgame-desktop/src/main/kotlin/git/dimitrikvirik/chessgamedesktop/model/game/figure/ChessRook.kt" beforeDir="false" afterPath="$PROJECT_DIR$/chessgame-desktop/src/main/kotlin/git/dimitrikvirik/chessgamedesktop/model/game/figure/ChessRook.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chessgame-desktop/src/main/kotlin/git/dimitrikvirik/chessgamedesktop/service/ChessService.kt" beforeDir="false" afterPath="$PROJECT_DIR$/chessgame-desktop/src/main/kotlin/git/dimitrikvirik/chessgamedesktop/service/ChessService.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chessgame-desktop/src/main/resources/view/game-board.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/chessgame-desktop/src/main/resources/view/game-board.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -46,6 +33,7 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ExpandSpringBootJavaOptionsPanel" value="true" />
     <property name="RequestMappingsPanelOrder0" value="0" />
     <property name="RequestMappingsPanelOrder1" value="1" />
     <property name="RequestMappingsPanelWidth0" value="75" />
@@ -187,7 +175,7 @@
       <workItem from="1638113306197" duration="3239000" />
       <workItem from="1638117727762" duration="664000" />
       <workItem from="1638512873213" duration="418000" />
-      <workItem from="1638623216211" duration="13937000" />
+      <workItem from="1638623216211" duration="16883000" />
     </task>
     <task id="LOCAL-00001" summary="Chess Board Draw">
       <created>1637506665590</created>
@@ -238,7 +226,14 @@
       <option name="project" value="LOCAL" />
       <updated>1638623690810</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Added endgame">
+      <created>1638640699329</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1638640699329</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -265,7 +260,8 @@
     <MESSAGE value="Added websocket support" />
     <MESSAGE value="Added websocket support. fixed kills" />
     <MESSAGE value="Fixed git" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed git" />
+    <MESSAGE value="Added endgame" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added endgame" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
