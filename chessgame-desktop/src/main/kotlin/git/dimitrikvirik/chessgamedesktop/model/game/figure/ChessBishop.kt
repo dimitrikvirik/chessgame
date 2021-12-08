@@ -1,17 +1,13 @@
 package git.dimitrikvirik.chessgamedesktop.model.game.figure
 
-import git.dimitrikvirik.chessgamedesktop.model.game.ChessBoard
-
 
 class ChessBishop(
     chessFigureColor: ChessFigureColor,
-    board: ChessBoard,
     x: Int,
     y: Int
 ) : ChessFigure(
     ChessFigureType.BISHOP,
     chessFigureColor,
-    board,
     x, y
 ) {
 
@@ -20,7 +16,6 @@ class ChessBishop(
         fun getMovableBlocks(
             x: Int,
             y: Int,
-            board: ChessBoard,
             figure: ChessFigure
         ): List<Pair<Int, Int>> {
             val job: (HashMap<Direction, Pair<Int, Int>>, Int) -> Unit = { moveJobs, i ->
@@ -37,7 +32,7 @@ class ChessBishop(
                     moveJobs[Direction.RIGHT] = (x + i) to (y + i)
                 }
             }
-            return ChessFigureUtil.Movable.rookAndBishop(board, figure, job)
+            return ChessFigureUtil.Movable.rookAndBishop(figure, job)
         }
 
     }
@@ -45,7 +40,7 @@ class ChessBishop(
     override fun getAllMovableBlocks(): List<Pair<Int, Int>> {
         //TODO replace with king
 
-        return getMovableBlocks(x, y, board, this)
+        return getMovableBlocks(x, y, this)
     }
 
 

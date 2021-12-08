@@ -22,7 +22,7 @@ class ChessStompHandler : StompSessionHandler{
     override fun handleFrame(p0: StompHeaders, p1: Any?) {
         println("received $p0");
         val message = p1 as ChessMessage
-        chessGame.handleMessage(message)
+//        chessGame.handleMessage(message)
 
     }
 

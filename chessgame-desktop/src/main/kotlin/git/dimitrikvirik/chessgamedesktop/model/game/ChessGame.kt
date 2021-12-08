@@ -1,17 +1,10 @@
 package git.dimitrikvirik.chessgamedesktop.model.game
 
-import git.dimitrikvirik.chessgamedesktop.controller.GameBoardController
-import git.dimitrikvirik.chessgamedesktop.core.BeanContext
 import git.dimitrikvirik.chessgamedesktop.model.domain.User
 import git.dimitrikvirik.chessgamedesktop.model.game.figure.ChessFigureColor
-import git.dimitrikvirik.chessgamedesktop.model.game.figure.ChessKing
-import git.dimitrikvirik.chessgamedesktop.service.Action
-import git.dimitrikvirik.chessgamedesktop.service.ChessMessage
-import javafx.application.Platform
 import javafx.scene.Cursor
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
-import java.io.Serializable
 import kotlin.properties.Delegates
 
 
@@ -21,7 +14,6 @@ class ChessGame {
 
     var isPublic by Delegates.notNull<Boolean>()
     lateinit var invitedFrom: Invitation
-    lateinit var chessBoard: ChessBoard
     lateinit var currentPlayer: ChessPlayer
     var winnerPlayer: ChessPlayer? = null
 
@@ -36,6 +28,7 @@ class ChessGame {
         whitePlayer.canMove = true
         whitePlayer.cursor.set(Cursor.HAND)
         blackPlayer.cursor.set(Cursor.DEFAULT)
+
     }
 
     fun endgame(winnerPlayer: ChessPlayer) {
@@ -63,32 +56,32 @@ class ChessGame {
         }
     }
 
-    fun handleMessage(message: ChessMessage) {
+//    fun handleMessage(message: ChessMessage) {
+//
+//
+//
+//        when (message) {
+//            ActionType.MOVE -> chessBoard.figureLayer[message.fromMove]?.move(message.toMove.first, message.toMove.second)
+//            ActionType.KILL -> chessBoard.figureLayer[message.fromMove]?.kill(message.toMove.first, message.toMove.second)
+//            ActionType.SHAH -> {
+//                (chessBoard.figureLayer[message.fromMove] as ChessKing).shah()
+//            }
+//            ActionType.ENDGAME ->{
+//                Platform.runLater {
+//                    winnerPlayer = this.currentPlayer
+//                    BeanContext.getBean(GameBoardController::class.java).endgame()
+//                }
+//                return
+//            }
+//        }
+//        goNextPlayer(message.playerColor)
+//        println(message.playerColor)
+//
+//
+//
+//
+//    }
 
-
-
-        when (message.action) {
-            Action.MOVE -> chessBoard.figureLayer[message.fromMove]?.move(message.toMove.first, message.toMove.second)
-            Action.KILL -> chessBoard.figureLayer[message.fromMove]?.kill(message.toMove.first, message.toMove.second)
-            Action.SHAH -> {
-                (chessBoard.figureLayer[message.fromMove] as ChessKing).shah()
-            }
-            Action.ENDGAME ->{
-                Platform.runLater {
-                    winnerPlayer = this.currentPlayer
-                    BeanContext.getBean(GameBoardController::class.java).endgame()
-                }
-                return
-            }
-        }
-        goNextPlayer(message.playerColor)
-        println(message.playerColor)
-
-
-
-
-    }
-    //TODO filter movable and killable blocks on shah
 }
 
 

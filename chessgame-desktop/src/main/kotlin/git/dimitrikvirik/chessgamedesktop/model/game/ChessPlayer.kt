@@ -6,7 +6,6 @@ import git.dimitrikvirik.chessgamedesktop.model.game.figure.ChessKing
 import javafx.beans.property.ObjectProperty
 import javafx.beans.property.SimpleObjectProperty
 import javafx.scene.Cursor
-import java.io.Serializable
 
 
 class ChessPlayer(

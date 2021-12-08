@@ -3,8 +3,6 @@ package git.dimitrikvirik.chessgamedesktop
 import git.dimitrikvirik.chessgame.ChartApplication
 import git.dimitrikvirik.chessgamedesktop.core.FXMLScanner
 import git.dimitrikvirik.chessgamedesktop.core.SceneContextHolder
-import git.dimitrikvirik.chessgamedesktop.service.Action
-import git.dimitrikvirik.chessgamedesktop.service.ChessMessage
 import git.dimitrikvirik.chessgamedesktop.service.ChessService
 import javafx.scene.Scene
 import javafx.stage.Stage

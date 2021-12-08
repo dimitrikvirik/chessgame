@@ -1,18 +1,15 @@
 package git.dimitrikvirik.chessgamedesktop.model.game.figure
 
-import git.dimitrikvirik.chessgamedesktop.model.game.ChessBoard
 import javafx.application.Platform
 import kotlin.math.abs
 
 class ChessPawn(
     chessFigureColor: ChessFigureColor,
-    board: ChessBoard,
     x: Int,
     y: Int
 ) : ChessFigure(
     ChessFigureType.PAWN,
     chessFigureColor,
-    board,
     x,
     y
 ) {
@@ -21,8 +18,8 @@ class ChessPawn(
 
     private fun become() {
         Platform.runLater {
-            board.removeFigure(x, y)
-            board.addFigure(x, y, ChessQueen(color, board, x, y))
+            figureLayer.remove(x to y)
+            figureLayer[x to y] = ChessQueen(color, x, y)
         }
     }
 
@@ -48,8 +45,8 @@ class ChessPawn(
         }
 
         val checkedList = mutableListOf<Pair<Int, Int>>()
-        for (i in list.indices){
-            if(board.figureLayer[list[i]] != null) break
+        for (i in list.indices) {
+            if (figureLayer[list[i]] != null) break
             checkedList.add(list[i])
         }
 
@@ -59,13 +56,13 @@ class ChessPawn(
 
     override fun getAllKillableBlocks(): List<Pair<Int, Int>> {
         val list = if (color == ChessFigureColor.BLACK) {
-            listOfNotNull(board.figureLayer[(x + 1) to (y + 1)], board.figureLayer[(x - 1) to (y + 1)])
+            listOfNotNull(figureLayer[(x + 1) to (y + 1)], figureLayer[(x - 1) to (y + 1)])
         } else {
-            listOfNotNull(board.figureLayer[(x - 1) to (y - 1)], board.figureLayer[(x + 1) to (y - 1)])
+            listOfNotNull(figureLayer[(x - 1) to (y - 1)], figureLayer[(x + 1) to (y - 1)])
         }
         val filter = listOfNotNull(
-            board.figureLayer[(x - 1) to y],
-            board.figureLayer[(x + 1) to y]
+            figureLayer[(x - 1) to y],
+            figureLayer[(x + 1) to y]
         ).filterIsInstance<ChessPawn>().filter {
             it.onDoubleMove
         }

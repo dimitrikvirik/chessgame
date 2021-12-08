@@ -1,16 +1,12 @@
 package git.dimitrikvirik.chessgamedesktop.model.game.figure
 
-import git.dimitrikvirik.chessgamedesktop.model.game.ChessBoard
-
 class ChessRook(
     chessFigureColor: ChessFigureColor,
-    board: ChessBoard,
     x: Int,
     y: Int
 ) : ChessFigure(
     ChessFigureType.ROOK,
     chessFigureColor,
-    board,
     x, y
 ) {
 
@@ -18,7 +14,6 @@ class ChessRook(
         fun getMovableBlocks(
             x: Int,
             y: Int,
-            board: ChessBoard,
             figure: ChessFigure
         ): List<Pair<Int, Int>> {
 
@@ -37,14 +32,14 @@ class ChessRook(
                 }
 
             }
-            return board.fixBlocks(ChessFigureUtil.Movable.rookAndBishop(board, figure, job))
+            return ChessFigureUtil.Movable.rookAndBishop(figure, job)
         }
     }
 
 
     override fun getAllMovableBlocks(): List<Pair<Int, Int>> {
         //TODO replace with king
-        return getMovableBlocks(x, y, board, this)
+        return getMovableBlocks(x, y, this)
 
     }
 

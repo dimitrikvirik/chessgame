@@ -1,11 +1,16 @@
 package git.dimitrikvirik.chessgamedesktop.model.game.figure
 
-import git.dimitrikvirik.chessgamedesktop.model.game.ChessBoard
+import git.dimitrikvirik.chessgamedesktop.core.BeanContext
+import git.dimitrikvirik.chessgamedesktop.model.game.LayerContext
 
 class ChessFigureUtil {
+
+
     object Movable {
+
+        val figureLayer = BeanContext.getBean(LayerContext::class.java).figureLayer
+
         fun knightAndKing(
-            board: ChessBoard,
             figure: ChessFigure,
             moves: List<Pair<Int, Int>>
         ): List<Pair<Int, Int>> {
@@ -13,7 +18,7 @@ class ChessFigureUtil {
             val groupBy = moves.filter {
                 it.first >= 0 && it.second >= 0
             }.groupBy {
-                val chessFigure = board.figureLayer[it]
+                val chessFigure = figureLayer[it]
                 if (chessFigure != null && chessFigure.color != figure.color) "movable"
                 else if (chessFigure == null) "movable"
                 else "other"
@@ -23,7 +28,6 @@ class ChessFigureUtil {
         }
 
         fun rookAndBishop(
-            board: ChessBoard,
             thisFigure: ChessFigure,
             executable: (HashMap<ChessFigure.Direction, Pair<Int, Int>>, Int) -> Unit
         ): List<Pair<Int, Int>> {
@@ -49,7 +53,7 @@ class ChessFigureUtil {
                         return@forEach
                     }
 
-                    val chessFigure = board.figureLayer[it.value]
+                    val chessFigure = figureLayer[it.value]
                     if (chessFigure == null) {
                         list.add(it.value)
                     } else if (chessFigure != thisFigure) {
@@ -70,26 +74,24 @@ class ChessFigureUtil {
 
     companion object {
 
-        fun getByNumber(x: Int, y: Int, board: ChessBoard): ChessFigure? {
+        fun getByNumber(x: Int, y: Int): ChessFigure? {
             return when (x to y) {
-                7 to 0, 0 to 0 -> ChessRook(ChessFigureColor.BLACK, board, x, y)
-                1 to 0, 6 to 0 -> ChessKnight(ChessFigureColor.BLACK, board, x, y)
-                2 to 0, 5 to 0 -> ChessBishop(ChessFigureColor.BLACK, board, x, y)
-                3 to 0 -> ChessQueen(ChessFigureColor.BLACK, board, x, y)
-                4 to 0 -> ChessKing(ChessFigureColor.BLACK, board, x, y)
+                7 to 0, 0 to 0 -> ChessRook(ChessFigureColor.BLACK, x, y)
+                1 to 0, 6 to 0 -> ChessKnight(ChessFigureColor.BLACK, x, y)
+                2 to 0, 5 to 0 -> ChessBishop(ChessFigureColor.BLACK, x, y)
+                3 to 0 -> ChessQueen(ChessFigureColor.BLACK, x, y)
+                4 to 0 -> ChessKing(ChessFigureColor.BLACK, x, y)
                 0 to 1, 1 to 1, 2 to 1, 3 to 1, 4 to 1, 5 to 1, 6 to 1, 7 to 1 -> ChessPawn(
                     ChessFigureColor.BLACK,
-                    board,
                     x, y
                 )
-                7 to 7, 0 to 7 -> ChessRook(ChessFigureColor.WHITE, board, x, y)
-                1 to 7, 6 to 7 -> ChessKnight(ChessFigureColor.WHITE, board, x, y)
-                2 to 7, 5 to 7 -> ChessBishop(ChessFigureColor.WHITE, board, x, y)
-                3 to 7 -> ChessQueen(ChessFigureColor.WHITE, board, x, y)
-                4 to 7 -> ChessKing(ChessFigureColor.WHITE, board, x, y)
+                7 to 7, 0 to 7 -> ChessRook(ChessFigureColor.WHITE, x, y)
+                1 to 7, 6 to 7 -> ChessKnight(ChessFigureColor.WHITE, x, y)
+                2 to 7, 5 to 7 -> ChessBishop(ChessFigureColor.WHITE, x, y)
+                3 to 7 -> ChessQueen(ChessFigureColor.WHITE, x, y)
+                4 to 7 -> ChessKing(ChessFigureColor.WHITE, x, y)
                 0 to 6, 1 to 6, 2 to 6, 3 to 6, 4 to 6, 5 to 6, 6 to 6, 7 to 6 -> ChessPawn(
                     ChessFigureColor.WHITE,
-                    board,
                     x, y
                 )
                 else -> {
