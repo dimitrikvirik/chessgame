@@ -2,6 +2,7 @@ package git.dimitrikvirik.chessgamedesktop.config
 
 import git.dimitrikvirik.chessgamedesktop.model.game.ChessGame
 import git.dimitrikvirik.chessgamedesktop.service.ChessMessage
+import git.dimitrikvirik.chessgamedesktop.service.Message
 import org.springframework.messaging.simp.stomp.StompCommand
 import org.springframework.messaging.simp.stomp.StompHeaders
 import org.springframework.messaging.simp.stomp.StompSession
@@ -11,18 +12,19 @@ import java.lang.reflect.Type
 
 
 @Component
-class ChessStompHandler : StompSessionHandler{
+class ChessStompHandler : StompSessionHandler {
     lateinit var chessGame: ChessGame
 
 
     override fun getPayloadType(p0: StompHeaders): Type {
-        return ChessMessage::class.java
+        return Message::class.java
     }
 
     override fun handleFrame(p0: StompHeaders, p1: Any?) {
         println("received $p0");
-        val message = p1 as ChessMessage
-//        chessGame.handleMessage(message)
+        val message = ChessMessage((p1 as Message).message)
+
+        chessGame.handleMessage(message)
 
     }
 
@@ -36,7 +38,7 @@ class ChessStompHandler : StompSessionHandler{
     }
 
     override fun handleTransportError(p0: StompSession, p1: Throwable) {
-       println("transport error!")
+        println("transport error!")
         p1.printStackTrace()
     }
 }

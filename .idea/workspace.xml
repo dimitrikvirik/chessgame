@@ -4,29 +4,21 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f1434a4a-6c70-48d3-a432-e8ea8568c679" name="Changes" comment="Added endgame">
-      <change afterPath="$PROJECT_DIR$/chessgame-desktop/src/main/kotlin/git/dimitrikvirik/chessgamedesktop/model/game/ActionType.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/chessgame-desktop/src/main/kotlin/git/dimitrikvirik/chessgamedesktop/model/game/Cell.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/chessgame-desktop/src/main/kotlin/git/dimitrikvirik/chessgamedesktop/model/game/Layer.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/chessgame-desktop/src/main/kotlin/git/dimitrikvirik/chessgamedesktop/model/game/LayerContext.kt" afterDir="false" />
+    <list default="true" id="f1434a4a-6c70-48d3-a432-e8ea8568c679" name="Changes" comment="added layer">
+      <change afterPath="$PROJECT_DIR$/chessgame-desktop/src/main/kotlin/git/dimitrikvirik/chessgamedesktop/model/game/figure/ChessFigureVirtual.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/chessgame-desktop/src/main/resources/assert/virtual.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chessgame-desktop/src/main/kotlin/git/dimitrikvirik/chessgamedesktop/StageInitializer.kt" beforeDir="false" afterPath="$PROJECT_DIR$/chessgame-desktop/src/main/kotlin/git/dimitrikvirik/chessgamedesktop/StageInitializer.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/chessgame-api/src/main/kotlin/git/dimitrikvirik/chessgameapi/controller/ChessGameController.kt" beforeDir="false" afterPath="$PROJECT_DIR$/chessgame-api/src/main/kotlin/git/dimitrikvirik/chessgameapi/controller/ChessGameController.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/chessgame-desktop/src/main/kotlin/git/dimitrikvirik/chessgamedesktop/config/ChessStompHandler.kt" beforeDir="false" afterPath="$PROJECT_DIR$/chessgame-desktop/src/main/kotlin/git/dimitrikvirik/chessgamedesktop/config/ChessStompHandler.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/chessgame-desktop/src/main/kotlin/git/dimitrikvirik/chessgamedesktop/controller/GameBoardController.kt" beforeDir="false" afterPath="$PROJECT_DIR$/chessgame-desktop/src/main/kotlin/git/dimitrikvirik/chessgamedesktop/controller/GameBoardController.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chessgame-desktop/src/main/kotlin/git/dimitrikvirik/chessgamedesktop/model/game/ChessBoard.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/chessgame-desktop/src/main/kotlin/git/dimitrikvirik/chessgamedesktop/model/game/Cell.kt" beforeDir="false" afterPath="$PROJECT_DIR$/chessgame-desktop/src/main/kotlin/git/dimitrikvirik/chessgamedesktop/model/game/Cell.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/chessgame-desktop/src/main/kotlin/git/dimitrikvirik/chessgamedesktop/model/game/ChessGame.kt" beforeDir="false" afterPath="$PROJECT_DIR$/chessgame-desktop/src/main/kotlin/git/dimitrikvirik/chessgamedesktop/model/game/ChessGame.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chessgame-desktop/src/main/kotlin/git/dimitrikvirik/chessgamedesktop/model/game/ChessPlayer.kt" beforeDir="false" afterPath="$PROJECT_DIR$/chessgame-desktop/src/main/kotlin/git/dimitrikvirik/chessgamedesktop/model/game/ChessPlayer.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chessgame-desktop/src/main/kotlin/git/dimitrikvirik/chessgamedesktop/model/game/SquareType.kt" beforeDir="false" afterPath="$PROJECT_DIR$/chessgame-desktop/src/main/kotlin/git/dimitrikvirik/chessgamedesktop/model/game/SquareType.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chessgame-desktop/src/main/kotlin/git/dimitrikvirik/chessgamedesktop/model/game/figure/ChessBishop.kt" beforeDir="false" afterPath="$PROJECT_DIR$/chessgame-desktop/src/main/kotlin/git/dimitrikvirik/chessgamedesktop/model/game/figure/ChessBishop.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/chessgame-desktop/src/main/kotlin/git/dimitrikvirik/chessgamedesktop/model/game/Layer.kt" beforeDir="false" afterPath="$PROJECT_DIR$/chessgame-desktop/src/main/kotlin/git/dimitrikvirik/chessgamedesktop/model/game/Layer.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/chessgame-desktop/src/main/kotlin/git/dimitrikvirik/chessgamedesktop/model/game/LayerContext.kt" beforeDir="false" afterPath="$PROJECT_DIR$/chessgame-desktop/src/main/kotlin/git/dimitrikvirik/chessgamedesktop/model/game/LayerContext.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/chessgame-desktop/src/main/kotlin/git/dimitrikvirik/chessgamedesktop/model/game/figure/ChessFigure.kt" beforeDir="false" afterPath="$PROJECT_DIR$/chessgame-desktop/src/main/kotlin/git/dimitrikvirik/chessgamedesktop/model/game/figure/ChessFigure.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chessgame-desktop/src/main/kotlin/git/dimitrikvirik/chessgamedesktop/model/game/figure/ChessFigureColor.kt" beforeDir="false" afterPath="$PROJECT_DIR$/chessgame-desktop/src/main/kotlin/git/dimitrikvirik/chessgamedesktop/model/game/figure/ChessFigureColor.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/chessgame-desktop/src/main/kotlin/git/dimitrikvirik/chessgamedesktop/model/game/figure/ChessFigureType.kt" beforeDir="false" afterPath="$PROJECT_DIR$/chessgame-desktop/src/main/kotlin/git/dimitrikvirik/chessgamedesktop/model/game/figure/ChessFigureType.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/chessgame-desktop/src/main/kotlin/git/dimitrikvirik/chessgamedesktop/model/game/figure/ChessFigureUtil.kt" beforeDir="false" afterPath="$PROJECT_DIR$/chessgame-desktop/src/main/kotlin/git/dimitrikvirik/chessgamedesktop/model/game/figure/ChessFigureUtil.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chessgame-desktop/src/main/kotlin/git/dimitrikvirik/chessgamedesktop/model/game/figure/ChessKing.kt" beforeDir="false" afterPath="$PROJECT_DIR$/chessgame-desktop/src/main/kotlin/git/dimitrikvirik/chessgamedesktop/model/game/figure/ChessKing.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/chessgame-desktop/src/main/kotlin/git/dimitrikvirik/chessgamedesktop/model/game/figure/ChessKnight.kt" beforeDir="false" afterPath="$PROJECT_DIR$/chessgame-desktop/src/main/kotlin/git/dimitrikvirik/chessgamedesktop/model/game/figure/ChessKnight.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chessgame-desktop/src/main/kotlin/git/dimitrikvirik/chessgamedesktop/model/game/figure/ChessPawn.kt" beforeDir="false" afterPath="$PROJECT_DIR$/chessgame-desktop/src/main/kotlin/git/dimitrikvirik/chessgamedesktop/model/game/figure/ChessPawn.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chessgame-desktop/src/main/kotlin/git/dimitrikvirik/chessgamedesktop/model/game/figure/ChessQueen.kt" beforeDir="false" afterPath="$PROJECT_DIR$/chessgame-desktop/src/main/kotlin/git/dimitrikvirik/chessgamedesktop/model/game/figure/ChessQueen.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chessgame-desktop/src/main/kotlin/git/dimitrikvirik/chessgamedesktop/model/game/figure/ChessRook.kt" beforeDir="false" afterPath="$PROJECT_DIR$/chessgame-desktop/src/main/kotlin/git/dimitrikvirik/chessgamedesktop/model/game/figure/ChessRook.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/chessgame-desktop/src/main/kotlin/git/dimitrikvirik/chessgamedesktop/service/ChessService.kt" beforeDir="false" afterPath="$PROJECT_DIR$/chessgame-desktop/src/main/kotlin/git/dimitrikvirik/chessgamedesktop/service/ChessService.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -70,7 +62,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="jdk.selected.JAVA_MODULE" value="17" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/chessgame-api/src/main/kotlin/git/dimitrikvirik/chessgameapi" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/chessgame-desktop/src/main/resources/assert" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
@@ -83,11 +75,11 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\dimitri\IdeaProjects\chessgame\chessgame-desktop\src\main\resources\assert" />
       <recent name="C:\Users\dimitri\IdeaProjects\chessgame\chessgame-api\src\main\kotlin\git\dimitrikvirik\chessgameapi" />
       <recent name="C:\Users\dimitri\IdeaProjects\chessgame\chessgame-api\src\main\kotlin\git\dimitrikvirik\chessgameapi\model\figure" />
       <recent name="C:\Users\dimitri\IdeaProjects\chessgame\chessgame-api\src\main\kotlin\git\dimitrikvirik\chessgameapi\model" />
       <recent name="C:\Users\dimitri\IdeaProjects\chessgame\src\main\kotlin\git\dimitrikvirik\chessgame" />
-      <recent name="C:\Users\dimitri\IdeaProjects\chessgame\src\main\resources" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\dimitri\IdeaProjects\chessgame\src\main\kotlin\git\dimitrikvirik\chessgame\model\game" />
@@ -205,7 +197,8 @@
       <workItem from="1638512873213" duration="418000" />
       <workItem from="1638623216211" duration="16883000" />
       <workItem from="1638694181997" duration="594000" />
-      <workItem from="1638957844225" duration="16217000" />
+      <workItem from="1638957844225" duration="17404000" />
+      <workItem from="1639042062439" duration="8955000" />
     </task>
     <task id="LOCAL-00001" summary="Chess Board Draw">
       <created>1637506665590</created>
@@ -263,7 +256,14 @@
       <option name="project" value="LOCAL" />
       <updated>1638640699329</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="added layer">
+      <created>1638974381282</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1638974381282</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -291,7 +291,8 @@
     <MESSAGE value="Added websocket support. fixed kills" />
     <MESSAGE value="Fixed git" />
     <MESSAGE value="Added endgame" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added endgame" />
+    <MESSAGE value="added layer" />
+    <option name="LAST_COMMIT_MESSAGE" value="added layer" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -332,24 +333,49 @@
           <option name="timeStamp" value="62" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="kotlin-line">
-          <url>file://$PROJECT_DIR$/chessgame-desktop/src/main/kotlin/git/dimitrikvirik/chessgamedesktop/controller/GameBoardController.kt</url>
-          <line>89</line>
-          <option name="timeStamp" value="66" />
+          <url>file://$PROJECT_DIR$/chessgame-desktop/src/main/kotlin/git/dimitrikvirik/chessgamedesktop/model/game/figure/ChessKnight.kt</url>
+          <line>15</line>
+          <option name="timeStamp" value="80" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="kotlin-line">
-          <url>file://$PROJECT_DIR$/chessgame-desktop/src/main/kotlin/git/dimitrikvirik/chessgamedesktop/model/game/figure/ChessPawn.kt</url>
-          <line>52</line>
-          <option name="timeStamp" value="67" />
+          <url>file://$PROJECT_DIR$/chessgame-desktop/src/main/kotlin/git/dimitrikvirik/chessgamedesktop/model/game/figure/ChessKing.kt</url>
+          <line>26</line>
+          <option name="timeStamp" value="82" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="kotlin-line">
+          <url>file://$PROJECT_DIR$/chessgame-desktop/src/main/kotlin/git/dimitrikvirik/chessgamedesktop/model/game/figure/ChessFigureUtil.kt</url>
+          <line>25</line>
+          <option name="timeStamp" value="93" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="kotlin-line">
+          <url>file://$PROJECT_DIR$/chessgame-desktop/src/main/kotlin/git/dimitrikvirik/chessgamedesktop/model/game/figure/ChessFigure.kt</url>
+          <line>67</line>
+          <option name="timeStamp" value="95" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="kotlin-line">
+          <url>file://$PROJECT_DIR$/chessgame-desktop/src/main/kotlin/git/dimitrikvirik/chessgamedesktop/config/ChessStompHandler.kt</url>
+          <line>35</line>
+          <option name="timeStamp" value="98" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="kotlin-line">
+          <url>file://$PROJECT_DIR$/chessgame-desktop/src/main/kotlin/git/dimitrikvirik/chessgamedesktop/service/ChessService.kt</url>
+          <line>75</line>
+          <option name="timeStamp" value="99" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="kotlin-line">
+          <url>file://$PROJECT_DIR$/chessgame-desktop/src/main/kotlin/git/dimitrikvirik/chessgamedesktop/model/game/figure/ChessFigure.kt</url>
+          <line>57</line>
+          <option name="timeStamp" value="103" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="kotlin-line">
+          <url>file://$PROJECT_DIR$/chessgame-desktop/src/main/kotlin/git/dimitrikvirik/chessgamedesktop/model/game/LayerContext.kt</url>
+          <line>19</line>
+          <option name="timeStamp" value="108" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="kotlin-line">
           <url>file://$PROJECT_DIR$/chessgame-desktop/src/main/kotlin/git/dimitrikvirik/chessgamedesktop/model/game/Layer.kt</url>
-          <line>148</line>
-          <option name="timeStamp" value="76" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="kotlin-line">
-          <url>file://$PROJECT_DIR$/chessgame-desktop/src/main/kotlin/git/dimitrikvirik/chessgamedesktop/model/game/Layer.kt</url>
-          <line>149</line>
-          <option name="timeStamp" value="77" />
+          <line>164</line>
+          <option name="timeStamp" value="111" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

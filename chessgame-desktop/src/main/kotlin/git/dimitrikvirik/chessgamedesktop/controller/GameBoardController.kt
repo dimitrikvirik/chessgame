@@ -113,30 +113,18 @@ class GameBoardController : Controller() {
 
 
     fun onActionBlockClick(event: MouseEvent) {
-
-    }
-
-
-    fun onMoveBlockClick(event: MouseEvent) {
         val img = event.source as ImageView
         val xIndex = GridPane.getColumnIndex(img)
         val yIndex = GridPane.getRowIndex(img)
 
-        selectedFigure?.move(xIndex, yIndex, chessService)
-        selectedFigure?.clearKillableBlocks()
-
+        val action = layerContext.actionLayer[xIndex to yIndex]?.action
+        if (action == ActionType.MOVE) {
+            selectedFigure?.move(xIndex, yIndex, chessService)
+        } else if (action == ActionType.KILL) {
+            selectedFigure?.kill(xIndex, yIndex, chessService)
+        }
     }
 
-    fun onKillBlockClick(event: MouseEvent) {
-        val img = event.source as ImageView
-        val xIndex = GridPane.getColumnIndex(img)
-        val yIndex = GridPane.getRowIndex(img)
-
-
-        selectedFigure?.kill(xIndex, yIndex, chessService)
-        selectedFigure?.clearKillableBlocks()
-
-    }
 
     fun endgame() {
         val winner = chessGame.currentPlayer.user.username

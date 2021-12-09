@@ -11,13 +11,49 @@ import org.springframework.messaging.simp.stomp.StompSessionHandler
 import org.springframework.stereotype.Service
 import org.springframework.web.socket.messaging.WebSocketStompClient
 
+data class Message(val message: ByteArray) {
+    override fun equals(other: Any?): Boolean {
+        if (this === other) return true
+        if (javaClass != other?.javaClass) return false
+
+        other as Message
+
+        if (!message.contentEquals(other.message)) return false
+
+        return true
+    }
+
+    override fun hashCode(): Int {
+        return message.contentHashCode()
+    }
+}
+
 
 data class ChessMessage(
     var fromMove: Pair<Int, Int>,
     var toMove: Pair<Int, Int>,
-//    var playerColor: ChessFigureColor,
     var actionType: ActionType
-)
+) {
+    val message: Message
+        get() {
+            val byteArray = ByteArray(5)
+
+            byteArray[0] = fromMove.first.toByte()
+            byteArray[1] = fromMove.second.toByte()
+            byteArray[2] = toMove.first.toByte()
+            byteArray[3] = toMove.second.toByte()
+            byteArray[4] = actionType.prefix.code.toByte()
+
+            return Message(byteArray)
+        }
+
+    constructor(message: ByteArray) : this(0 to 0, 0 to 0, ActionType.MOVE) {
+        fromMove = (message[0].toInt()) to (message[1].toInt())
+        toMove = (message[2].toInt()) to (message[3].toInt())
+        actionType = ActionType.convert(message[4].toInt().toChar())
+
+    }
+}
 
 
 @Service
@@ -37,7 +73,7 @@ class ChessService() {
     lateinit var api: String
 
     fun send(chessMessage: ChessMessage) {
-        session.send("/app/chessgame/$gameId", chessMessage)
+        session.send("/app/chessgame/$gameId", chessMessage.message)
     }
 
 

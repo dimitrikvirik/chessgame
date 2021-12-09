@@ -1,23 +1,26 @@
 package git.dimitrikvirik.chessgamedesktop.model.game.figure
 
 import git.dimitrikvirik.chessgamedesktop.core.BeanContext
+import git.dimitrikvirik.chessgamedesktop.model.game.ActionType
 import git.dimitrikvirik.chessgamedesktop.model.game.Cell
 import git.dimitrikvirik.chessgamedesktop.model.game.History
 import git.dimitrikvirik.chessgamedesktop.model.game.LayerContext
+import git.dimitrikvirik.chessgamedesktop.service.ChessMessage
 import git.dimitrikvirik.chessgamedesktop.service.ChessService
 import javafx.application.Platform
 
 
 abstract class ChessFigure(
-    open val chessFigureType: ChessFigureType,
-    open val color: ChessFigureColor,
+    override val chessFigureType: ChessFigureType,
+    override val color: ChessFigureColor,
     override var x: Int,
     override var y: Int
-) : ChessFigureMove, Cell(x, y, 1, chessFigureType.getByColor(color)) {
+) :   ChessFigureMove, ChessFigureVirtual(chessFigureType, color, x, y, 1, chessFigureType.getByColor(color)) {
 
     var hasFirstMove: Boolean = false
     private val layerContext = BeanContext.getBean(LayerContext::class.java)
     val figureLayer = layerContext.figureLayer
+    val virtualLayer = layerContext.virtualLayer
     val actionLayer = layerContext.actionLayer
 
     companion object {
@@ -50,11 +53,9 @@ abstract class ChessFigure(
     override fun move(x: Int, y: Int) {
 
         Platform.runLater {
-
             actionLayer.clear()
             if (!hasFirstMove) hasFirstMove = true
             figureLayer.remove(this.x to this.y)
-
             this.x = x
             this.y = y
             figureLayer[x to y] = this
@@ -64,7 +65,7 @@ abstract class ChessFigure(
     }
 
     fun move(x: Int, y: Int, chessService: ChessService) {
-//        chessService.send(ChessMessage(this.x to this.y, x to y, color, Action.MOVE))
+        chessService.send(ChessMessage(this.x to this.y, x to y, ActionType.MOVE))
     }
 
     fun kill(x: Int, y: Int, chessService: ChessService) {

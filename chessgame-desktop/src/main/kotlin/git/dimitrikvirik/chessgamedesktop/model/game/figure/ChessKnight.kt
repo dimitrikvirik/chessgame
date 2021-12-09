@@ -11,10 +11,6 @@ class ChessKnight(
 ) {
 
 
-    companion object {
-
-    }
-
     override fun getAllMovableBlocks(): List<Pair<Int, Int>> {
 
         return ChessFigureUtil.Movable.knightAndKing(

@@ -21,7 +21,7 @@ enum class ChessFigureType(private val black: String, private val white: String,
         fun convert(prefix: Char): ChessFigureType {
             return when (prefix) {
                 'P' -> PAWN
-                'K' -> KING
+                'K' -> KNIGHT
                 'B' -> BISHOP
                 'R' -> ROOK
                 'Q' -> QUEEN

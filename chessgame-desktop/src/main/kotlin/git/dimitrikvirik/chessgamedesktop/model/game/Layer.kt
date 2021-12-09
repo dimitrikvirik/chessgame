@@ -5,13 +5,16 @@ import git.dimitrikvirik.chessgamedesktop.core.BeanContext
 import git.dimitrikvirik.chessgamedesktop.model.game.figure.ChessFigure
 import git.dimitrikvirik.chessgamedesktop.model.game.figure.ChessFigureColor
 import git.dimitrikvirik.chessgamedesktop.model.game.figure.ChessFigureType
+import git.dimitrikvirik.chessgamedesktop.model.game.figure.ChessFigureVirtual
 import javafx.event.EventHandler
 import javafx.scene.Cursor
+import javafx.scene.image.Image
 import javafx.scene.image.ImageView
 import javafx.scene.layout.GridPane
-import kotlin.math.sqrt
 
-class Layer<T : Cell>(private val gridPane: GridPane, private val prefix: Char) : MutableMap<Pair<Int, Int>, T> {
+class Layer<T : Cell>(private val gridPane: GridPane, private val prefix: Char, private val virtual: Boolean) : MutableMap<Pair<Int, Int>, T> {
+
+
 
 
     private fun getNode(idPrefix: String): ImageView? {
@@ -20,7 +23,7 @@ class Layer<T : Cell>(private val gridPane: GridPane, private val prefix: Char) 
         }
     }
 
-    private fun getNodeByCord(x: Int, y: Int, idPrefix: Char): ImageView? {
+    private fun getNodeByCord(x: Int, y: Int): ImageView? {
         return gridPane.children.filterIsInstance<ImageView>().firstOrNull {
             GridPane.getColumnIndex(it) == x && GridPane.getRowIndex(it) == y && it.id.startsWith(prefix)
         }
@@ -40,7 +43,7 @@ class Layer<T : Cell>(private val gridPane: GridPane, private val prefix: Char) 
             'A' -> {
                 type = ActionType.convert(it[1])
             }
-            'F' -> {
+            'F', 'V' -> {
                 type = ChessFigureType.convert(it[1])
             }
             'S' -> {
@@ -73,10 +76,14 @@ class Layer<T : Cell>(private val gridPane: GridPane, private val prefix: Char) 
         val result = StringBuilder()
         when (cell) {
             is Action -> result.append('A')
-            is ChessFigure -> result.append('F')
+            is ChessFigure -> {
+                if (virtual)
+                    result.append('V')
+                else result.append('F')
+            }
             is Square -> result.append('S')
         }
-        when(cell){
+        when (cell) {
             is Action -> result.append(cell.action.prefix)
             is ChessFigure -> result.append(cell.chessFigureType.prefix)
             is Square -> result.append(cell.square.prefix)
@@ -90,20 +97,16 @@ class Layer<T : Cell>(private val gridPane: GridPane, private val prefix: Char) 
     }
 
     private fun cellToImageView(cell: Cell): ImageView {
-        val imageView = ImageView("/assert/${cell.resource}")
+
+
+        val resource =  "/assert/${cell.resource}"
+        val imageView = ImageView(resource)
         imageView.fitWidth = gridPane.prefWidth / 8
         imageView.fitHeight = gridPane.prefHeight / 8
         imageView.viewOrder = cell.order.toDouble()
         imageView.id = cellToId(cell)
-        GridPane.setConstraints(imageView,  cell.x, cell.y)
+        GridPane.setConstraints(imageView, cell.x, cell.y)
         return imageView
-    }
-
-
-    private fun cellToImageView(cells: List<Cell>): List<ImageView> {
-        return cells.map {
-            cellToImageView(it)
-        }
     }
 
 
@@ -113,7 +116,7 @@ class Layer<T : Cell>(private val gridPane: GridPane, private val prefix: Char) 
         }
     }
 
-     fun getAll(): MutableMap<Pair<Int, Int>, T> {
+    fun getAll(): MutableMap<Pair<Int, Int>, T> {
         return getLayer(prefix).toMutableMap()
     }
 
@@ -139,7 +142,7 @@ class Layer<T : Cell>(private val gridPane: GridPane, private val prefix: Char) 
     }
 
     override fun get(key: Pair<Int, Int>): T? {
-        val nodeByCord = getNodeByCord(key.first, key.second, prefix)
+        val nodeByCord = getNodeByCord(key.first, key.second)
         return if (nodeByCord != null)
             imageViewToCell(nodeByCord)
         else null
@@ -152,8 +155,18 @@ class Layer<T : Cell>(private val gridPane: GridPane, private val prefix: Char) 
     }
 
     override fun put(key: Pair<Int, Int>, value: T): T {
-        val imageView = cellToImageView(value)
+        var imageView = cellToImageView(value)
         if (value is ChessFigure) {
+
+            val charArray = imageView.id.toCharArray()
+            charArray[0] = 'V'
+            imageView.id = charArray.joinToString("")
+            imageView.image = Image("/assert/virtual.png")
+            gridPane.children.add(imageView)
+
+            imageView = cellToImageView(value)
+
+
             imageView.onMouseClicked = EventHandler { event ->
                 BeanContext.getBean(GameBoardController::class.java).onFigureClick(event)
             }

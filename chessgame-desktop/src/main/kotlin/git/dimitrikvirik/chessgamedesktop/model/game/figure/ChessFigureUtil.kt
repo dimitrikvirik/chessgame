@@ -8,7 +8,7 @@ class ChessFigureUtil {
 
     object Movable {
 
-        val figureLayer = BeanContext.getBean(LayerContext::class.java).figureLayer
+        private val figureLayer = BeanContext.getBean(LayerContext::class.java).virtualLayer
 
         fun knightAndKing(
             figure: ChessFigure,
@@ -16,13 +16,14 @@ class ChessFigureUtil {
         ): List<Pair<Int, Int>> {
 
             val groupBy = moves.filter {
-                it.first >= 0 && it.second >= 0
+                it.first in 0..7 && it.second in 0..7
             }.groupBy {
                 val chessFigure = figureLayer[it]
                 if (chessFigure != null && chessFigure.color != figure.color) "movable"
                 else if (chessFigure == null) "movable"
                 else "other"
             }
+            figureLayer.remove(0 to 0)
 
             return groupBy["movable"] ?: emptyList()
         }
