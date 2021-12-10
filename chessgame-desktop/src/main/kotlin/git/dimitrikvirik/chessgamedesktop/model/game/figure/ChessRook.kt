@@ -2,22 +2,23 @@ package git.dimitrikvirik.chessgamedesktop.model.game.figure
 
 class ChessRook(
     chessFigureColor: ChessFigureColor,
-    x: Int,
-    y: Int
+    override var cord: Pair<Int, Int>
 ) : ChessFigure(
     ChessFigureType.ROOK,
     chessFigureColor,
-    x, y
+    cord
 ) {
 
     companion object {
         fun getMovableBlocks(
-            x: Int,
-            y: Int,
+            cord: Pair<Int, Int>,
             figure: ChessFigure
         ): List<Pair<Int, Int>> {
 
             val job: (HashMap<Direction, Pair<Int, Int>>, Int) -> Unit = { moveJobs, i ->
+                val x = cord.first
+                val y = cord.second
+
                 moveJobs[Direction.UP]?.let {
                     moveJobs[Direction.UP] = x to (y - i)
                 }
@@ -38,13 +39,10 @@ class ChessRook(
 
 
     override fun getAllMovableBlocks(): List<Pair<Int, Int>> {
-        //TODO replace with king
-        return getMovableBlocks(x, y, this)
+
+        return getMovableBlocks(cord, this)
 
     }
-
-
-
 
 
 }

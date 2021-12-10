@@ -5,8 +5,7 @@ import git.dimitrikvirik.chessgamedesktop.model.game.Cell
 abstract class ChessFigureVirtual(
     open val chessFigureType: ChessFigureType,
     open val color: ChessFigureColor,
-    override var x: Int,
-    override var y: Int,
+    override var cord: Pair<Int, Int>,
     override var order: Int,
-    override var resource: String
-) : ChessFigureMove, Cell(x, y, order, "")
+    override var resource: String,
+) : Cell(cord, order, "")

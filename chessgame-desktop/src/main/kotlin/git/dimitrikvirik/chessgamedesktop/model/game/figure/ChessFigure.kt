@@ -2,8 +2,6 @@ package git.dimitrikvirik.chessgamedesktop.model.game.figure
 
 import git.dimitrikvirik.chessgamedesktop.core.BeanContext
 import git.dimitrikvirik.chessgamedesktop.model.game.ActionType
-import git.dimitrikvirik.chessgamedesktop.model.game.Cell
-import git.dimitrikvirik.chessgamedesktop.model.game.History
 import git.dimitrikvirik.chessgamedesktop.model.game.LayerContext
 import git.dimitrikvirik.chessgamedesktop.service.ChessMessage
 import git.dimitrikvirik.chessgamedesktop.service.ChessService
@@ -12,16 +10,15 @@ import javafx.application.Platform
 
 abstract class ChessFigure(
     override val chessFigureType: ChessFigureType,
-    override val color: ChessFigureColor,
-    override var x: Int,
-    override var y: Int
-) :   ChessFigureMove, ChessFigureVirtual(chessFigureType, color, x, y, 1, chessFigureType.getByColor(color)) {
+    override var color: ChessFigureColor,
+    override var cord: Pair<Int, Int>
+) : ChessFigureVirtual(chessFigureType, color, cord, 1, chessFigureType.getByColor(color)) {
 
-    var hasFirstMove: Boolean = false
+
     private val layerContext = BeanContext.getBean(LayerContext::class.java)
     val figureLayer = layerContext.figureLayer
-    val virtualLayer = layerContext.virtualLayer
     val actionLayer = layerContext.actionLayer
+    val shahLayer = layerContext.shahLayer
 
     companion object {
         fun convert(
@@ -30,136 +27,121 @@ abstract class ChessFigure(
             x: Int,
             y: Int
         ): ChessFigure {
+            val cord = x to y
             return when (type) {
-                ChessFigureType.PAWN -> ChessPawn(figureColor, x, y)
-                ChessFigureType.KNIGHT -> ChessKnight(figureColor, x, y)
-                ChessFigureType.BISHOP -> ChessBishop(figureColor, x, y)
-                ChessFigureType.ROOK -> ChessRook(figureColor, x, y)
-                ChessFigureType.QUEEN -> ChessQueen(figureColor, x, y)
-                ChessFigureType.KING -> ChessKing(figureColor, x, y)
+                ChessFigureType.PAWN -> ChessPawn(figureColor, cord)
+                ChessFigureType.KNIGHT -> ChessKnight(figureColor, cord)
+                ChessFigureType.BISHOP -> ChessBishop(figureColor, cord)
+                ChessFigureType.ROOK -> ChessRook(figureColor, cord)
+                ChessFigureType.QUEEN -> ChessQueen(figureColor, cord)
+                ChessFigureType.KING -> ChessKing(figureColor, cord)
             }
         }
     }
 
 
-    private val killableBlocks: ArrayList<Pair<Int, Int>> = arrayListOf()
+    abstract fun getAllMovableBlocks(): List<Pair<Int, Int>>
 
-
-    override fun getMovableBlocks(): List<Pair<Int, Int>> {
-        val allMovableBlocks = getAllMovableBlocks()
-        return allMovableBlocks
-    }
-
-    override fun move(x: Int, y: Int) {
-
-        Platform.runLater {
-            actionLayer.clear()
-            if (!hasFirstMove) hasFirstMove = true
-            figureLayer.remove(this.x to this.y)
-            this.x = x
-            this.y = y
-            figureLayer[x to y] = this
-//            checkEndgame()
-//            checkShah()
+    fun getMovableBlocks(): List<Pair<Int, Int>> {
+        val saved = this.cord
+        val filter = getAllMovableBlocks().filter {
+            checkShahOn(it)
         }
+        figureLayer.remove(this.cord)
+        this.cord = saved
+        figureLayer[saved] = this
+        return filter
     }
 
-    fun move(x: Int, y: Int, chessService: ChessService) {
-        chessService.send(ChessMessage(this.x to this.y, x to y, ActionType.MOVE))
+    open fun move(cord: Pair<Int, Int>) {
+        actionLayer.clear()
+        shahLayer.clear()
+        figureLayer.remove(this.cord)
+        this.cord = cord
+        figureLayer[cord] = this
+        checkEndgame()
+        checkShah()
     }
 
-    fun kill(x: Int, y: Int, chessService: ChessService) {
-//        chessService.send(ChessMessage(this.x to this.y, x to y, color, Action.KILL))
+    fun kill(cord: Pair<Int, Int>) {
+        figureLayer.remove(cord)
+        move(cord)
     }
 
 
     private fun checkEndgame() {
-//        val isEndgame = board.figureLayer
-//            .filter { it.value?.color == this.color }
-//            .mapNotNull { it.value }
-//            .all {
-//                it.getKillableBlocks().isEmpty() && it.getMovableBlocks().isEmpty()
-//            }
-//        if (isEndgame) {
-//            BeanContext.getBean(ChessService::class.java).send(ChessMessage(0 to 0, 0 to 0, color, Action.ENDGAME))
-//        }
+        val isEndgame = figureLayer
+            .filter { it.value.color != this.color }
+            .mapNotNull { it.value }
+            .all {
+                it.getKillableBlocks().isEmpty() && it.getMovableBlocks().isEmpty()
+            }
+        if (isEndgame) {
+            val chessService = BeanContext.getBean(ChessService::class.java)
+            chessService.send(ChessMessage(cord, cord, ActionType.ENDGAME))
+        }
 
     }
 
 
     private fun checkShah() {
-//
-//        val figure = board.figureHistory.last().value
-//        if (figure != null) {
-//            val king = figure.getAllKillableBlocks().firstOrNull {
-//                board.figureLayer[it] is ChessKing
-//            }
-//            if (king != null) {
-//                BeanContext.getBean(ChessService::class.java).send(ChessMessage(king, king, color, Action.SHAH))
-//            }
-//        }
+        val isShah = figureLayer.filterValues {
+            it == this
+        }.values.any {
+            it.isKillableKing()
+        }
+        if (isShah) {
+            val chessService = BeanContext.getBean(ChessService::class.java)
+            chessService.send(ChessMessage(cord, cord, ActionType.SHAH))
+        }
     }
 
 
     private fun checkShahOn(pair: Pair<Int, Int>): Boolean {
-//
-//        board.figureLayer[x to y] = null
-//        this.x = pair.first
-//        this.y = pair.second
-//        board.figureLayer[x to y] = this
-//
-//        return board.figureLayer
-//            .filter { it.value?.color != this.color }
-//            .mapNotNull { it.value }
-//            .none { each ->
-//                each.isKillableKing()
-//            }
-        return false
 
-    }
+        figureLayer.remove(this.cord)
+        this.cord = pair
+        figureLayer[pair] = this
 
+        return figureLayer
+            .filter { it.value.color != this.color }
+            .mapNotNull { it.value }
+            .none { each ->
+                each.isKillableKing()
+            }
 
-    override fun kill(x: Int, y: Int) {
-//        Platform.runLater {
-//            board.removeFigure(x, y)
-//            move(x, y)
-//        }
     }
 
 
     protected open fun getAllKillableBlocks(): List<Pair<Int, Int>> {
-//        return getAllMovableBlocks().filter {
-//            board.figureLayer[it] != null
-//        }
-        return emptyList()
+        return getAllMovableBlocks().filter {
+            figureLayer[it] != null
+        }
     }
 
-    override fun getKillableBlocks(): List<Pair<Int, Int>> {
-        val allKillableBlocks = getAllKillableBlocks()
-        return allKillableBlocks
-//
-//        return allKillableBlocks.filter {
-//            val save = this.x to this.y
-//            val savedFigure = board.figureLayer[it]
-//            val shahOn = checkShahOn(it)
-//            board.figureLayer[x to y] = savedFigure
-//            this.x = save.first
-//            this.y = save.second
-//            board.figureLayer[x to y] = this
-//            shahOn
-//        }
+    fun getKillableBlocks(): List<Pair<Int, Int>> {
+
+
+        return getAllKillableBlocks().filter {
+            val save = this.cord
+            val savedFigure = figureLayer[it]
+            val shahOn = checkShahOn(it)
+            figureLayer[it] = savedFigure!!
+            this.cord = save
+            figureLayer[save] = this
+            shahOn
+        }
     }
 
-    private fun isKillableKing(): Boolean {
-//        return getAllKillableBlocks().any {
-//            board.figureLayer[it] is ChessKing
-//        }
-        return false
+    fun isKillableKing(): Boolean {
+        return getAllKillableBlocks().any {
+            figureLayer[it] is ChessKing
+        }
     }
 
 
     fun clearKillableBlocks() {
-        killableBlocks.clear()
+//        killableBlocks.clear()
     }
 
 

@@ -2,7 +2,7 @@ package git.dimitrikvirik.chessgamedesktop.model.game
 
 import git.dimitrikvirik.chessgamedesktop.model.game.figure.ChessFigure
 
-open class Cell(open var x: Int, open var y: Int, open var order: Int, open var resource: String) {
+open class Cell(open var cord: Pair<Int, Int>, open var order: Int, open var resource: String) {
 
     val prefix: Char
         get() {
@@ -10,6 +10,7 @@ open class Cell(open var x: Int, open var y: Int, open var order: Int, open var 
                 is ChessFigure -> 'F'
                 is Action -> 'A'
                 is Square -> 'S'
+                is Shah -> 'H'
                 else -> ' '
             }
         }

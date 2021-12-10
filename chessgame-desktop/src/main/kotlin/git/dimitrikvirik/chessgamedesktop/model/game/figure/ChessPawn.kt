@@ -5,35 +5,39 @@ import kotlin.math.abs
 
 class ChessPawn(
     chessFigureColor: ChessFigureColor,
-    x: Int,
-    y: Int
+    cord: Pair<Int, Int>
 ) : ChessFigure(
     ChessFigureType.PAWN,
     chessFigureColor,
-    x,
-    y
+    cord
 ) {
     var onDoubleMove = false
-
+    var hasFirstMove = false
 
     private fun become() {
         Platform.runLater {
-            figureLayer.remove(x to y)
-            figureLayer[x to y] = ChessQueen(color, x, y)
+            figureLayer.remove(cord)
+            figureLayer[cord] = ChessQueen(color, cord)
         }
     }
 
 
-    override fun move(x: Int, y: Int) {
-        onDoubleMove = !onDoubleMove && abs(y - this.y) == 2
-        super.move(x, y)
+    override fun move(cord: Pair<Int, Int>) {
+        val y = cord.second
+
+        onDoubleMove = !onDoubleMove && abs(y - this.cord.second) == 2
+        super.move(cord)
         if ((color == ChessFigureColor.BLACK && y == 7) || (color == ChessFigureColor.WHITE && y == 0)) {
             become()
         }
+        hasFirstMove = true
     }
 
 
     override fun getAllMovableBlocks(): List<Pair<Int, Int>> {
+        val x = cord.first
+        val y = cord.second
+
         val list = if (!hasFirstMove) {
             if (color == ChessFigureColor.BLACK) {
                 listOf(x to (y + 1), x to (y + 2))
@@ -49,12 +53,14 @@ class ChessPawn(
             if (figureLayer[list[i]] != null) break
             checkedList.add(list[i])
         }
-
         return checkedList
 
     }
 
     override fun getAllKillableBlocks(): List<Pair<Int, Int>> {
+        val x = cord.first
+        val y = cord.second
+
         val list = if (color == ChessFigureColor.BLACK) {
             listOfNotNull(figureLayer[(x + 1) to (y + 1)], figureLayer[(x - 1) to (y + 1)])
         } else {
@@ -69,7 +75,7 @@ class ChessPawn(
 
         return (list + filter).filter {
             it.color != this.color
-        }.map { it.x to it.y }
+        }.map { it.cord.first to it.cord.second }
     }
 
 }

@@ -3,8 +3,8 @@ package git.dimitrikvirik.chessgamedesktop.controller
 import git.dimitrikvirik.chessgamedesktop.core.Controller
 import git.dimitrikvirik.chessgamedesktop.model.game.*
 import git.dimitrikvirik.chessgamedesktop.model.game.figure.ChessFigure
-import git.dimitrikvirik.chessgamedesktop.model.game.figure.ChessFigureColor
 import git.dimitrikvirik.chessgamedesktop.model.game.figure.ChessFigureUtil
+import git.dimitrikvirik.chessgamedesktop.service.ChessMessage
 import git.dimitrikvirik.chessgamedesktop.service.ChessService
 import javafx.fxml.FXML
 import javafx.geometry.Pos
@@ -48,86 +48,75 @@ class GameBoardController : Controller() {
     var selectedFigure: ChessFigure? = null
 
     @Value("\${application.width}")
-    lateinit var prefWith: String
+    lateinit var prefWidth: String
 
     @Value("\${application.height}")
     lateinit var prefHeight: String
 
+    lateinit var figureLayer: Layer<ChessFigure>
+    lateinit var actionLayer: Layer<Action>
 
     @FXML
     fun initialize() {
         chessGame = chessService.chessGame
         whitePlayerUsername.text = chessGame.whitePlayer.user.username
         blackPlayerUsername.text = chessGame.blackPlayer.user.username
-        gridPanel.prefHeight = prefWith.toDouble() - 200
-        gridPanel.prefWidth = prefHeight.toDouble() - 200
-        whitePlayerUsername.layoutY = prefHeight.toDouble() - 150
+        gridPanel.prefHeight = prefHeight.toDouble() - 150
+        gridPanel.prefWidth = prefWidth.toDouble() - 180
+        whitePlayerUsername.layoutY = prefHeight.toDouble() - 100
         layerContext.init(gridPanel)
 
         val squareLayer = layerContext.squareLayer
-        val figureLayer = layerContext.figureLayer
+        figureLayer = layerContext.figureLayer
+        actionLayer = layerContext.actionLayer
         for (i in 0..7) {
             for (j in 0..7) {
                 val squareType = if ((i + j) % 2 == 0) SquareType.WHITE else SquareType.BLACK
-                squareLayer[i to j] = Square(squareType, i, j)
+                squareLayer[i to j] = Square(squareType, i to j)
                 val chessFigure = ChessFigureUtil.getByNumber(i, j)
                 if (chessFigure != null) figureLayer[i to j] = chessFigure
             }
         }
 
 
+
     }
 
 
     fun onFigureClick(event: MouseEvent) {
-        val img = event.source as ImageView
-        val xIndex = GridPane.getColumnIndex(img)
-        val yIndex = GridPane.getRowIndex(img)
+        val figure = figureLayer[event.getCord()]
 
-        val figureLayer = layerContext.figureLayer
-        val actionLayer = layerContext.actionLayer
-
-        val figure = figureLayer[xIndex to yIndex]
-        val clickedPlayer: ChessPlayer = if (figure?.color == ChessFigureColor.WHITE) {
-            chessGame.whitePlayer
-        } else {
-            chessGame.blackPlayer
-        }
-        if (clickedPlayer.canMove) {
-
+        if (chessGame.currentPlayer.chessFigureColor == figure?.color) {
             actionLayer.clear()
             selectedFigure = figure
-            if (figure != null) {
-                val movableBlocks = figure.getMovableBlocks()
+            val movableBlocks = figure.getMovableBlocks()
 
-                movableBlocks.forEach {
-                    actionLayer[it.first to it.second] = Action(ActionType.MOVE, it.first, it.second)
-                }
-                val killableBlocks = figure.getKillableBlocks()
-                killableBlocks.forEach {
-                    actionLayer[it.first to it.second] = Action(ActionType.KILL, it.first, it.second)
-                }
+            movableBlocks.forEach {
+                actionLayer[it.first to it.second] = Action(ActionType.MOVE, it)
+            }
+            val killableBlocks = figure.getKillableBlocks()
+            killableBlocks.forEach {
+                actionLayer[it.first to it.second] = Action(ActionType.KILL, it)
             }
         }
     }
 
 
     fun onActionBlockClick(event: MouseEvent) {
-        val img = event.source as ImageView
-        val xIndex = GridPane.getColumnIndex(img)
-        val yIndex = GridPane.getRowIndex(img)
 
-        val action = layerContext.actionLayer[xIndex to yIndex]?.action
+
+        val cord = event.getCord()
+        val action = layerContext.actionLayer[cord]?.action
         if (action == ActionType.MOVE) {
-            selectedFigure?.move(xIndex, yIndex, chessService)
+            chessService.send(ChessMessage(selectedFigure!!.cord, cord, ActionType.MOVE))
         } else if (action == ActionType.KILL) {
-            selectedFigure?.kill(xIndex, yIndex, chessService)
+            chessService.send(ChessMessage(selectedFigure!!.cord, cord, ActionType.KILL))
         }
     }
 
 
     fun endgame() {
-        val winner = chessGame.currentPlayer.user.username
+        val winner = chessGame.winnerPlayer!!.user.username
         val winnerText = Label("GG! $winner has won!")
         winnerText.font = Font.font(40.0)
         winnerText.viewOrder = 20.0
@@ -140,4 +129,11 @@ class GameBoardController : Controller() {
         winnerText.alignment = Pos.CENTER;
         pane.children.add(winnerText)
     }
+}
+
+fun MouseEvent.getCord(): Pair<Int, Int> {
+    val img = source as ImageView
+    val xIndex = GridPane.getColumnIndex(img)
+    val yIndex = GridPane.getRowIndex(img)
+    return xIndex to yIndex
 }

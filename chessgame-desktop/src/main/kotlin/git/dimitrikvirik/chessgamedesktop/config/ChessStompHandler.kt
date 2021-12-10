@@ -3,6 +3,7 @@ package git.dimitrikvirik.chessgamedesktop.config
 import git.dimitrikvirik.chessgamedesktop.model.game.ChessGame
 import git.dimitrikvirik.chessgamedesktop.service.ChessMessage
 import git.dimitrikvirik.chessgamedesktop.service.Message
+import javafx.application.Platform
 import org.springframework.messaging.simp.stomp.StompCommand
 import org.springframework.messaging.simp.stomp.StompHeaders
 import org.springframework.messaging.simp.stomp.StompSession
@@ -24,7 +25,9 @@ class ChessStompHandler : StompSessionHandler {
         println("received $p0");
         val message = ChessMessage((p1 as Message).message)
 
-        chessGame.handleMessage(message)
+        Platform.runLater {
+            chessGame.handleMessage(message)
+        }
 
     }
 

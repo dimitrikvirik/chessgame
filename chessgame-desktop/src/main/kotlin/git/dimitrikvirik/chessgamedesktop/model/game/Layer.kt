@@ -4,18 +4,19 @@ import git.dimitrikvirik.chessgamedesktop.controller.GameBoardController
 import git.dimitrikvirik.chessgamedesktop.core.BeanContext
 import git.dimitrikvirik.chessgamedesktop.model.game.figure.ChessFigure
 import git.dimitrikvirik.chessgamedesktop.model.game.figure.ChessFigureColor
-import git.dimitrikvirik.chessgamedesktop.model.game.figure.ChessFigureType
 import git.dimitrikvirik.chessgamedesktop.model.game.figure.ChessFigureVirtual
 import javafx.event.EventHandler
 import javafx.scene.Cursor
 import javafx.scene.image.Image
 import javafx.scene.image.ImageView
 import javafx.scene.layout.GridPane
+import java.lang.NullPointerException
 
-class Layer<T : Cell>(private val gridPane: GridPane, private val prefix: Char, private val virtual: Boolean) : MutableMap<Pair<Int, Int>, T> {
+class Layer<T : Cell>(private val gridPane: GridPane, private val prefix: Char) :
+    MutableMap<Pair<Int, Int>, T> {
 
 
-
+    private val container = mutableListOf<T>()
 
     private fun getNode(idPrefix: String): ImageView? {
         return gridPane.children.filterIsInstance<ImageView>().firstOrNull {
@@ -23,10 +24,14 @@ class Layer<T : Cell>(private val gridPane: GridPane, private val prefix: Char, 
         }
     }
 
+
     private fun getNodeByCord(x: Int, y: Int): ImageView? {
+
+
         return gridPane.children.filterIsInstance<ImageView>().firstOrNull {
             GridPane.getColumnIndex(it) == x && GridPane.getRowIndex(it) == y && it.id.startsWith(prefix)
         }
+
     }
 
     private fun getNodes(idPrefix: String): List<ImageView> {
@@ -38,31 +43,19 @@ class Layer<T : Cell>(private val gridPane: GridPane, private val prefix: Char, 
 
     private fun imageViewToCell(imageView: ImageView): T {
         val it = imageView.id.toCharArray()
-        var type: Any? = null
-        when (it[0]) {
-            'A' -> {
-                type = ActionType.convert(it[1])
-            }
-            'F', 'V' -> {
-                type = ChessFigureType.convert(it[1])
-            }
-            'S' -> {
-                type = SquareType.convert(it[1])
-            }
-        }
         val x = Character.getNumericValue(it[2])
         val y = Character.getNumericValue(it[3])
-        return when (type) {
-            is ActionType -> Action(type, x, y) as T
-            is ChessFigureType -> {
-                val figureColor = ChessFigureColor.convert(it[4])
-                ChessFigure.convert(type, figureColor, x, y) as T
-            }
-            is SquareType -> Square(type, x, y) as T
-            else -> {
-                throw IllegalArgumentException()
-            }
+        val list = container.filter {
+            it.cord.first == x && it.cord.second == y
         }
+        if (list.isEmpty()) {
+            throw  NullPointerException()
+        }
+        if (list.size > 1) {
+            throw Exception()
+        }
+
+        return list[0]
     }
 
     private fun imageViewToCell(imageViews: List<ImageView>): List<T> {
@@ -77,19 +70,19 @@ class Layer<T : Cell>(private val gridPane: GridPane, private val prefix: Char, 
         when (cell) {
             is Action -> result.append('A')
             is ChessFigure -> {
-                if (virtual)
-                    result.append('V')
-                else result.append('F')
+                result.append('F')
             }
             is Square -> result.append('S')
+            is Shah -> result.append('H')
         }
         when (cell) {
             is Action -> result.append(cell.action.prefix)
             is ChessFigure -> result.append(cell.chessFigureType.prefix)
             is Square -> result.append(cell.square.prefix)
+            is Shah -> result.append(cell.prefix)
         }
-        result.append(cell.x)
-        result.append(cell.y)
+        result.append(cell.cord.first)
+        result.append(cell.cord.second)
         if (cell is ChessFigure) {
             result.append(cell.color.prefix)
         }
@@ -99,24 +92,24 @@ class Layer<T : Cell>(private val gridPane: GridPane, private val prefix: Char, 
     private fun cellToImageView(cell: Cell): ImageView {
 
 
-        val resource =  "/assert/${cell.resource}"
+        val resource = "/assert/${cell.resource}"
         val imageView = ImageView(resource)
         imageView.fitWidth = gridPane.prefWidth / 8
         imageView.fitHeight = gridPane.prefHeight / 8
         imageView.viewOrder = cell.order.toDouble()
         imageView.id = cellToId(cell)
-        GridPane.setConstraints(imageView, cell.x, cell.y)
+        GridPane.setConstraints(imageView, cell.cord.first, cell.cord.second)
         return imageView
     }
 
 
     private fun getLayer(type: Char = ' '): Map<Pair<Int, Int>, T> {
         return imageViewToCell(getNodes(type.toString().replace(" ", ""))).associateBy {
-            (it.x to it.y)
+            it.cord
         }
     }
 
-    fun getAll(): MutableMap<Pair<Int, Int>, T> {
+    private fun getAll(): MutableMap<Pair<Int, Int>, T> {
         return getLayer(prefix).toMutableMap()
     }
 
@@ -141,6 +134,7 @@ class Layer<T : Cell>(private val gridPane: GridPane, private val prefix: Char, 
         return getAll().isEmpty()
     }
 
+
     override fun get(key: Pair<Int, Int>): T? {
         val nodeByCord = getNodeByCord(key.first, key.second)
         return if (nodeByCord != null)
@@ -155,6 +149,12 @@ class Layer<T : Cell>(private val gridPane: GridPane, private val prefix: Char, 
     }
 
     override fun put(key: Pair<Int, Int>, value: T): T {
+
+        val existed = get(key)
+        if (existed != null) {
+            remove(key)
+        }
+
         var imageView = cellToImageView(value)
         if (value is ChessFigure) {
 
@@ -162,6 +162,7 @@ class Layer<T : Cell>(private val gridPane: GridPane, private val prefix: Char, 
             charArray[0] = 'V'
             imageView.id = charArray.joinToString("")
             imageView.image = Image("/assert/virtual.png")
+
             gridPane.children.add(imageView)
 
             imageView = cellToImageView(value)
@@ -185,6 +186,7 @@ class Layer<T : Cell>(private val gridPane: GridPane, private val prefix: Char, 
             }
 
         }
+        container.add(value)
         gridPane.children.add(imageView)
 
         return value
@@ -198,8 +200,11 @@ class Layer<T : Cell>(private val gridPane: GridPane, private val prefix: Char, 
 
     override fun remove(key: Pair<Int, Int>): T? {
         val result = get(key)
-        if (result != null)
+        if (result != null) {
             gridPane.children.removeIf { it.id == cellToId(result as Cell) }
+            container.removeIf { it.cord == key }
+
+        }
         return null
     }
 

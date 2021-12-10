@@ -2,28 +2,27 @@ package git.dimitrikvirik.chessgamedesktop.model.game.figure
 
 import git.dimitrikvirik.chessgamedesktop.model.game.Action
 import git.dimitrikvirik.chessgamedesktop.model.game.ActionType
+import git.dimitrikvirik.chessgamedesktop.model.game.Shah
 import javafx.application.Platform
 
 
 class ChessKing(
     chessFigureColor: ChessFigureColor,
-    x: Int,
-    y: Int
+    cord: Pair<Int, Int>
 ) : ChessFigure(
     ChessFigureType.KING,
     chessFigureColor,
-    x, y
+    cord
 ) {
 
     fun shah() {
-
-        Platform.runLater {
-            actionLayer[this.x to this.y] = Action(ActionType.SHAH, this.x, this.y)
-        }
-
+        shahLayer[cord] = Shah(cord)
     }
 
     override fun getAllMovableBlocks(): List<Pair<Int, Int>> {
+        val x = cord.first
+        val y = cord.second
+
         return ChessFigureUtil.Movable.knightAndKing(
             this, listOf(
                 (x - 1 to y - 1),

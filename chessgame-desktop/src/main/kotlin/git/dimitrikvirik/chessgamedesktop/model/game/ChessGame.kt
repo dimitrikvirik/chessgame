@@ -52,6 +52,7 @@ class ChessGame {
 
                 whitePlayer.canMove = true
                 whitePlayer.cursor.set(Cursor.HAND)
+                currentPlayer = whitePlayer
             }
             ChessFigureColor.WHITE -> {
                 whitePlayer.canMove = false
@@ -59,6 +60,7 @@ class ChessGame {
 
                 blackPlayer.canMove = true
                 blackPlayer.cursor.set(Cursor.HAND)
+                currentPlayer = blackPlayer
             }
         }
     }
@@ -67,21 +69,28 @@ class ChessGame {
 
         val figureLayer = BeanContext.getBean(LayerContext::class.java).figureLayer
 
+        goNextPlayer(figureLayer[message.fromMove]?.color!!)
+
         when (message.actionType) {
-            ActionType.MOVE -> figureLayer[message.fromMove]?.move(message.toMove.first, message.toMove.second)
-            ActionType.KILL -> figureLayer[message.fromMove]?.kill(message.toMove.first, message.toMove.second)
+            ActionType.MOVE -> figureLayer[message.fromMove]?.move(message.toMove)
+            ActionType.KILL -> figureLayer[message.fromMove]?.kill(message.toMove)
             ActionType.SHAH -> {
-                (figureLayer[message.fromMove] as ChessKing).shah()
+                val color = figureLayer[message.fromMove]?.color
+                figureLayer.filterValues {
+                    it.color != color
+                }.values.filterIsInstance<ChessKing>().first().shah()
             }
             ActionType.ENDGAME -> {
-                Platform.runLater {
-                    winnerPlayer = this.currentPlayer
-                    BeanContext.getBean(GameBoardController::class.java).endgame()
+                winnerPlayer = if (currentPlayer.chessFigureColor == ChessFigureColor.WHITE) {
+                    blackPlayer
+                } else {
+                    whitePlayer
                 }
+
+                BeanContext.getBean(GameBoardController::class.java).endgame()
                 return
             }
         }
-
 
 
     }

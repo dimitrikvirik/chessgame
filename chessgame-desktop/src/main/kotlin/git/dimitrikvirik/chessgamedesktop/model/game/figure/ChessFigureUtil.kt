@@ -8,7 +8,7 @@ class ChessFigureUtil {
 
     object Movable {
 
-        private val figureLayer = BeanContext.getBean(LayerContext::class.java).virtualLayer
+        private val figureLayer = BeanContext.getBean(LayerContext::class.java).figureLayer
 
         fun knightAndKing(
             figure: ChessFigure,
@@ -23,7 +23,7 @@ class ChessFigureUtil {
                 else if (chessFigure == null) "movable"
                 else "other"
             }
-            figureLayer.remove(0 to 0)
+
 
             return groupBy["movable"] ?: emptyList()
         }
@@ -49,7 +49,7 @@ class ChessFigureUtil {
                 val toDelete: ArrayList<ChessFigure.Direction> = arrayListOf()
 
                 moveJobs.forEach {
-                    if (it.value.first < 0 || it.value.second < 0) {
+                    if (it.value.first !in 0..7 || it.value.second !in 0..7) {
                         toDelete.add(it.key)
                         return@forEach
                     }
@@ -76,24 +76,26 @@ class ChessFigureUtil {
     companion object {
 
         fun getByNumber(x: Int, y: Int): ChessFigure? {
+            val cord = x to y
+
             return when (x to y) {
-                7 to 0, 0 to 0 -> ChessRook(ChessFigureColor.BLACK, x, y)
-                1 to 0, 6 to 0 -> ChessKnight(ChessFigureColor.BLACK, x, y)
-                2 to 0, 5 to 0 -> ChessBishop(ChessFigureColor.BLACK, x, y)
-                3 to 0 -> ChessQueen(ChessFigureColor.BLACK, x, y)
-                4 to 0 -> ChessKing(ChessFigureColor.BLACK, x, y)
+                7 to 0, 0 to 0 -> ChessRook(ChessFigureColor.BLACK, cord)
+                1 to 0, 6 to 0 -> ChessKnight(ChessFigureColor.BLACK, cord)
+                2 to 0, 5 to 0 -> ChessBishop(ChessFigureColor.BLACK, cord)
+                3 to 0 -> ChessQueen(ChessFigureColor.BLACK, cord)
+                4 to 0 -> ChessKing(ChessFigureColor.BLACK, cord)
                 0 to 1, 1 to 1, 2 to 1, 3 to 1, 4 to 1, 5 to 1, 6 to 1, 7 to 1 -> ChessPawn(
                     ChessFigureColor.BLACK,
-                    x, y
+                    cord
                 )
-                7 to 7, 0 to 7 -> ChessRook(ChessFigureColor.WHITE, x, y)
-                1 to 7, 6 to 7 -> ChessKnight(ChessFigureColor.WHITE, x, y)
-                2 to 7, 5 to 7 -> ChessBishop(ChessFigureColor.WHITE, x, y)
-                3 to 7 -> ChessQueen(ChessFigureColor.WHITE, x, y)
-                4 to 7 -> ChessKing(ChessFigureColor.WHITE, x, y)
+                7 to 7, 0 to 7 -> ChessRook(ChessFigureColor.WHITE,cord)
+                1 to 7, 6 to 7 -> ChessKnight(ChessFigureColor.WHITE, cord)
+                2 to 7, 5 to 7 -> ChessBishop(ChessFigureColor.WHITE, cord)
+                3 to 7 -> ChessQueen(ChessFigureColor.WHITE, cord)
+                4 to 7 -> ChessKing(ChessFigureColor.WHITE, cord)
                 0 to 6, 1 to 6, 2 to 6, 3 to 6, 4 to 6, 5 to 6, 6 to 6, 7 to 6 -> ChessPawn(
                     ChessFigureColor.WHITE,
-                    x, y
+                    cord
                 )
                 else -> {
                     return null

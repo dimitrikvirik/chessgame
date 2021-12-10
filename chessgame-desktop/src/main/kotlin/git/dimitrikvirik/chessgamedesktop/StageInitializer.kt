@@ -29,6 +29,12 @@ class StageInitializer : ApplicationListener<ChartApplication.StageReadyEvent> {
     @Value("\${application.resizible}")
     lateinit var resizible: String
 
+    @Value("\${application.width}")
+    lateinit var prefWidth: String
+
+    @Value("\${application.height}")
+    lateinit var prefHeight: String
+
     override fun onApplicationEvent(event: ChartApplication.StageReadyEvent) {
         chessService.connect("2222")
         fxmlScanner.scan()
@@ -45,6 +51,8 @@ class StageInitializer : ApplicationListener<ChartApplication.StageReadyEvent> {
         val scene: Scene = sceneContext?.scene as Scene
         stage.scene = scene
         stage.title = applicationName
+        stage.width = prefWidth.toDouble()
+        stage.height = prefHeight.toDouble()
 //        val image = Image(
 //            Objects.requireNonNull(
 //                StageInitializer::class.java.getResourceAsStream("/desktopApp/img/app-icon.png")
@@ -52,6 +60,7 @@ class StageInitializer : ApplicationListener<ChartApplication.StageReadyEvent> {
 //        )
 //        stage.icons.add(image)
         stage.isResizable = resizible.toBoolean()
+
         stage.show()
     }
 }

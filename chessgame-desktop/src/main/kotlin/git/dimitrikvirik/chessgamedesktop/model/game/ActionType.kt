@@ -1,7 +1,7 @@
 package git.dimitrikvirik.chessgamedesktop.model.game
 
 
-data class Action(val action: ActionType, override var x: Int, override var y: Int) : Cell(x, y, 2, action.resource)
+data class Action(val action: ActionType, override var cord: Pair<Int, Int>) : Cell(cord, 2, action.resource)
 
 
 enum class ActionType(val resource: String, val prefix: Char) {
@@ -14,10 +14,10 @@ enum class ActionType(val resource: String, val prefix: Char) {
         fun convert(prefix: Char): ActionType {
 
             return when (prefix) {
-                'M' -> ActionType.MOVE
-                'K' -> ActionType.KILL
-                'S' -> ActionType.SHAH
-                'E' -> ActionType.ENDGAME
+                'M' -> MOVE
+                'K' -> KILL
+                'S' -> SHAH
+                'E' -> ENDGAME
                 else -> {
                     throw  IllegalArgumentException()
                 }
