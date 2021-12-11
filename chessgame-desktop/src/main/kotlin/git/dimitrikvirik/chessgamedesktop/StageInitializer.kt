@@ -36,6 +36,8 @@ class StageInitializer : ApplicationListener<ChartApplication.StageReadyEvent> {
     lateinit var prefHeight: String
 
     override fun onApplicationEvent(event: ChartApplication.StageReadyEvent) {
+
+
         chessService.connect("2222")
         fxmlScanner.scan()
 

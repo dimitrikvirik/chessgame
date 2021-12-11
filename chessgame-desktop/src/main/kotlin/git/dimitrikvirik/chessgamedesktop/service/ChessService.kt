@@ -9,6 +9,8 @@ import org.springframework.beans.factory.annotation.Value
 import org.springframework.messaging.simp.stomp.StompSession
 import org.springframework.messaging.simp.stomp.StompSessionHandler
 import org.springframework.stereotype.Service
+import org.springframework.web.client.RestTemplate
+import org.springframework.web.client.postForEntity
 import org.springframework.web.socket.messaging.WebSocketStompClient
 
 data class Message(val message: ByteArray) {
@@ -63,6 +65,9 @@ class ChessService() {
     @Autowired
     lateinit var websocket: WebSocketStompClient
 
+
+    val restTemplate = RestTemplate()
+
     lateinit var session: StompSession
 
     lateinit var gameId: String
@@ -76,6 +81,17 @@ class ChessService() {
         session.send("/app/chessgame/$gameId", chessMessage.message)
     }
 
+
+    data class Game(
+        val id: String?,
+        val stepNumber: Int = 0,
+        val messages: List<Message> = emptyList()
+    ) {
+    }
+
+    fun create() {
+        val game = restTemplate.postForEntity("http://$api/game", "", Game::class.java)
+    }
 
     fun connect(gameId: String) {
         this.gameId = gameId

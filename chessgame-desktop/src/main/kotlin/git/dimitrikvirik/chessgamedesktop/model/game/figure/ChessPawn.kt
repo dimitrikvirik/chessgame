@@ -38,7 +38,7 @@ class ChessPawn(
     override fun kill(cord: Pair<Int, Int>) {
         val chessFigure = figureLayer[cord]!!
         figureLayer.remove(cord)
-        if (chessFigure is ChessPawn && chessFigure.onDoubleMove) {
+        if (chessFigure is ChessPawn && chessFigure.onDoubleMove && this.cord.second == cord.second) {
 
             if (color == ChessFigureColor.BLACK) {
                 val toMove = cord.first to (cord.second + 1)

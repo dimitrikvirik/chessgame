@@ -1,14 +1,17 @@
 package git.dimitrikvirik.chessgameapi.model.domain
 
-import git.dimitrikvirik.chessgameapi.repository.annotation.Entity
-import java.util.*
+import javax.persistence.*
 
 @Entity
-data class Game(
-    val id: UUID,
-    val whitePlayer: UserAccount,
-    val blackPlayer: UserAccount,
-    val winnerPlayer: UserAccount,
-    val history: List<GameHistory>
-) {
-}
+@Table(name = "game")
+class Game(
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY) var id: Int? = null,
+    @ManyToOne
+    val whitePlayer: UserAccount? = null,
+    @ManyToOne
+    val blackPlayer: UserAccount? = null,
+    @ManyToOne
+    val winnerPlayer: UserAccount? = null,
+    @OneToMany(mappedBy = "game")
+    val history: List<GameHistory>? = null
+)

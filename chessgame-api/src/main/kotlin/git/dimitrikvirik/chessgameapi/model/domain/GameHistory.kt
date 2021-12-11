@@ -1,18 +1,20 @@
 package git.dimitrikvirik.chessgameapi.model.domain
 
 import git.dimitrikvirik.chessgameapi.model.game.Action
-import git.dimitrikvirik.chessgameapi.repository.annotation.Entity
+import org.hibernate.Hibernate
 import java.time.LocalDateTime
-import java.util.*
+import javax.persistence.*
 
 @Entity
-data class GameHistory(
-    val id: UUID,
-    val time: LocalDateTime,
-    val action: Action,
-    val from_x: Int,
-    val from_y: Int,
-    val to_x: Int,
-    val to_y: Int
-) {
-}
+@Table(name = "game_history")
+class GameHistory(
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY) var id: Int? = null,
+    var time: LocalDateTime? = null,
+    @Enumerated var action: Action? = null,
+    var from_x: Int? = null,
+    var from_y: Int? = null,
+    var to_x: Int? = null,
+    var to_y: Int? = null,
+    @ManyToOne
+    var game: Game? = null,
+)

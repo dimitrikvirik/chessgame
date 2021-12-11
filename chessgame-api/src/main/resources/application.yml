@@ -3,6 +3,11 @@ server:
     include-message: always
 
 spring:
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    hibernate:
+      ddl-auto: update
+      dialect: org.hibernate.dialect.PostgreSQLDialect
   datasource:
     url: ${POSTGRES_URL}
     username: ${POSTGRES_USER}
