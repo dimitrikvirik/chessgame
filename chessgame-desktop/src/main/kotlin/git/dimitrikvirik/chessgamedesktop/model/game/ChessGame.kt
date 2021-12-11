@@ -6,6 +6,7 @@ import git.dimitrikvirik.chessgamedesktop.model.domain.User
 import git.dimitrikvirik.chessgamedesktop.model.game.figure.ChessFigure
 import git.dimitrikvirik.chessgamedesktop.model.game.figure.ChessFigureColor
 import git.dimitrikvirik.chessgamedesktop.model.game.figure.ChessKing
+import git.dimitrikvirik.chessgamedesktop.model.game.figure.ChessQueen
 import git.dimitrikvirik.chessgamedesktop.service.ChessMessage
 import javafx.application.Platform
 import javafx.scene.Cursor
@@ -79,6 +80,13 @@ class ChessGame {
                 figureLayer.filterValues {
                     it.color != color
                 }.values.filterIsInstance<ChessKing>().first().shah()
+            }
+            ActionType.BECOME -> {
+                figureLayer[message.fromMove] = ChessQueen(figureLayer[message.fromMove]?.color!!, message.fromMove)
+                figureLayer[message.fromMove]?.checkShah()
+            }
+            ActionType.SWAP -> {
+                (figureLayer[message.fromMove] as ChessKing).swap(message.toMove)
             }
             ActionType.ENDGAME -> {
                 winnerPlayer = if (currentPlayer.chessFigureColor == ChessFigureColor.WHITE) {

@@ -15,4 +15,8 @@ open class Cell(open var cord: Pair<Int, Int>, open var order: Int, open var res
             }
         }
 
+    fun clone(): Cell {
+        return Cell(cord, order, resource)
+    }
+
 }

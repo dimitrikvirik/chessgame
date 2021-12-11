@@ -17,6 +17,7 @@ class Layer<T : Cell>(private val gridPane: GridPane, private val prefix: Char) 
 
 
     private val container = mutableListOf<T>()
+    private val backupContainer = mutableMapOf<String, List<Pair<Cell, T>>>()
 
     private fun getNode(idPrefix: String): ImageView? {
         return gridPane.children.filterIsInstance<ImageView>().firstOrNull {
@@ -154,6 +155,13 @@ class Layer<T : Cell>(private val gridPane: GridPane, private val prefix: Char) 
         if (existed != null) {
             remove(key)
         }
+        val finded = values.firstOrNull {
+            it == value
+        }?.cord
+        if(finded != null) {
+            remove(finded)
+            value.cord = key
+        }
 
         var imageView = cellToImageView(value)
         if (value is ChessFigure) {
@@ -207,6 +215,8 @@ class Layer<T : Cell>(private val gridPane: GridPane, private val prefix: Char) 
         }
         return null
     }
+
+
 
 
 }

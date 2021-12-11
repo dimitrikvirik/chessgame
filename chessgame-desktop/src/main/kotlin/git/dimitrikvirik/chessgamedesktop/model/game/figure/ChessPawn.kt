@@ -1,5 +1,9 @@
 package git.dimitrikvirik.chessgamedesktop.model.game.figure
 
+import git.dimitrikvirik.chessgamedesktop.core.BeanContext
+import git.dimitrikvirik.chessgamedesktop.model.game.ActionType
+import git.dimitrikvirik.chessgamedesktop.service.ChessMessage
+import git.dimitrikvirik.chessgamedesktop.service.ChessService
 import javafx.application.Platform
 import kotlin.math.abs
 
@@ -12,13 +16,11 @@ class ChessPawn(
     cord
 ) {
     var onDoubleMove = false
-    var hasFirstMove = false
+
 
     private fun become() {
-        Platform.runLater {
-            figureLayer.remove(cord)
-            figureLayer[cord] = ChessQueen(color, cord)
-        }
+        val chessService = BeanContext.getBean(ChessService::class.java)
+        chessService.send(ChessMessage(cord, cord, ActionType.BECOME))
     }
 
 
@@ -33,6 +35,24 @@ class ChessPawn(
         hasFirstMove = true
     }
 
+    override fun kill(cord: Pair<Int, Int>) {
+        val chessFigure = figureLayer[cord]!!
+        figureLayer.remove(cord)
+        if (chessFigure is ChessPawn && chessFigure.onDoubleMove) {
+
+            if (color == ChessFigureColor.BLACK) {
+                val toMove = cord.first to (cord.second + 1)
+                move(toMove)
+            } else {
+                val toMove = cord.first to (cord.second - 1)
+                move(toMove)
+            }
+
+        } else {
+            move(cord)
+        }
+
+    }
 
     override fun getAllMovableBlocks(): List<Pair<Int, Int>> {
         val x = cord.first
@@ -71,6 +91,13 @@ class ChessPawn(
             figureLayer[(x + 1) to y]
         ).filterIsInstance<ChessPawn>().filter {
             it.onDoubleMove
+        }.filter {
+            if (color == ChessFigureColor.BLACK) {
+                figureLayer[it.cord.first to (it.cord.second + 1)] == null
+            } else {
+                figureLayer[it.cord.first to (it.cord.second - 1)] == null
+
+            }
         }
 
         return (list + filter).filter {

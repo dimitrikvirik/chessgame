@@ -1,3 +1,4 @@
+
 package git.dimitrikvirik.chessgamedesktop.controller
 
 import git.dimitrikvirik.chessgamedesktop.core.Controller
@@ -98,6 +99,12 @@ class GameBoardController : Controller() {
             killableBlocks.forEach {
                 actionLayer[it.first to it.second] = Action(ActionType.KILL, it)
             }
+
+            val swapBlocks = figure.getSwapBlocks()
+            swapBlocks.forEach {
+                actionLayer[it.first to it.second] = Action(ActionType.SWAP, it)
+            }
+
         }
     }
 
@@ -111,6 +118,9 @@ class GameBoardController : Controller() {
             chessService.send(ChessMessage(selectedFigure!!.cord, cord, ActionType.MOVE))
         } else if (action == ActionType.KILL) {
             chessService.send(ChessMessage(selectedFigure!!.cord, cord, ActionType.KILL))
+        }
+        else if(action == ActionType.SWAP){
+            chessService.send(ChessMessage(selectedFigure!!.cord, cord, ActionType.SWAP))
         }
     }
 

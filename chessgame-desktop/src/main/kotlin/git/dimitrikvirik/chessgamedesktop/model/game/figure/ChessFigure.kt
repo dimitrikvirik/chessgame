@@ -6,6 +6,7 @@ import git.dimitrikvirik.chessgamedesktop.model.game.LayerContext
 import git.dimitrikvirik.chessgamedesktop.service.ChessMessage
 import git.dimitrikvirik.chessgamedesktop.service.ChessService
 import javafx.application.Platform
+import kotlin.math.abs
 
 
 abstract class ChessFigure(
@@ -14,7 +15,7 @@ abstract class ChessFigure(
     override var cord: Pair<Int, Int>
 ) : ChessFigureVirtual(chessFigureType, color, cord, 1, chessFigureType.getByColor(color)) {
 
-
+    var hasFirstMove = false
     private val layerContext = BeanContext.getBean(LayerContext::class.java)
     val figureLayer = layerContext.figureLayer
     val actionLayer = layerContext.actionLayer
@@ -42,15 +43,59 @@ abstract class ChessFigure(
 
     abstract fun getAllMovableBlocks(): List<Pair<Int, Int>>
 
+    fun getSwapBlocks(): List<Pair<Int, Int>> {
+        val finalList = mutableListOf<Pair<Int, Int>>()
+
+        if (this is ChessKing && !hasFirstMove) {
+            val rook = figureLayer.values.filter {
+                it.color == this.color && it is ChessRook && !it.hasFirstMove
+            }
+            val toCustle = rook.filter {
+                val toCheck = abs(this.cord.first - it.cord.first) - 1
+                var isEmptyBetween = true
+                for (i in 1..toCheck) {
+                    if (it.cord.first == 7) {
+                        val pair = it.cord.first - i to this.cord.second
+                        if (figureLayer[pair] != null ) {
+                            isEmptyBetween = false
+                            break
+                        }
+                        else if(!checkShahOn(pair)){
+                            isEmptyBetween = false
+                            break
+                        }
+                    } else if (it.cord.first == 0) {
+                        val pair = it.cord.first + i to this.cord.second
+                        if (figureLayer[pair] != null)  {
+                            isEmptyBetween = false
+                            break
+                        }
+                        else if(!checkShahOn(pair)){
+                            isEmptyBetween = false
+                            break
+                        }
+                    }
+                }
+
+                isEmptyBetween
+            }.map {
+                it.cord
+            }
+            finalList.addAll(toCustle)
+        }
+        return finalList
+    }
+
     fun getMovableBlocks(): List<Pair<Int, Int>> {
-        val saved = this.cord
+        val finalList = mutableListOf<Pair<Int, Int>>()
         val filter = getAllMovableBlocks().filter {
+            figureLayer[it] == null
+        }.filter {
             checkShahOn(it)
         }
-        figureLayer.remove(this.cord)
-        this.cord = saved
-        figureLayer[saved] = this
-        return filter
+
+        finalList.addAll(filter)
+        return finalList
     }
 
     open fun move(cord: Pair<Int, Int>) {
@@ -61,9 +106,10 @@ abstract class ChessFigure(
         figureLayer[cord] = this
         checkEndgame()
         checkShah()
+        hasFirstMove = true
     }
 
-    fun kill(cord: Pair<Int, Int>) {
+    open fun kill(cord: Pair<Int, Int>) {
         figureLayer.remove(cord)
         move(cord)
     }
@@ -84,7 +130,7 @@ abstract class ChessFigure(
     }
 
 
-    private fun checkShah() {
+    fun checkShah() {
         val isShah = figureLayer.filterValues {
             it == this
         }.values.any {
@@ -97,19 +143,25 @@ abstract class ChessFigure(
     }
 
 
-    private fun checkShahOn(pair: Pair<Int, Int>): Boolean {
+    protected fun checkShahOn(pair: Pair<Int, Int>, forKillable: Boolean = false): Boolean {
 
-        figureLayer.remove(this.cord)
-        this.cord = pair
+        val existedFigure = figureLayer[pair]
+        val savedFigure = this
+        val saveCord = this.cord
+
         figureLayer[pair] = this
 
-        return figureLayer
+        val filter = figureLayer
             .filter { it.value.color != this.color }
             .mapNotNull { it.value }
             .none { each ->
                 each.isKillableKing()
             }
-
+        if (existedFigure != null) figureLayer[existedFigure.cord] = existedFigure
+        if(forKillable)
+         savedFigure.cord = saveCord
+        figureLayer[saveCord] = savedFigure
+        return filter
     }
 
 
@@ -120,16 +172,8 @@ abstract class ChessFigure(
     }
 
     fun getKillableBlocks(): List<Pair<Int, Int>> {
-
-
         return getAllKillableBlocks().filter {
-            val save = this.cord
-            val savedFigure = figureLayer[it]
-            val shahOn = checkShahOn(it)
-            figureLayer[it] = savedFigure!!
-            this.cord = save
-            figureLayer[save] = this
-            shahOn
+            checkShahOn(it, true)
         }
     }
 
