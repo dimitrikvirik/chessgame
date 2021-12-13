@@ -4,7 +4,6 @@ import git.dimitrikvirik.chessgamedesktop.controller.GameBoardController
 import git.dimitrikvirik.chessgamedesktop.core.BeanContext
 import git.dimitrikvirik.chessgamedesktop.model.game.figure.ChessFigure
 import git.dimitrikvirik.chessgamedesktop.model.game.figure.ChessFigureColor
-import git.dimitrikvirik.chessgamedesktop.model.game.figure.ChessFigureVirtual
 import javafx.event.EventHandler
 import javafx.scene.Cursor
 import javafx.scene.image.Image
@@ -74,13 +73,13 @@ class Layer<T : Cell>(private val gridPane: GridPane, private val prefix: Char) 
                 result.append('F')
             }
             is Square -> result.append('S')
-            is Shah -> result.append('H')
+            is CellSpecialAction -> result.append('H')
         }
         when (cell) {
             is Action -> result.append(cell.action.prefix)
             is ChessFigure -> result.append(cell.chessFigureType.prefix)
             is Square -> result.append(cell.square.prefix)
-            is Shah -> result.append(cell.prefix)
+            is CellSpecialAction -> result.append(cell.prefix)
         }
         result.append(cell.cord.first)
         result.append(cell.cord.second)

@@ -20,7 +20,7 @@ class FXMLScanner {
         for (resource in resources) {
 
             //TODO scene Name
-            files.add(resource.url to "game-board.fxml")
+            files.add(resource.url to resource.filename!!)
         }
         for (file in files) {
             try {

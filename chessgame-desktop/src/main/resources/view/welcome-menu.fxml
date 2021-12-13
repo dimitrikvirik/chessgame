@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<Pane  prefHeight="345.0" prefWidth="493.0"
+      xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="git.dimitrikvirik.chessgamedesktop.controller.WelcomeMenuController">
+    <Label blendMode="HARD_LIGHT" layoutX="102.0" layoutY="85.0" text="ChessGame">
+        <font>
+            <Font name="Arial" size="50.0" />
+        </font>
+    </Label>
+    <PasswordField fx:id="password" layoutX="172.0" layoutY="200.0" promptText="Password" />
+    <TextField fx:id="email" layoutX="172.0" layoutY="163.0" promptText="Email" />
+    <Button  layoutX="46.0" layoutY="298.0" mnemonicParsing="false" onAction="#onRegistration" text="Registration">
+        <cursor>
+            <Cursor fx:constant="HAND" />
+        </cursor>
+    </Button>
+    <Button layoutX="144.0" layoutY="298.0" mnemonicParsing="false" onAction="#onPasswordReset" text="Forget Password?">
+        <cursor>
+            <Cursor fx:constant="HAND" />
+        </cursor>
+    </Button>
+    <Button layoutX="215.0" layoutY="242.0" mnemonicParsing="false" onAction="#onLogin" prefHeight="30.0" prefWidth="77.0" text="Login">
+        <cursor>
+            <Cursor fx:constant="HAND" />
+        </cursor>
+    </Button>
+</Pane>

@@ -10,7 +10,7 @@ open class Cell(open var cord: Pair<Int, Int>, open var order: Int, open var res
                 is ChessFigure -> 'F'
                 is Action -> 'A'
                 is Square -> 'S'
-                is Shah -> 'H'
+                is CellSpecialAction -> 'H'
                 else -> ' '
             }
         }

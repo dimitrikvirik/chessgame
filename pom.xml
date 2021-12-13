@@ -20,7 +20,7 @@
 
     <modules>
         <module>chessgame-desktop</module>
-
+        <module>chessgame-api</module>
     </modules>
 
 </project>

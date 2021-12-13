@@ -10,12 +10,12 @@ class LayerContext {
     lateinit var squareLayer: Layer<Square>
     lateinit var figureLayer: Layer<ChessFigure>
     lateinit var actionLayer: Layer<Action>
-    lateinit var shahLayer: Layer<Shah>
+    lateinit var specialLayer: Layer<CellSpecialAction>
 
     fun init(gridPanel: GridPane) {
         squareLayer = Layer(gridPanel, 'S')
         figureLayer = Layer(gridPanel, 'F')
         actionLayer = Layer(gridPanel, 'A')
-        shahLayer = Layer(gridPanel, 'H')
+        specialLayer = Layer(gridPanel, 'H')
     }
 }

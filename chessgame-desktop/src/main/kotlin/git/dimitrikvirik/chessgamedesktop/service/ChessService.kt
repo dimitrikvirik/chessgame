@@ -65,12 +65,12 @@ class ChessService() {
     @Autowired
     lateinit var websocket: WebSocketStompClient
 
-
     val restTemplate = RestTemplate()
 
     lateinit var session: StompSession
 
     lateinit var gameId: String
+
 
     var chessGame: ChessGame = ChessGame()
 
@@ -79,6 +79,7 @@ class ChessService() {
 
     fun send(chessMessage: ChessMessage) {
         session.send("/app/chessgame/$gameId", chessMessage.message)
+
     }
 
 
@@ -89,8 +90,11 @@ class ChessService() {
     ) {
     }
 
+    lateinit var game: Game
+
     fun create() {
-        val game = restTemplate.postForEntity("http://$api/game", "", Game::class.java)
+        game = restTemplate.postForEntity("http://$api/game", "", Game::class.java).body!!
+
     }
 
     fun connect(gameId: String) {

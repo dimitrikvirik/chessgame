@@ -5,7 +5,6 @@ import git.dimitrikvirik.chessgamedesktop.model.game.ActionType
 import git.dimitrikvirik.chessgamedesktop.model.game.LayerContext
 import git.dimitrikvirik.chessgamedesktop.service.ChessMessage
 import git.dimitrikvirik.chessgamedesktop.service.ChessService
-import javafx.application.Platform
 import kotlin.math.abs
 
 
@@ -19,7 +18,7 @@ abstract class ChessFigure(
     private val layerContext = BeanContext.getBean(LayerContext::class.java)
     val figureLayer = layerContext.figureLayer
     val actionLayer = layerContext.actionLayer
-    val shahLayer = layerContext.shahLayer
+    val specialLayer = layerContext.specialLayer
 
     companion object {
         fun convert(
@@ -54,7 +53,7 @@ abstract class ChessFigure(
                 val toCheck = abs(this.cord.first - it.cord.first) - 1
                 var isEmptyBetween = true
                 for (i in 1..toCheck) {
-                    if (it.cord.first == 7) {
+                    if (it.cord.first == 8) {
                         val pair = it.cord.first - i to this.cord.second
                         if (figureLayer[pair] != null ) {
                             isEmptyBetween = false
@@ -64,7 +63,7 @@ abstract class ChessFigure(
                             isEmptyBetween = false
                             break
                         }
-                    } else if (it.cord.first == 0) {
+                    } else if (it.cord.first == 1) {
                         val pair = it.cord.first + i to this.cord.second
                         if (figureLayer[pair] != null)  {
                             isEmptyBetween = false
@@ -100,7 +99,7 @@ abstract class ChessFigure(
 
     open fun move(cord: Pair<Int, Int>) {
         actionLayer.clear()
-        shahLayer.clear()
+        specialLayer.clear()
         figureLayer.remove(this.cord)
         this.cord = cord
         figureLayer[cord] = this

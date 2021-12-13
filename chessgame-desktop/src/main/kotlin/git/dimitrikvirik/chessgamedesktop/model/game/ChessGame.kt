@@ -3,12 +3,10 @@ package git.dimitrikvirik.chessgamedesktop.model.game
 import git.dimitrikvirik.chessgamedesktop.controller.GameBoardController
 import git.dimitrikvirik.chessgamedesktop.core.BeanContext
 import git.dimitrikvirik.chessgamedesktop.model.domain.User
-import git.dimitrikvirik.chessgamedesktop.model.game.figure.ChessFigure
 import git.dimitrikvirik.chessgamedesktop.model.game.figure.ChessFigureColor
 import git.dimitrikvirik.chessgamedesktop.model.game.figure.ChessKing
 import git.dimitrikvirik.chessgamedesktop.model.game.figure.ChessQueen
 import git.dimitrikvirik.chessgamedesktop.service.ChessMessage
-import javafx.application.Platform
 import javafx.scene.Cursor
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
@@ -68,13 +66,24 @@ class ChessGame {
 
     fun handleMessage(message: ChessMessage) {
 
-        val figureLayer = BeanContext.getBean(LayerContext::class.java).figureLayer
+        val layerContext = BeanContext.getBean(LayerContext::class.java)
+        val figureLayer = layerContext.figureLayer
+        val specialLayer = layerContext.specialLayer
 
         goNextPlayer(figureLayer[message.fromMove]?.color!!)
 
         when (message.actionType) {
-            ActionType.MOVE -> figureLayer[message.fromMove]?.move(message.toMove)
-            ActionType.KILL -> figureLayer[message.fromMove]?.kill(message.toMove)
+            ActionType.MOVE -> {
+
+                figureLayer[message.fromMove]?.move(message.toMove)
+                specialLayer[message.fromMove] = CellSpecialAction(message.fromMove, ActionType.MOVE_SPECIAL)
+                specialLayer[message.toMove] = CellSpecialAction(message.toMove, ActionType.MOVE_SPECIAL)
+            }
+            ActionType.KILL -> {
+                figureLayer[message.fromMove]?.kill(message.toMove)
+                specialLayer[message.fromMove] = CellSpecialAction(message.fromMove, ActionType.MOVE_SPECIAL)
+                specialLayer[message.toMove] = CellSpecialAction(message.toMove, ActionType.KILL_SPECIAL)
+            }
             ActionType.SHAH -> {
                 val color = figureLayer[message.fromMove]?.color
                 figureLayer.filterValues {
@@ -87,6 +96,8 @@ class ChessGame {
             }
             ActionType.SWAP -> {
                 (figureLayer[message.fromMove] as ChessKing).swap(message.toMove)
+                specialLayer[message.fromMove] = CellSpecialAction(message.fromMove, ActionType.MOVE_SPECIAL)
+                specialLayer[message.toMove] = CellSpecialAction(message.toMove, ActionType.MOVE_SPECIAL)
             }
             ActionType.ENDGAME -> {
                 winnerPlayer = if (currentPlayer.chessFigureColor == ChessFigureColor.WHITE) {

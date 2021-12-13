@@ -10,6 +10,7 @@ import git.dimitrikvirik.chessgamedesktop.service.ChessService
 import javafx.fxml.FXML
 import javafx.geometry.Pos
 import javafx.scene.control.Label
+import javafx.scene.image.Image
 import javafx.scene.image.ImageView
 import javafx.scene.input.MouseEvent
 import javafx.scene.layout.AnchorPane
@@ -21,7 +22,6 @@ import org.springframework.beans.factory.annotation.Value
 import org.springframework.stereotype.Service
 
 @Service
-@RequiredArgsConstructor
 class GameBoardController : Controller() {
 
 
@@ -43,6 +43,12 @@ class GameBoardController : Controller() {
     lateinit var whitePlayerUsername: Label
 
     @FXML
+    lateinit var blackPlayerPhoto: ImageView
+
+    @FXML
+    lateinit var whitePlayerPhoto: ImageView
+
+    @FXML
     lateinit var pane: AnchorPane
 
 
@@ -62,22 +68,38 @@ class GameBoardController : Controller() {
         chessGame = chessService.chessGame
         whitePlayerUsername.text = chessGame.whitePlayer.user.username
         blackPlayerUsername.text = chessGame.blackPlayer.user.username
-        gridPanel.prefHeight = prefHeight.toDouble() - 150
-        gridPanel.prefWidth = prefWidth.toDouble() - 180
-        whitePlayerUsername.layoutY = prefHeight.toDouble() - 100
+        whitePlayerPhoto.image = Image("/img/default_profile.jpg")
+        blackPlayerPhoto.image = Image("/img/default_profile.jpg")
+
+        gridPanel.prefHeight = prefHeight.toDouble() - 200
+        gridPanel.prefWidth = prefWidth.toDouble() - 280
+        gridPanel.layoutY = 20.0
+        gridPanel.layoutX= 100.0
+        whitePlayerUsername.layoutY = prefHeight.toDouble() -80
         layerContext.init(gridPanel)
 
         val squareLayer = layerContext.squareLayer
         figureLayer = layerContext.figureLayer
         actionLayer = layerContext.actionLayer
+        val alphabets = ('A'..'Z').toMutableList()
         for (i in 0..7) {
             for (j in 0..7) {
                 val squareType = if ((i + j) % 2 == 0) SquareType.WHITE else SquareType.BLACK
-                squareLayer[i to j] = Square(squareType, i to j)
-                val chessFigure = ChessFigureUtil.getByNumber(i, j)
-                if (chessFigure != null) figureLayer[i to j] = chessFigure
+                squareLayer[i+1 to j] = Square(squareType, i+1 to j)
+                val chessFigure = ChessFigureUtil.getByNumber(i + 1, j)
+                if (chessFigure != null) figureLayer[i+1 to j] = chessFigure
             }
+            val label = Label((i + 1).toString())
+            label.font =  Font(50.0)
+            GridPane.setConstraints(label, 0, i)
+            gridPanel.children.add(label)
+
+            val labelAlphabet = Label(alphabets[i].toString())
+            labelAlphabet.font =  Font(50.0)
+            GridPane.setConstraints(labelAlphabet, i+1, 9)
+            gridPanel.children.add(labelAlphabet)
         }
+
 
 
 

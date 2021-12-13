@@ -1,9 +1,7 @@
 package git.dimitrikvirik.chessgamedesktop.model.game.figure
 
-import git.dimitrikvirik.chessgamedesktop.model.game.Action
 import git.dimitrikvirik.chessgamedesktop.model.game.ActionType
-import git.dimitrikvirik.chessgamedesktop.model.game.Shah
-import javafx.application.Platform
+import git.dimitrikvirik.chessgamedesktop.model.game.CellSpecialAction
 
 
 class ChessKing(
@@ -16,7 +14,7 @@ class ChessKing(
 ) {
 
     fun shah() {
-        shahLayer[cord] = Shah(cord)
+        specialLayer[cord] = CellSpecialAction(cord, ActionType.SHAH)
     }
 
     fun swap(pair: Pair<Int, Int>) {

@@ -6,6 +6,8 @@ data class Action(val action: ActionType, override var cord: Pair<Int, Int>) : C
 
 enum class ActionType(val resource: String, val prefix: Char) {
     MOVE("square_yellow_1x.png", 'M'),
+    MOVE_SPECIAL("square_s_move_1x.png", 'G'),
+    KILL_SPECIAL("square_s_kill_1x.png", 'L'),
     KILL("square_red_1x.png", 'K'),
     SHAH("square_red_1x.png", 'S'),
     SWAP("square_yellow_1x.png", 'W'),

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<Pane maxHeight="400.0" maxWidth="500.0" prefHeight="246.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="git.dimitrikvirik.chessgamedesktop.controller.RegistrationMenuController">
+    <Label blendMode="HARD_LIGHT" layoutX="117.0" layoutY="21.0" text="Chessgame">
+        <font>
+            <Font name="Arial" size="50.0" />
+        </font>
+    </Label>
+    <Button layoutX="84.0" layoutY="204.0" mnemonicParsing="false" onAction="#onLogin" prefHeight="30.0" prefWidth="66.0" text="Login">
+        <cursor>
+            <Cursor fx:constant="HAND" />
+        </cursor>
+    </Button>
+    <Button  onAction="#onRegistrate" layoutX="194.0" layoutY="204.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="102.0" text="Registrate">
+        <cursor>
+            <Cursor fx:constant="HAND" />
+        </cursor>
+    </Button>
+    <PasswordField fx:id="password"  layoutX="171.0" layoutY="169.0" promptText="Password" />
+   <TextField fx:id="username" layoutX="171.0" layoutY="97.0" promptText="Username" />
+   <TextField fx:id="email" layoutX="171.0" layoutY="130.0" promptText="Email" />
+</Pane>

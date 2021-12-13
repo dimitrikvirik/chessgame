@@ -5,11 +5,13 @@ import git.dimitrikvirik.chessgamedesktop.core.FXMLScanner
 import git.dimitrikvirik.chessgamedesktop.core.SceneContextHolder
 import git.dimitrikvirik.chessgamedesktop.service.ChessService
 import javafx.scene.Scene
+import javafx.scene.image.Image
 import javafx.stage.Stage
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.beans.factory.annotation.Value
 import org.springframework.context.ApplicationListener
 import org.springframework.stereotype.Component
+import java.util.*
 
 @Component
 class StageInitializer : ApplicationListener<ChartApplication.StageReadyEvent> {
@@ -35,17 +37,16 @@ class StageInitializer : ApplicationListener<ChartApplication.StageReadyEvent> {
     @Value("\${application.height}")
     lateinit var prefHeight: String
 
+    @Value("\${game.id}")
+    lateinit var gameId: String
+
     override fun onApplicationEvent(event: ChartApplication.StageReadyEvent) {
 
-
+//           chessService.create()
         chessService.connect("2222")
+
+
         fxmlScanner.scan()
-
-
-//        val chessMessage = ChessMessage(1 to 1, 2 to 2, "Black Player", Action.MOVE)
-//
-//        chessService.send( chessMessage)
-
 
         val sceneContext = sceneContextHolder.getSceneContext("game-board")
         sceneContextHolder.setStage(event.stage)
@@ -53,16 +54,21 @@ class StageInitializer : ApplicationListener<ChartApplication.StageReadyEvent> {
         val scene: Scene = sceneContext?.scene as Scene
         stage.scene = scene
         stage.title = applicationName
-        stage.width = prefWidth.toDouble()
-        stage.height = prefHeight.toDouble()
-//        val image = Image(
-//            Objects.requireNonNull(
-//                StageInitializer::class.java.getResourceAsStream("/desktopApp/img/app-icon.png")
-//            )
-//        )
-//        stage.icons.add(image)
+
+        val image = Image(
+            Objects.requireNonNull(
+                StageInitializer::class.java.getResourceAsStream("/img/logo.png")
+            )
+        )
+        stage.icons.add(image)
         stage.isResizable = resizible.toBoolean()
 
         stage.show()
+
+
+
+
+
+
     }
 }
