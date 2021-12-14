@@ -71,11 +71,11 @@ class GameBoardController : Controller() {
         whitePlayerPhoto.image = Image("/img/default_profile.jpg")
         blackPlayerPhoto.image = Image("/img/default_profile.jpg")
 
-        gridPanel.prefHeight = prefHeight.toDouble() - 200
-        gridPanel.prefWidth = prefWidth.toDouble() - 280
+        gridPanel.prefHeight = prefHeight.toDouble() -200
+        gridPanel.prefWidth = prefWidth.toDouble() - 200
         gridPanel.layoutY = 20.0
         gridPanel.layoutX= 100.0
-        whitePlayerUsername.layoutY = prefHeight.toDouble() -80
+        whitePlayerUsername.layoutY = prefHeight.toDouble() -180
         layerContext.init(gridPanel)
 
         val squareLayer = layerContext.squareLayer
