@@ -22,7 +22,7 @@ class ChessKing(
         val rook = figureLayer[pair]!!
         figureLayer.remove(this.cord)
         figureLayer.remove(pair)
-        if (pair.first == 0) {
+        if (pair.first == 1) {
             val toMoveRook = (pair.first + 3) to pair.second
             this.cord = (this.cord.first - 2) to this.cord.second
             this.hasFirstMove = true

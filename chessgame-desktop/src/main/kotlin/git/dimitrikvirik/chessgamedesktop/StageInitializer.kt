@@ -43,12 +43,12 @@ class StageInitializer : ApplicationListener<ChartApplication.StageReadyEvent> {
     override fun onApplicationEvent(event: ChartApplication.StageReadyEvent) {
 
 //           chessService.create()
-        chessService.connect("2222")
+        chessService.connect("0")
 
 
         fxmlScanner.scan()
 
-        val sceneContext = sceneContextHolder.getSceneContext("game-board")
+        val sceneContext = sceneContextHolder.getSceneContext("game-menu")
         sceneContextHolder.setStage(event.stage)
         val stage: Stage = event.stage
         val scene: Scene = sceneContext?.scene as Scene

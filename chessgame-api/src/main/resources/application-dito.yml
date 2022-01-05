@@ -1,12 +1,12 @@
 POSTGRES_USER: sweeft
 POSTGRES_PASSWORD: sweeft
-POSTGRES_URL: jdbc:postgresql://localhost:5432/chess
+POSTGRES_URL: jdbc:postgresql://localhost:5432/common
 
 REALM: master
 KEYCLOAK_HOST: http://localhost:8081
 KEYCLOAK_ADMIN_USER: admin
 KEYCLOAK_ADMIN_PASSWORD: admin
-KEYCLOAK_CLIENT: chess
+KEYCLOAK_CLIENT: sweeft
 KEYCLOAK_SECRET: 72f1ef86-748a-45ad-bf76-0ec804b9760a
 
 REDIS_HOST: localhost

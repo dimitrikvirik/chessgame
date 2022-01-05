@@ -10,10 +10,9 @@ import org.springframework.stereotype.Service
 
 @Service
 class GameMenuController(
-   val chessService: ChessService
+    val chessService: ChessService,
+    val gameBoardController: GameBoardController,
 ) : Controller() {
-
-
 
 
     @FXML
@@ -25,12 +24,13 @@ class GameMenuController(
     @FXML
     fun createGame(mouseEvent: MouseEvent) {
         chessService.create()
-        chessService.connect(chessService.game.id!!)
+        gameId.text = chessService.game.id!!
         println("Created game")
     }
 
     @FXML
     fun joinGame(mouseEvent: MouseEvent) {
         chessService.connect(gameId.text)
+        sceneContextHolder.switchScene("game-board")
     }
 }

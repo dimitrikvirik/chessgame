@@ -5,12 +5,36 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f1434a4a-6c70-48d3-a432-e8ea8568c679" name="Changes" comment="fixed pawn double move">
-      <change afterPath="$PROJECT_DIR$/chessgamedesktop.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/chessgame-api/src/main/java/git/dimitrikvirik/chessgameapi/model/enums/ChessPlayerColor.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/chessgame-api/src/main/java/git/dimitrikvirik/chessgameapi/model/param/GameJoinParam.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/chessgame-api/src/main/java/git/dimitrikvirik/chessgameapi/model/redis/ChessPlayer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_base_win_17_0_0_1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_controls_win_17_0_0_1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_fxml_win_17_0_0_1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_graphics_win_17_0_0_1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_media_win_17_0_0_1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_web_win_17_0_0_1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/runConfigurations.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/chessgame-api/src/main/java/git/dimitrikvirik/chessgameapi/controller/ChessGameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/chessgame-api/src/main/java/git/dimitrikvirik/chessgameapi/controller/ChessGameController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/chessgame-api/src/main/java/git/dimitrikvirik/chessgameapi/model/game/Action.java" beforeDir="false" afterPath="$PROJECT_DIR$/chessgame-api/src/main/java/git/dimitrikvirik/chessgameapi/model/game/Action.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/chessgame-api/src/main/java/git/dimitrikvirik/chessgameapi/model/game/ChessMessage.java" beforeDir="false" afterPath="$PROJECT_DIR$/chessgame-api/src/main/java/git/dimitrikvirik/chessgameapi/model/game/ChessMessage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/chessgame-api/src/main/java/git/dimitrikvirik/chessgameapi/model/redis/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/chessgame-api/src/main/java/git/dimitrikvirik/chessgameapi/model/redis/Game.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/chessgame-api/src/main/java/git/dimitrikvirik/chessgameapi/service/GameRedisService.java" beforeDir="false" afterPath="$PROJECT_DIR$/chessgame-api/src/main/java/git/dimitrikvirik/chessgameapi/service/GameRedisService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/chessgame-api/src/main/resources/application-dito.yml" beforeDir="false" afterPath="$PROJECT_DIR$/chessgame-api/src/main/resources/application-dito.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/chessgame-desktop/src/main/kotlin/git/dimitrikvirik/chessgamedesktop/StageInitializer.kt" beforeDir="false" afterPath="$PROJECT_DIR$/chessgame-desktop/src/main/kotlin/git/dimitrikvirik/chessgamedesktop/StageInitializer.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/chessgame-desktop/src/main/kotlin/git/dimitrikvirik/chessgamedesktop/config/ChessStompHandler.kt" beforeDir="false" afterPath="$PROJECT_DIR$/chessgame-desktop/src/main/kotlin/git/dimitrikvirik/chessgamedesktop/config/ChessStompHandler.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/chessgame-desktop/src/main/kotlin/git/dimitrikvirik/chessgamedesktop/controller/GameBoardController.kt" beforeDir="false" afterPath="$PROJECT_DIR$/chessgame-desktop/src/main/kotlin/git/dimitrikvirik/chessgamedesktop/controller/GameBoardController.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/chessgame-desktop/src/main/kotlin/git/dimitrikvirik/chessgamedesktop/controller/GameMenuController.kt" beforeDir="false" afterPath="$PROJECT_DIR$/chessgame-desktop/src/main/kotlin/git/dimitrikvirik/chessgamedesktop/controller/GameMenuController.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/chessgame-desktop/src/main/kotlin/git/dimitrikvirik/chessgamedesktop/model/game/ChessGame.kt" beforeDir="false" afterPath="$PROJECT_DIR$/chessgame-desktop/src/main/kotlin/git/dimitrikvirik/chessgamedesktop/model/game/ChessGame.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/chessgame-desktop/src/main/kotlin/git/dimitrikvirik/chessgamedesktop/model/game/figure/ChessFigure.kt" beforeDir="false" afterPath="$PROJECT_DIR$/chessgame-desktop/src/main/kotlin/git/dimitrikvirik/chessgamedesktop/model/game/figure/ChessFigure.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/chessgame-desktop/src/main/kotlin/git/dimitrikvirik/chessgamedesktop/model/game/figure/ChessKing.kt" beforeDir="false" afterPath="$PROJECT_DIR$/chessgame-desktop/src/main/kotlin/git/dimitrikvirik/chessgamedesktop/model/game/figure/ChessKing.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/chessgame-desktop/src/main/kotlin/git/dimitrikvirik/chessgamedesktop/model/game/figure/ChessPawn.kt" beforeDir="false" afterPath="$PROJECT_DIR$/chessgame-desktop/src/main/kotlin/git/dimitrikvirik/chessgamedesktop/model/game/figure/ChessPawn.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/chessgame-desktop/src/main/kotlin/git/dimitrikvirik/chessgamedesktop/service/ChessService.kt" beforeDir="false" afterPath="$PROJECT_DIR$/chessgame-desktop/src/main/kotlin/git/dimitrikvirik/chessgamedesktop/service/ChessService.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/chessgame-desktop/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/chessgame-desktop/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/chessgame-desktop/src/main/resources/view/game-menu.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/chessgame-desktop/src/main/resources/view/game-menu.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -46,6 +70,7 @@
         <entry key="JPA Inspector" value="true" />
         <entry key="JPA Palette" value="true" />
         <entry key="JPA Structure" value="true" />
+        <entry key="com.haulmont.jpb.jpaStructure" value="true" />
       </map>
     </option>
     <option name="myId2Visible">
@@ -53,8 +78,12 @@
         <entry key="JPA Inspector" value="false" />
         <entry key="JPA Palette" value="false" />
         <entry key="JPA Structure" value="false" />
+        <entry key="com.haulmont.jpb.jpaStructure" value="true" />
       </map>
     </option>
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
   </component>
   <component name="ProjectId" id="20zYlMPy8z5cqVTlRx38KTcF7xl" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
@@ -144,7 +173,20 @@
       </set>
     </option>
   </component>
-  <component name="RunManager" selected="Spring Boot.ChessgameApplication (1)">
+  <component name="RunManager" selected="Spring Boot.ChessgameApplication ">
+    <configuration default="true" type="JetRunConfigurationType">
+      <module name="chessgame-api" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
+      <module name="chessgame-api" />
+      <option name="filePath" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="ChessGameApiApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
       <module name="chessgame-api" />
       <extension name="coverage">
@@ -166,46 +208,19 @@
       <option name="SPRING_BOOT_MAIN_CLASS" value="git.dimitrikvirik.chessgameapi.ChessGameApiApplication" />
       <option name="ACTIVE_PROFILES" value="dito" />
       <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="SHORTEN_COMMAND_LINE" value="NONE" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ChessgameApplication (1)" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+    <configuration name="ChessgameApplication " type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
       <module name="chessgamedesktop (1)" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="git.dimitrikvirik.chessgamedesktop.ChessgameApplication" />
       <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="SHORTEN_COMMAND_LINE" value="NONE" />
-      <additionalParameters>
-        <param>
-          <option name="name" value="game.id" />
-          <option name="value" value="222" />
-        </param>
-      </additionalParameters>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="ChessgameApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
-      <module name="chessgame-desktop" />
-      <extension name="net.ashald.envfile">
-        <option name="IS_ENABLED" value="false" />
-        <option name="IS_SUBST" value="false" />
-        <option name="IS_PATH_MACRO_SUPPORTED" value="false" />
-        <option name="IS_IGNORE_MISSING_FILES" value="false" />
-        <option name="IS_ENABLE_EXPERIMENTAL_INTEGRATIONS" value="false" />
-        <ENTRIES>
-          <ENTRY IS_ENABLED="true" PARSER="runconfig" />
-        </ENTRIES>
-      </extension>
-      <option name="SPRING_BOOT_MAIN_CLASS" value="git.dimitrikvirik.chessgamedesktop.ChessgameApplication" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="SHORTEN_COMMAND_LINE" value="NONE" />
       <additionalParameters>
         <param>
           <option name="enabled" value="true" />
           <option name="name" value="game.id" />
-          <option name="value" value="2222" />
+          <option name="value" value="222" />
         </param>
       </additionalParameters>
       <method v="2">
@@ -250,8 +265,7 @@
       <item itemvalue="Docker.chess-services: Compose Deployment" />
       <item itemvalue="Docker.chess-services.redis: Compose Deployment" />
       <item itemvalue="Docker.chess-services.keycloak: Compose Deployment" />
-      <item itemvalue="Spring Boot.ChessgameApplication" />
-      <item itemvalue="Spring Boot.ChessgameApplication (1)" />
+      <item itemvalue="Spring Boot.ChessgameApplication " />
       <item itemvalue="Spring Boot.ChessGameApiApplication" />
     </list>
     <recent_temporary>
@@ -301,6 +315,8 @@
       <workItem from="1639375329098" duration="18000" />
       <workItem from="1639475398300" duration="2301000" />
       <workItem from="1639489762007" duration="2667000" />
+      <workItem from="1641203960514" duration="6166000" />
+      <workItem from="1641363011812" duration="7965000" />
     </task>
     <task id="LOCAL-00001" summary="Chess Board Draw">
       <created>1637506665590</created>
@@ -409,7 +425,6 @@
         </entry>
       </map>
     </option>
-    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
@@ -464,7 +479,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="kotlin-line">
           <url>file://$PROJECT_DIR$/chessgame-desktop/src/main/kotlin/git/dimitrikvirik/chessgamedesktop/config/ChessStompHandler.kt</url>
-          <line>58</line>
+          <line>42</line>
           <option name="timeStamp" value="98" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="kotlin-line">
@@ -478,9 +493,19 @@
           <option name="timeStamp" value="191" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="kotlin-line">
-          <url>file://$PROJECT_DIR$/chessgame-desktop/src/main/kotlin/git/dimitrikvirik/chessgamedesktop/controller/GameBoardController.kt</url>
-          <line>98</line>
-          <option name="timeStamp" value="200" />
+          <url>file://$PROJECT_DIR$/chessgame-desktop/src/main/kotlin/git/dimitrikvirik/chessgamedesktop/service/ChessService.kt</url>
+          <line>59</line>
+          <option name="timeStamp" value="213" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="kotlin-line">
+          <url>file://$PROJECT_DIR$/chessgame-desktop/src/main/kotlin/git/dimitrikvirik/chessgamedesktop/service/ChessService.kt</url>
+          <line>44</line>
+          <option name="timeStamp" value="214" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="kotlin-line">
+          <url>file://$PROJECT_DIR$/chessgame-desktop/src/main/kotlin/git/dimitrikvirik/chessgamedesktop/model/game/ChessGame.kt</url>
+          <line>75</line>
+          <option name="timeStamp" value="215" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/chessgame-api/src/main/java/git/dimitrikvirik/chessgameapi/exception/GlobalExceptionHandler.java</url>

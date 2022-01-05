@@ -9,7 +9,7 @@
 
 <Pane fx:id="pane" prefHeight="309.0" prefWidth="509.0" xmlns="http://javafx.com/javafx/17"
       xmlns:fx="http://javafx.com/fxml/1" fx:controller="git.dimitrikvirik.chessgamedesktop.controller.GameMenuController">
-   <Label layoutX="163.0" layoutY="80.0" prefHeight="30.0" prefWidth="144.0" text="Create Game">
+   <Label layoutX="163.0" layoutY="80.0" prefHeight="30.0" prefWidth="200.0" text="Create Game">
       <font>
          <Font name="System Bold" size="20.0" />
       </font>
@@ -19,7 +19,7 @@
          <Font name="System Bold" size="20.0" />
       </font>
    </Label>
-   <Button layoutX="189.0" layoutY="129.0" mnemonicParsing="false" onMouseClicked="#createGame" prefHeight="26.0" prefWidth="57.0" text="Create">
+   <Button layoutX="189.0" layoutY="129.0" mnemonicParsing="false" onMouseClicked="#createGame" prefHeight="26.0" prefWidth="80.0" text="Create">
       <cursor>
          <Cursor fx:constant="HAND" />
       </cursor></Button>

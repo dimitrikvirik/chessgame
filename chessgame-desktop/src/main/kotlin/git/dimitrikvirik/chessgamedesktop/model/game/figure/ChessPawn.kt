@@ -20,7 +20,7 @@ class ChessPawn(
 
     private fun become() {
         val chessService = BeanContext.getBean(ChessService::class.java)
-        chessService.send(ChessMessage(cord, cord, ActionType.BECOME))
+        chessService.send(ChessMessage(cord, cord, ActionType.BECOME, chessService.chessGame.currentStep))
     }
 
 

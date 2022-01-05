@@ -123,7 +123,7 @@ abstract class ChessFigure(
             }
         if (isEndgame) {
             val chessService = BeanContext.getBean(ChessService::class.java)
-            chessService.send(ChessMessage(cord, cord, ActionType.ENDGAME))
+            chessService.send(ChessMessage(cord, cord, ActionType.ENDGAME, chessService.chessGame.currentStep))
         }
 
     }
@@ -137,7 +137,7 @@ abstract class ChessFigure(
         }
         if (isShah) {
             val chessService = BeanContext.getBean(ChessService::class.java)
-            chessService.send(ChessMessage(cord, cord, ActionType.SHAH))
+            chessService.send(ChessMessage(cord, cord, ActionType.SHAH, chessService.chessGame.currentStep))
         }
     }
 

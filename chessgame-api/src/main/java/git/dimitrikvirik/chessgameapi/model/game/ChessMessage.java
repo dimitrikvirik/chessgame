@@ -7,7 +7,7 @@ import org.springframework.data.util.Pair;
 public class ChessMessage {
     Pair<Integer, Integer> fromMove;
     Pair<Integer, Integer> toMove;
-    ChessFigureColor playerColor;
-    Action action;
+    Action actionType;
+    Integer step;
 }
 

@@ -10,9 +10,11 @@ import git.dimitrikvirik.chessgamedesktop.service.ChessMessage
 import javafx.scene.Cursor
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
+import org.springframework.stereotype.Component
 import kotlin.properties.Delegates
 
 
+@Component
 class ChessGame {
     lateinit var whitePlayer: ChessPlayer
     lateinit var blackPlayer: ChessPlayer
@@ -24,6 +26,8 @@ class ChessGame {
     var winnerPlayer: ChessPlayer? = null
 
     private val logger: Logger = LoggerFactory.getLogger(ChessGame::class.java)
+
+     var currentStep: Int = 0
 
     fun startGame(whiteUser: User, blackUser: User) {
         whitePlayer = ChessPlayer(ChessFigureColor.WHITE, whiteUser)
@@ -69,7 +73,7 @@ class ChessGame {
         val layerContext = BeanContext.getBean(LayerContext::class.java)
         val figureLayer = layerContext.figureLayer
         val specialLayer = layerContext.specialLayer
-
+        currentStep = message.step
         goNextPlayer(figureLayer[message.fromMove]?.color!!)
 
         when (message.actionType) {
