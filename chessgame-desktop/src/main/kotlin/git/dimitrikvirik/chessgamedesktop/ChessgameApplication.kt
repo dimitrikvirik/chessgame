@@ -1,6 +1,7 @@
 package git.dimitrikvirik.chessgamedesktop
 
 import com.fasterxml.jackson.databind.ObjectMapper
+import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule
 import com.fasterxml.jackson.module.kotlin.KotlinModule
 import git.dimitrikvirik.chessgame.ChartApplication
 import javafx.application.Application
@@ -21,6 +22,7 @@ class ChessgameApplication{
         val mappingJackson2MessageConverter = MappingJackson2MessageConverter()
         val objectMapper = ObjectMapper()
         objectMapper.registerModule(KotlinModule.Builder().build())
+        objectMapper.registerModule(JavaTimeModule())
         mappingJackson2MessageConverter.objectMapper = objectMapper
         stompClient.messageConverter = mappingJackson2MessageConverter
         return stompClient;

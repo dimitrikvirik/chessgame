@@ -16,7 +16,7 @@ class UserService {
 
     val restTemplate = RestTemplate()
 
-    fun registrate(userRegParam: UserRegParam) {
+    fun registration(userRegParam: UserRegParam) {
         val entity = restTemplate.postForEntity("http://$api/user", userRegParam, ResponseEntity::class.java)
         if(entity.statusCode.is2xxSuccessful){
 

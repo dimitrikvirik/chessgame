@@ -24,7 +24,6 @@ object SceneBuilder {
     }
 
 
-
     @Throws(IllegalStateException::class)
     private fun loadSynchronously(resource: URL): FXMLLoader {
         val loader = FXMLLoader(resource)
@@ -36,6 +35,7 @@ object SceneBuilder {
         }
         return loader
     }
+
     private fun createControllerForType(type: Class<*>): Any {
         return BeanContext.getBean(type)
     }

@@ -30,7 +30,7 @@ class RegistrationMenuController(
 
     @FXML
     fun onRegistrate(actionEvent: ActionEvent) {
-        userService.registrate(UserRegParam(
+        userService.registration(UserRegParam(
             username.text,
             email.text,
             password.text

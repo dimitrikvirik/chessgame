@@ -19,7 +19,6 @@ class FXMLScanner {
         val resources: Array<Resource> = resolver.getResources("classpath*:**/*.fxml")
         for (resource in resources) {
 
-            //TODO scene Name
             files.add(resource.url to resource.filename!!)
         }
         for (file in files) {

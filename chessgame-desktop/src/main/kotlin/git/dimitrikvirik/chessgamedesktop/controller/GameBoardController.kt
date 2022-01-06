@@ -1,17 +1,18 @@
 package git.dimitrikvirik.chessgamedesktop.controller
 
 import git.dimitrikvirik.chessgamedesktop.core.Controller
-import git.dimitrikvirik.chessgamedesktop.model.game.*
-import git.dimitrikvirik.chessgamedesktop.model.game.figure.ChessFigure
-import git.dimitrikvirik.chessgamedesktop.model.game.figure.ChessFigureUtil
-import git.dimitrikvirik.chessgamedesktop.service.ChessMessage
-import git.dimitrikvirik.chessgamedesktop.service.ChessService
+import git.dimitrikvirik.chessgamedesktop.core.model.Layer
+import git.dimitrikvirik.chessgamedesktop.core.model.Player
+import git.dimitrikvirik.chessgamedesktop.game.ChessGame
+import git.dimitrikvirik.chessgamedesktop.game.figure.ChessFigure
+import git.dimitrikvirik.chessgamedesktop.game.figure.FigureBuilder
+import git.dimitrikvirik.chessgamedesktop.game.square.BlackSquare
+import git.dimitrikvirik.chessgamedesktop.game.square.WhiteSquare
+import javafx.application.Platform
 import javafx.fxml.FXML
-import javafx.geometry.Pos
 import javafx.scene.control.Label
 import javafx.scene.image.Image
 import javafx.scene.image.ImageView
-import javafx.scene.input.MouseEvent
 import javafx.scene.layout.AnchorPane
 import javafx.scene.layout.GridPane
 import javafx.scene.text.Font
@@ -20,9 +21,7 @@ import org.springframework.stereotype.Service
 
 @Service
 class GameBoardController(
-    val chessGame: ChessGame,
-    val chessService: ChessService,
-    val layerContext: LayerContext,
+    val chessGame: ChessGame
 ) : Controller() {
 
 
@@ -53,14 +52,23 @@ class GameBoardController(
     @Value("\${application.height}")
     lateinit var prefHeight: String
 
-    lateinit var figureLayer: Layer<ChessFigure>
-    lateinit var actionLayer: Layer<Action>
+    lateinit var figureLayer: Layer
+    lateinit var actionLayer: Layer
 
 
     @FXML
     fun initialize() {
-        whitePlayerUsername.text = chessGame.whitePlayer.user.username
-        blackPlayerUsername.text = chessGame.blackPlayer.user.username
+        val firstPlayer = Player("", "White Player", "WHITE_PLAYER")
+        val secondPlayer = Player("", "Black Player", "BLACK_PLAYER")
+        chessGame.start(firstPlayer, secondPlayer, gridPanel)
+
+
+        figureLayer = chessGame.figureLayer
+        actionLayer = chessGame.actionLayer
+
+
+        whitePlayerUsername.text = chessGame.firstPlayer.username
+        blackPlayerUsername.text = chessGame.secondPlayer.username
         whitePlayerPhoto.image = Image("/img/default_profile.jpg")
         blackPlayerPhoto.image = Image("/img/default_profile.jpg")
 
@@ -69,20 +77,23 @@ class GameBoardController(
         gridPanel.layoutY = 20.0
         gridPanel.layoutX = 100.0
         whitePlayerUsername.layoutY = prefHeight.toDouble() - 180
-        layerContext.init(gridPanel)
 
-        val squareLayer = layerContext.squareLayer
-        figureLayer = layerContext.figureLayer
-        actionLayer = layerContext.actionLayer
+
+        val squareLayer = chessGame.squareLayer
+        figureLayer = chessGame.figureLayer
+        actionLayer = chessGame.actionLayer
         val alphabets = ('A'..'Z').toMutableList()
         for (i in 0..7) {
             for (j in 0..7) {
-                val squareType = if ((i + j) % 2 == 0) SquareType.WHITE else SquareType.BLACK
-                squareLayer[i + 1 to j] = Square(squareType, i + 1 to j)
-                val chessFigure = ChessFigureUtil.getByNumber(i + 1, j)
+                val pair = i + 1 to j
+                val square = if ((i + j) % 2 == 0) {
+                    WhiteSquare(pair)
+                } else BlackSquare(pair)
+                squareLayer[i + 1 to j] = square
+                val chessFigure = FigureBuilder.getByNumber(i + 1, j)
                 if (chessFigure != null) figureLayer[i + 1 to j] = chessFigure
             }
-            val label = Label((i + 1).toString())
+            val label = Label((7 - i + 1).toString())
             label.font = Font(50.0)
             GridPane.setConstraints(label, 0, i)
             gridPanel.children.add(label)
@@ -91,71 +102,14 @@ class GameBoardController(
             labelAlphabet.font = Font(50.0)
             GridPane.setConstraints(labelAlphabet, i + 1, 9)
             gridPanel.children.add(labelAlphabet)
-        }
+            chessGame.currentPlayer.set(secondPlayer)
+            chessGame.currentPlayer.set(firstPlayer)
 
 
-    }
 
 
-    fun onFigureClick(event: MouseEvent) {
-        val figure = figureLayer[event.getCord()]
-
-        if (chessGame.currentPlayer.chessFigureColor == figure?.color) {
-            actionLayer.clear()
-            selectedFigure = figure
-            val movableBlocks = figure.getMovableBlocks()
-
-            movableBlocks.forEach {
-                actionLayer[it.first to it.second] = Action(ActionType.MOVE, it)
-            }
-            val killableBlocks = figure.getKillableBlocks()
-            killableBlocks.forEach {
-                actionLayer[it.first to it.second] = Action(ActionType.KILL, it)
-            }
-
-            val swapBlocks = figure.getSwapBlocks()
-            swapBlocks.forEach {
-                actionLayer[it.first to it.second] = Action(ActionType.SWAP, it)
-            }
 
         }
     }
 
-
-    fun onActionBlockClick(event: MouseEvent) {
-
-
-        val cord = event.getCord()
-        val action = layerContext.actionLayer[cord]?.action
-        if (action == ActionType.MOVE) {
-            chessService.send(ChessMessage(selectedFigure!!.cord, cord, ActionType.MOVE, chessGame.currentStep))
-        } else if (action == ActionType.KILL) {
-            chessService.send(ChessMessage(selectedFigure!!.cord, cord, ActionType.KILL, chessGame.currentStep))
-        } else if (action == ActionType.SWAP) {
-            chessService.send(ChessMessage(selectedFigure!!.cord, cord, ActionType.SWAP, chessGame.currentStep))
-        }
-    }
-
-
-    fun endgame() {
-        val winner = chessGame.winnerPlayer!!.user.username
-        val winnerText = Label("GG! $winner has won!")
-        winnerText.font = Font.font(40.0)
-        winnerText.viewOrder = 20.0
-        winnerText.maxWidth = Double.MAX_VALUE;
-        AnchorPane.setLeftAnchor(winnerText, 0.0);
-        AnchorPane.setRightAnchor(winnerText, 0.0);
-//        AnchorPane.setBottomAnchor(winnerText, 0.0);
-//        AnchorPane.setTopAnchor(winnerText, 0.0);
-
-        winnerText.alignment = Pos.CENTER;
-        pane.children.add(winnerText)
-    }
-}
-
-fun MouseEvent.getCord(): Pair<Int, Int> {
-    val img = source as ImageView
-    val xIndex = GridPane.getColumnIndex(img)
-    val yIndex = GridPane.getRowIndex(img)
-    return xIndex to yIndex
 }

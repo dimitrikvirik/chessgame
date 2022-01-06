@@ -4,6 +4,7 @@ import git.dimitrikvirik.chessgame.ChartApplication
 import git.dimitrikvirik.chessgamedesktop.core.FXMLScanner
 import git.dimitrikvirik.chessgamedesktop.core.SceneContextHolder
 import git.dimitrikvirik.chessgamedesktop.service.ChessService
+import javafx.application.Platform
 import javafx.scene.Scene
 import javafx.scene.image.Image
 import javafx.stage.Stage
@@ -43,12 +44,12 @@ class StageInitializer : ApplicationListener<ChartApplication.StageReadyEvent> {
     override fun onApplicationEvent(event: ChartApplication.StageReadyEvent) {
 
 //           chessService.create()
-        chessService.connect("0")
+        //   chessService.connect(gameId)
 
 
         fxmlScanner.scan()
 
-        val sceneContext = sceneContextHolder.getSceneContext("game-menu")
+        val sceneContext = sceneContextHolder.getSceneContext("game-board")
         sceneContextHolder.setStage(event.stage)
         val stage: Stage = event.stage
         val scene: Scene = sceneContext?.scene as Scene
@@ -65,10 +66,7 @@ class StageInitializer : ApplicationListener<ChartApplication.StageReadyEvent> {
 
         stage.show()
 
-
-
-
-
+            chessService.read("2022-01-06-21-09-54.csv")
 
     }
 }

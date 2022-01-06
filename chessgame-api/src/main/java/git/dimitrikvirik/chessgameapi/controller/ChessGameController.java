@@ -1,8 +1,7 @@
 package git.dimitrikvirik.chessgameapi.controller;
 
-import git.dimitrikvirik.chessgameapi.model.Message;
 import git.dimitrikvirik.chessgameapi.model.enums.ChessPlayerColor;
-import git.dimitrikvirik.chessgameapi.model.game.ChessMessage;
+import git.dimitrikvirik.chessgameapi.model.game.GameMessage;
 import git.dimitrikvirik.chessgameapi.model.param.GameJoinParam;
 import git.dimitrikvirik.chessgameapi.model.redis.ChessPlayer;
 import git.dimitrikvirik.chessgameapi.model.redis.Game;
@@ -17,7 +16,7 @@ import org.springframework.messaging.handler.annotation.SendTo;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
-import java.util.List;
+import java.time.LocalDateTime;
 
 @RestController
 @RequestMapping("/game")
@@ -57,28 +56,27 @@ public class ChessGameController {
         return gameRedisService.update(game);
     }
 
-    @GetMapping("/load/{gameId}")
-    public List<ChessMessage> getMessages(@RequestParam Long from, @RequestParam Long to, @PathVariable String gameId){
-
-        Game game = gameRedisService.get(gameId);
-        List<ChessMessage> messages = game.getMessages();
-        messages.stream().filter(m -> {
-            m.getStep() >= from
-        })
-
-    }
+//    @GetMapping("/load/{gameId}")
+//    public List<ChessMessage> getMessages(@RequestParam Long from, @RequestParam Long to, @PathVariable String gameId){
+//
+//        Game game = gameRedisService.get(gameId);
+//        List<ChessMessage> messages = game.getMessages();
+//
+//    }
 
 
     @MessageMapping({"/chessgame/{gameId}"})
     @SendTo({"/topic/chessgame/{gameId}"})
-    public ChessMessage getMoves(ChessMessage message, @DestinationVariable String gameId) {
+    public GameMessage getMoves(GameMessage message, @DestinationVariable String gameId) {
 
-        Game game = gameRedisService.get(gameId);
-        List<ChessMessage> messages = game.getMessages();
-        messages.add(message);
-        gameRedisService.update(game);
-        log.info(message + " " + messages.size());
         message.setStep(message.getStep() + 1);
+        message.setSendTime(LocalDateTime.now());
+//        Game game = gameRedisService.get(gameId);
+//        List<GameMessage> messages = game.getMessages();
+//        messages.add(message);
+//        gameRedisService.update(game);
+//        log.info(message + " " + messages.size());
+//        message.setStep(message.getStep() + 1);
         return message;
     }
 }

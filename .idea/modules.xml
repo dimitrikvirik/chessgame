@@ -3,8 +3,8 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/chessgame-api/chessgame-api.iml" filepath="$PROJECT_DIR$/chessgame-api/chessgame-api.iml" />
+      <module fileurl="file://$PROJECT_DIR$/chessgame-desktop/chessgame-desktop.iml" filepath="$PROJECT_DIR$/chessgame-desktop/chessgame-desktop.iml" />
       <module fileurl="file://$PROJECT_DIR$/chessgamedesktop.iml" filepath="$PROJECT_DIR$/chessgamedesktop.iml" />
-      <module fileurl="file://$PROJECT_DIR$/chessgame-desktop/chessgamedesktop (1).iml" filepath="$PROJECT_DIR$/chessgame-desktop/chessgamedesktop (1).iml" />
     </modules>
   </component>
 </project>
