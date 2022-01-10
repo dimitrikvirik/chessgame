@@ -1,6 +1,7 @@
 server:
   error:
     include-message: always
+  port: 8090
 
 spring:
   application:
