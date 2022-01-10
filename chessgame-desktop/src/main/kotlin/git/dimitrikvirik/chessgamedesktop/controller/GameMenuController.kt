@@ -22,6 +22,10 @@ class GameMenuController(
     lateinit var gameId: TextField
 
     @FXML
+    lateinit var filename: TextField
+
+
+    @FXML
     fun createGame(mouseEvent: MouseEvent) {
         chessService.create()
         gameId.text = chessService.game.id!!
@@ -32,5 +36,12 @@ class GameMenuController(
     fun joinGame(mouseEvent: MouseEvent) {
         chessService.connect(gameId.text)
         sceneContextHolder.switchScene("game-board")
+    }
+
+    @FXML
+    fun watchGame(mouseEvent: MouseEvent) {
+        sceneContextHolder.switchScene("game-board")
+        chessService.read(filename.text + ".csv")
+
     }
 }

@@ -138,6 +138,8 @@ abstract class ChessFigure(
         if (forKillable)
             savedFigure.cord = Coordination(this.pair, ObjectIndex.FIGURE)
         figureLayer[saveCord] = savedFigure
+
+
         return filter
     }
 

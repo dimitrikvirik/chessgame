@@ -15,7 +15,11 @@ class ChessGame(
 
     override fun handle(gameMessage: GameMessage) {
 
+
         currentStep = gameMessage.step
+        if(currentStep + 1 != gameMessage.step){
+            throw IllegalArgumentException("Wrong step")
+        }
 
         if (!gameMessage.action.startsWith("BECOME")) {
             if (currentPlayer.value == firstPlayer) {

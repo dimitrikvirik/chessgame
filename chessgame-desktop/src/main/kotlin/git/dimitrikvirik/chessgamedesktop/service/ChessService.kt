@@ -6,7 +6,6 @@ import git.dimitrikvirik.chessgamedesktop.core.model.GameMessage
 import git.dimitrikvirik.chessgamedesktop.game.ChessGame
 import git.dimitrikvirik.chessgamedesktop.util.FileUtil
 import javafx.application.Platform
-import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.beans.factory.annotation.Value
 import org.springframework.messaging.simp.stomp.StompSession
 import org.springframework.messaging.simp.stomp.StompSessionHandler
@@ -17,12 +16,10 @@ import org.springframework.web.socket.messaging.WebSocketStompClient
 
 @Service
 class ChessService(
-    val chessStompHandler: ChessStompHandler
+    val chessStompHandler: ChessStompHandler,
+    val websocket: WebSocketStompClient
 ) {
 
-
-    @Autowired
-    lateinit var websocket: WebSocketStompClient
 
     val restTemplate = RestTemplate()
 
@@ -30,7 +27,7 @@ class ChessService(
 
     lateinit var gameId: String
 
-    var readMode: Boolean = false
+    var readMode = false
 
 
     @Value("\${api.uri}")
@@ -69,7 +66,7 @@ class ChessService(
     fun read(filename: String) {
         readMode = true
         BeanContext.getBean(ChessGame::class.java).readMode = true
-        Thread{
+        Thread {
             FileUtil.readRecord(filename) { gameMessage ->
                 Platform.runLater {
                     BeanContext.getBean(ChessGame::class.java).handle(gameMessage)
