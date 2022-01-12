@@ -2,6 +2,7 @@ package git.dimitrikvirik.chessgamedesktop.util
 
 import com.opencsv.CSVReader
 import com.opencsv.CSVWriter
+import git.dimitrikvirik.chessgamedesktop.core.model.Coordination
 import git.dimitrikvirik.chessgamedesktop.core.model.GameMessage
 import java.io.File
 import java.io.FileWriter
@@ -18,11 +19,9 @@ object FileUtil {
 
     private lateinit var currentRecord: File
 
-    fun createRecord() {
+    fun createRecord(gameId: String) {
         try {
-            val format = SimpleDateFormat(datePattern).format(Date())
-
-            val file = File("$format.csv")
+            val file = File("$gameId.csv")
             currentRecord = file
             if (file.createNewFile()) {
                 println("Record created: " + file.name)
@@ -39,8 +38,8 @@ object FileUtil {
         writer.use {
             val stringArray = arrayOf(
                 gameMessage.step.toString(),
-                gameMessage.fromMove.first.toString() + gameMessage.fromMove.second.toString(),
-                gameMessage.toMove.first.toString() + gameMessage.toMove.second.toString(),
+                Coordination.toChess(gameMessage.fromMove),
+                Coordination.toChess(gameMessage.toMove),
                 gameMessage.action,
                 gameMessage.sendTime.toString()
             )
@@ -60,8 +59,8 @@ object FileUtil {
             var diffTime: Long? = null
             while (line != null) {
                 val gameMessage = GameMessage(
-                    Pair(line[1][0].toString().toInt(), line[1][1].toString().toInt()),
-                    Pair(line[2][0].toString().toInt(), line[2][1].toString().toInt()),
+                    Coordination.fromChess(line[1]),
+                    Coordination.fromChess(line[2]),
                     line[3],
                     line[0].toString().toInt(),
                     LocalDateTime.parse(line[4])
@@ -81,6 +80,7 @@ object FileUtil {
                 ) {
                     nowTime = LocalDateTime.now()
                 }
+
                 handler(gameMessage)
                 println("READING ${gameMessage.step} STEP")
                 line = csvReader.readNext()

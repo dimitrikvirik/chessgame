@@ -22,8 +22,7 @@ class StageInitializer : ApplicationListener<ChartApplication.StageReadyEvent> {
     @Autowired
     lateinit var sceneContextHolder: SceneContextHolder
 
-    @Autowired
-    lateinit var chessService: ChessService
+
 
     @Value("\${spring.application.name}")
     lateinit var applicationName: String
@@ -31,19 +30,10 @@ class StageInitializer : ApplicationListener<ChartApplication.StageReadyEvent> {
     @Value("\${application.resizible}")
     lateinit var resizible: String
 
-    @Value("\${application.width}")
-    lateinit var prefWidth: String
-
-    @Value("\${application.height}")
-    lateinit var prefHeight: String
-
-    @Value("\${game.id}")
-    lateinit var gameId: String
+    @Autowired
+    lateinit var chessService: ChessService
 
     override fun onApplicationEvent(event: ChartApplication.StageReadyEvent) {
-
-//           chessService.create()
-    chessService.connect(gameId)
 
 
         fxmlScanner.scan()
@@ -61,11 +51,10 @@ class StageInitializer : ApplicationListener<ChartApplication.StageReadyEvent> {
             )
         )
         stage.icons.add(image)
-        stage.isResizable = resizible.toBoolean()
+        stage.isResizable = true
 
         stage.show()
 
-// chessService.read("2022-01-07-17-22-10.csv")
 
     }
 }

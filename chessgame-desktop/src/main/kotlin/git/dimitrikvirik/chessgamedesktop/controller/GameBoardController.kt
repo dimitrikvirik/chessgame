@@ -1,14 +1,14 @@
 package git.dimitrikvirik.chessgamedesktop.controller
 
 import git.dimitrikvirik.chessgamedesktop.core.Controller
+import git.dimitrikvirik.chessgamedesktop.core.model.ChessPlayer
 import git.dimitrikvirik.chessgamedesktop.core.model.Layer
-import git.dimitrikvirik.chessgamedesktop.core.model.Player
+import git.dimitrikvirik.chessgamedesktop.core.model.PlayerMessage
 import git.dimitrikvirik.chessgamedesktop.game.ChessGame
-import git.dimitrikvirik.chessgamedesktop.game.figure.ChessFigure
 import git.dimitrikvirik.chessgamedesktop.game.figure.FigureBuilder
+import git.dimitrikvirik.chessgamedesktop.game.figure.model.ChessFigureColor
 import git.dimitrikvirik.chessgamedesktop.game.square.BlackSquare
 import git.dimitrikvirik.chessgamedesktop.game.square.WhiteSquare
-import javafx.application.Platform
 import javafx.fxml.FXML
 import javafx.scene.control.Label
 import javafx.scene.image.Image
@@ -44,8 +44,6 @@ class GameBoardController(
     lateinit var pane: AnchorPane
 
 
-    var selectedFigure: ChessFigure? = null
-
     @Value("\${application.width}")
     lateinit var prefWidth: String
 
@@ -56,19 +54,43 @@ class GameBoardController(
     lateinit var actionLayer: Layer
 
 
+    fun setUser(playerMessage: PlayerMessage) {
+
+        val whitePlayer = if (!playerMessage.whiteConnected) {
+            ChessPlayer("Not Connected", ChessFigureColor.WHITE)
+        } else ChessPlayer(playerMessage.whitePlayerName!!, ChessFigureColor.WHITE)
+
+        val blackPlayer = if (!playerMessage.blackConnected) {
+            ChessPlayer("Not Connected", ChessFigureColor.BLACK)
+        } else ChessPlayer(playerMessage.blackPlayerName!!, ChessFigureColor.BLACK)
+        if(chessGame.chessService.username == whitePlayer.userId){
+            chessGame.joinedChessPlayer = whitePlayer
+        }
+        else{
+            chessGame.joinedChessPlayer = blackPlayer
+        }
+
+
+        whitePlayerUsername.text = whitePlayer.userId
+        blackPlayerUsername.text = blackPlayer.userId
+        chessGame.firstChessPlayer = whitePlayer
+        chessGame.secondChessPlayer = blackPlayer
+        chessGame.currentChessPlayer.value = chessGame.firstChessPlayer
+
+
+
+    }
+
     @FXML
     fun initialize() {
-        val firstPlayer = Player("", "White Player", "WHITE_PLAYER")
-        val secondPlayer = Player("", "Black Player", "BLACK_PLAYER")
-        chessGame.start(firstPlayer, secondPlayer, gridPanel)
+
+        chessGame.setPane(gridPanel)
 
 
         figureLayer = chessGame.figureLayer
         actionLayer = chessGame.actionLayer
 
 
-        whitePlayerUsername.text = chessGame.firstPlayer.username
-        blackPlayerUsername.text = chessGame.secondPlayer.username
         whitePlayerPhoto.image = Image("/img/default_profile.jpg")
         blackPlayerPhoto.image = Image("/img/default_profile.jpg")
 
@@ -102,12 +124,8 @@ class GameBoardController(
             labelAlphabet.font = Font(50.0)
             GridPane.setConstraints(labelAlphabet, i + 1, 9)
             gridPanel.children.add(labelAlphabet)
-            chessGame.currentPlayer.set(secondPlayer)
-            chessGame.currentPlayer.set(firstPlayer)
-
-
-
-
+//            chessGame.currentChessPlayer.set(secondChessPlayer)
+//            chessGame.currentChessPlayer.set(firstChessPlayer)
 
         }
     }

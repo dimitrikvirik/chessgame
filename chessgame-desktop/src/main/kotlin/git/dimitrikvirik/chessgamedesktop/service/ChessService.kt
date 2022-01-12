@@ -1,14 +1,19 @@
 package git.dimitrikvirik.chessgamedesktop.service
 
+import com.fasterxml.jackson.databind.ObjectMapper
+import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule
+import com.fasterxml.jackson.module.kotlin.KotlinModule
 import git.dimitrikvirik.chessgamedesktop.config.ChessStompHandler
+import git.dimitrikvirik.chessgamedesktop.config.PlayerStompHandler
+import git.dimitrikvirik.chessgamedesktop.controller.GameBoardController
 import git.dimitrikvirik.chessgamedesktop.core.BeanContext
+import git.dimitrikvirik.chessgamedesktop.core.model.ChessPlayer
 import git.dimitrikvirik.chessgamedesktop.core.model.GameMessage
+import git.dimitrikvirik.chessgamedesktop.core.model.PlayerMessage
 import git.dimitrikvirik.chessgamedesktop.game.ChessGame
 import git.dimitrikvirik.chessgamedesktop.util.FileUtil
 import javafx.application.Platform
-import org.springframework.beans.factory.annotation.Value
 import org.springframework.messaging.simp.stomp.StompSession
-import org.springframework.messaging.simp.stomp.StompSessionHandler
 import org.springframework.stereotype.Service
 import org.springframework.web.client.RestTemplate
 import org.springframework.web.socket.messaging.WebSocketStompClient
@@ -17,25 +22,29 @@ import org.springframework.web.socket.messaging.WebSocketStompClient
 @Service
 class ChessService(
     val chessStompHandler: ChessStompHandler,
+    val playerStompHandler: PlayerStompHandler,
     val websocket: WebSocketStompClient
 ) {
 
 
     val restTemplate = RestTemplate()
 
-    lateinit var session: StompSession
+    lateinit var chessSession: StompSession
+
+    lateinit var playerSession: StompSession
 
     lateinit var gameId: String
+
+    lateinit var username: String
 
     var readMode = false
 
 
-    @Value("\${api.uri}")
     lateinit var api: String
 
     fun send(chessMessage: GameMessage) {
         if (!readMode)
-            session.send("/app/chessgame/$gameId", chessMessage)
+            chessSession.send("/app/chessgame/$gameId", chessMessage)
 
     }
 
@@ -43,25 +52,61 @@ class ChessService(
     data class Game(
         val id: String?,
         val stepNumber: Int? = 0,
+        var whitePlayer: ChessPlayer?,
+        var blackPlayer: ChessPlayer?,
         val messages: List<GameMessage>? = emptyList()
-    ) {
-    }
+    )
+
+
 
     lateinit var game: Game
 
-    fun create() {
+    fun create(server: String) {
+        this.api = server
         game = restTemplate.postForEntity("http://$api/game", "", Game::class.java).body!!
 
     }
 
-    fun connect(gameId: String) {
-        FileUtil.createRecord()
-        this.gameId = gameId
-        val sessionHandler: StompSessionHandler = chessStompHandler
-        session = websocket.connect("ws://$api/ws", sessionHandler).get()
-        session.subscribe("/topic/chessgame/$gameId", sessionHandler)
+
+    fun loadSteps(from: Int = 0) {
+        val entity = restTemplate.getForEntity(
+            "http://$api/game/load/$gameId", List::class.java, mapOf("from" to from)
+        )
+        println()
+        val objectMapper = ObjectMapper()
+        objectMapper.registerModule(KotlinModule.Builder().build())
+        objectMapper.registerModule(JavaTimeModule())
+
+        val list = entity.body?.map {
+            objectMapper.convertValue(it, GameMessage::class.java)
+        } ?: emptyList()
+        val chessGame = BeanContext.getBean(ChessGame::class.java)
+        Platform.runLater {
+            list.forEach {
+                chessGame.handle(it)
+            }
+        }
 
     }
+
+    fun connect(gameId: String, username: String, server: String) {
+        this.gameId = gameId
+        this.username = username
+        this.api = server
+
+        chessSession = websocket.connect("ws://$api/ws", chessStompHandler).get()
+        playerSession = websocket.connect("ws://$api/ws", playerStompHandler).get()
+
+
+        playerSession.subscribe("/topic/player/$gameId", playerStompHandler)
+        chessSession.subscribe("/topic/chessgame/$gameId", chessStompHandler)
+
+        chessSession.send("/app/player/$gameId", PlayerMessage(username))
+
+        FileUtil.createRecord(gameId)
+        loadSteps()
+    }
+
 
     fun read(filename: String) {
         readMode = true

@@ -16,7 +16,7 @@ class FXMLScanner {
         val files: ArrayList<Pair<URL, String>> = ArrayList()
         val cl = FXMLScanner::class.java.classLoader
         val resolver: ResourcePatternResolver = PathMatchingResourcePatternResolver(cl)
-        val resources: Array<Resource> = resolver.getResources("classpath*:**/*.fxml")
+        val resources: Array<Resource> = resolver.getResources("classpath*:view/*.fxml")
         for (resource in resources) {
 
             files.add(resource.url to resource.filename!!)

@@ -6,13 +6,13 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<Pane prefHeight="236.0" prefWidth="404.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="git.dimitrikvirik.chessgamedesktop.controller.AlertController">
-   <Label fx:id="message" layoutX="46.0" layoutY="81.0" prefHeight="37.0" prefWidth="289.0" >
+<Pane prefHeight="236.0" prefWidth="505.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="git.dimitrikvirik.chessgamedesktop.controller.AlertController">
+   <Label fx:id="message" alignment="CENTER" layoutX="15.0" layoutY="81.0" prefHeight="37.0" prefWidth="476.0">
       <font>
          <Font size="20.0" />
       </font>
    </Label>
-   <Button layoutX="164.0" layoutY="166.0" mnemonicParsing="false" onAction="#close" text="OK">
+   <Button layoutX="229.0" layoutY="163.0" mnemonicParsing="false" onAction="#close" text="OK">
       <font>
          <Font size="20.0" />
       </font>

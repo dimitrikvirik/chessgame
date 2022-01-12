@@ -3,7 +3,6 @@ package git.dimitrikvirik.chessgameapi.service;
 import git.dimitrikvirik.chessgameapi.model.redis.Game;
 import git.dimitrikvirik.chessgameapi.repository.GameRedisRepository;
 import lombok.RequiredArgsConstructor;
-import org.keycloak.authorization.client.util.HttpResponseException;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;

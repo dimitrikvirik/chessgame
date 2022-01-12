@@ -35,14 +35,14 @@ abstract class ChessFigure(
 
     private val canMove: Boolean
         get() {
-            return (((chessGame.currentPlayer.value.role == "WHITE_PLAYER" && color == ChessFigureColor.WHITE)
-                    || (chessGame.currentPlayer.value.role == "BLACK_PLAYER" && color == ChessFigureColor.BLACK))
-                    ) && !chessGame.ended && !chessGame.readMode
+            return (((chessGame.currentChessPlayer.value.color == ChessFigureColor.WHITE && color == ChessFigureColor.WHITE)
+                    || (chessGame.currentChessPlayer.value.color == ChessFigureColor.BLACK && color == ChessFigureColor.BLACK))
+                    ) && !chessGame.ended && !chessGame.readMode && chessGame.currentChessPlayer.value == chessGame.joinedChessPlayer
         }
 
 
     init {
-        chessGame.currentPlayer.addListener { o: Observable ->
+        chessGame.currentChessPlayer.addListener { o: Observable ->
             if (canMove) {
                 cursor.set(Cursor.HAND)
             } else cursor.set(Cursor.DEFAULT)

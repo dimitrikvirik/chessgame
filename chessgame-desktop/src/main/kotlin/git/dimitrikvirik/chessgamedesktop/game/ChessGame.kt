@@ -4,7 +4,6 @@ import git.dimitrikvirik.chessgamedesktop.core.GameEngine
 import git.dimitrikvirik.chessgamedesktop.core.model.*
 import git.dimitrikvirik.chessgamedesktop.game.action.*
 import git.dimitrikvirik.chessgamedesktop.service.ChessService
-import git.dimitrikvirik.chessgamedesktop.util.FileUtil
 import org.springframework.stereotype.Component
 
 @Component
@@ -17,16 +16,13 @@ class ChessGame(
 
 
 
-        if(currentStep + 1 != gameMessage.step){
-            throw IllegalArgumentException("Wrong step")
-        }
         currentStep = gameMessage.step
 
         if (!gameMessage.action.startsWith("BECOME")) {
-            if (currentPlayer.value == firstPlayer) {
-                currentPlayer.set(secondPlayer)
+            if (currentChessPlayer.value == firstChessPlayer) {
+                currentChessPlayer.set(secondChessPlayer)
             } else {
-                currentPlayer.set(firstPlayer)
+                currentChessPlayer.set(firstChessPlayer)
             }
         }
         val action = when (gameMessage.action) {
@@ -71,10 +67,10 @@ class ChessGame(
 
         action.run(figure)
         if (gameMessage.action == "SHAH") {
-            if (currentPlayer.value == firstPlayer) {
-                currentPlayer.set(secondPlayer)
+            if (currentChessPlayer.value == firstChessPlayer) {
+                currentChessPlayer.set(secondChessPlayer)
             } else {
-                currentPlayer.set(firstPlayer)
+                currentChessPlayer.set(firstChessPlayer)
             }
         }
 

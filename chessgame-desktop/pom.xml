@@ -10,7 +10,7 @@
     </parent>
     <groupId>git.dimitrikvirik</groupId>
     <artifactId>chessgamedesktop</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>0.0.1-WINDOWS</version>
     <name>chessgamedesktop</name>
     <description>chessgame-desktop</description>
     <properties>

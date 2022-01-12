@@ -32,13 +32,13 @@ public class GlobalExceptionHandler {
         return new ResponseEntity<>(ExceptionBody.of(ex, applicationName, MethodName, exceptionName, request.getRequestURI()),
                 HttpStatus.BAD_REQUEST);
     }
-    @ExceptionHandler(Exception.class)
-    public ResponseEntity<Object> otherExceptionHandler(Exception ex,
-                                                        HandlerMethod handlerMethod, HttpServletRequest request){
-        String exceptionName = ex.getClass().getName();
-        String MethodName = handlerMethod.getMethod().getName();
-        return new ResponseEntity<>(ExceptionBody.of(ex, applicationName, MethodName, exceptionName, request.getRequestURI()),
-                HttpStatus.BAD_REQUEST);
-    }
+//    @ExceptionHandler(Exception.class)
+//    public ResponseEntity<Object> otherExceptionHandler(Exception ex,
+//                                                        HandlerMethod handlerMethod, HttpServletRequest request){
+//        String exceptionName = ex.getClass().getName();
+//        String MethodName = handlerMethod.getMethod().getName();
+//        return new ResponseEntity<>(ExceptionBody.of(ex, applicationName, MethodName, exceptionName, request.getRequestURI()),
+//                HttpStatus.BAD_REQUEST);
+//    }
 
 }

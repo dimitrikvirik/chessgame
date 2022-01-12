@@ -20,7 +20,7 @@ class EndgameAction(coordination: Coordination, override val type: String) :
         val firstWin = figure.color == ChessFigureColor.WHITE
         chessFigure.chessGame.end(firstWin)
 
-        val winner = chessFigure.chessGame.winnerPlayer!!.username
+        val winner = chessFigure.chessGame.winnerChessPlayer!!.userId
         val winnerText = Label("GG! $winner has won!")
         winnerText.font = Font.font(40.0)
         winnerText.viewOrder = -20.0

@@ -17,6 +17,8 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.time.LocalDateTime;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/game")
@@ -32,37 +34,49 @@ public class ChessGameController {
     }
 
 
-    @PostMapping("/join")
-    public Game joinGame(@RequestBody GameJoinParam gameJoinParam, @RequestHeader String userId) {
-        Game game = gameRedisService.get(gameJoinParam.getGameId());
-        if (gameJoinParam.getColor().equals(ChessPlayerColor.WHITE)) {
-            if (game.getWhitePlayer() != null) {
-                throw new ResponseStatusException(HttpStatus.CONFLICT, "White player taken!");
-            }
+    @MessageMapping({"/player/{gameId}"})
+    @SendTo({"/topic/player/{gameId}"})
+    public GameJoinParam joinGame(@DestinationVariable String gameId, GameJoinParam gameJoinParam) {
+        Game game = gameRedisService.get(gameId);
+        if (game.getWhitePlayer() == null) {
             ChessPlayer whitePlayer = new ChessPlayer();
             whitePlayer.setColor(ChessPlayerColor.WHITE);
-            whitePlayer.setUserId(userId);
+            whitePlayer.setUserId(gameJoinParam.getSenderPlayerName());
             game.setWhitePlayer(whitePlayer);
-        }
-        if (gameJoinParam.getColor().equals(ChessPlayerColor.BLACK)) {
-            if (game.getBlackPlayer() != null) {
-                throw new ResponseStatusException(HttpStatus.CONFLICT, "Black player taken!");
-            }
+
+
+        } else if (game.getBlackPlayer() == null) {
             ChessPlayer blackPlayer = new ChessPlayer();
             blackPlayer.setColor(ChessPlayerColor.BLACK);
-            blackPlayer.setUserId(userId);
+            blackPlayer.setUserId(gameJoinParam.getSenderPlayerName());
             game.setBlackPlayer(blackPlayer);
+
+        } else if (!(game.getBlackPlayer().getUserId().equals(gameJoinParam.getSenderPlayerName()) ||
+                game.getWhitePlayer().getUserId().equals(gameJoinParam.getSenderPlayerName())
+        )) {
+            throw new ResponseStatusException(HttpStatus.CONFLICT, "Game started!");
         }
-        return gameRedisService.update(game);
+        if (game.getWhitePlayer() != null) {
+            gameJoinParam.setWhiteConnected(true);
+            gameJoinParam.setWhitePlayerName(game.getWhitePlayer().getUserId());
+        }
+        if (game.getBlackPlayer() != null) {
+            gameJoinParam.setBlackConnected(true);
+            gameJoinParam.setBlackPlayerName(game.getBlackPlayer().getUserId());
+        }
+
+        gameRedisService.update(game);
+        return gameJoinParam;
     }
 
-//    @GetMapping("/load/{gameId}")
-//    public List<ChessMessage> getMessages(@RequestParam Long from, @RequestParam Long to, @PathVariable String gameId){
-//
-//        Game game = gameRedisService.get(gameId);
-//        List<ChessMessage> messages = game.getMessages();
-//
-//    }
+    @GetMapping("/load/{gameId}")
+    public List<GameMessage> getMessages(@RequestParam(defaultValue = "0") Long from, @PathVariable String gameId) {
+
+        Game game = gameRedisService.get(gameId);
+        List<GameMessage> messages = game.getMessages();
+        return messages.stream().filter(e -> e.getStep() > from).collect(Collectors.toList());
+
+    }
 
 
     @MessageMapping({"/chessgame/{gameId}"})
@@ -71,12 +85,11 @@ public class ChessGameController {
 
         message.setStep(message.getStep() + 1);
         message.setSendTime(LocalDateTime.now());
-//        Game game = gameRedisService.get(gameId);
-//        List<GameMessage> messages = game.getMessages();
-//        messages.add(message);
-//        gameRedisService.update(game);
-//        log.info(message + " " + messages.size());
-//        message.setStep(message.getStep() + 1);
+        Game game = gameRedisService.get(gameId);
+        List<GameMessage> messages = game.getMessages();
+        messages.add(message);
+        gameRedisService.update(game);
+        log.info(message + " " + messages.size());
         return message;
     }
 }

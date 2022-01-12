@@ -6,35 +6,35 @@ server:
 spring:
   application:
     name: chess
-  jpa:
-    database-platform: org.hibernate.dialect.PostgreSQLDialect
-    hibernate:
-      ddl-auto: update
-      dialect: org.hibernate.dialect.PostgreSQLDialect
-  datasource:
-    url: ${POSTGRES_URL}
-    username: ${POSTGRES_USER}
-    password: ${POSTGRES_PASSWORD}
-    driver-class-name: org.postgresql.Driver
-  security:
-    oauth2:
-      resourceserver:
-        jwt:
-          issuer-uri: ${KEYCLOAK_HOST}/auth/realms/${REALM}
+#  jpa:
+#    database-platform: org.hibernate.dialect.PostgreSQLDialect
+#    hibernate:
+#      ddl-auto: update
+#      dialect: org.hibernate.dialect.PostgreSQLDialect
+#  datasource:
+#    url: ${POSTGRES_URL}
+#    username: ${POSTGRES_USER}
+#    password: ${POSTGRES_PASSWORD}
+#    driver-class-name: org.postgresql.Driver
+#  security:
+#    oauth2:
+#      resourceserver:
+#        jwt:
+#          issuer-uri: ${KEYCLOAK_HOST}/auth/realms/${REALM}
   redis:
     host: ${REDIS_HOST}
-keycloak:
-  realm: ${REALM}
-  auth-server-url: ${KEYCLOAK_HOST}/auth
-  resource: ${KEYCLOAK_CLIENT}
-  public-client: true
-auth:
-  admin:
-    username: ${KEYCLOAK_ADMIN_USER}
-    password: ${KEYCLOAK_ADMIN_PASSWORD}
-common:
-  keycloak:
-    token-uri: ${KEYCLOAK_HOST}/auth/realms/${REALM}/protocol/openid-connect/token
-    authorization-uri: ${KEYCLOAK_HOST}/auth/realms/${REALM}/protocol/openid-connect/auth
-    client-id: ${KEYCLOAK_CLIENT}
-    client-secret: ${KEYCLOAK_SECRET}
+#keycloak:
+#  realm: ${REALM}
+#  auth-server-url: ${KEYCLOAK_HOST}/auth
+#  resource: ${KEYCLOAK_CLIENT}
+#  public-client: true
+#auth:
+#  admin:
+#    username: ${KEYCLOAK_ADMIN_USER}
+#    password: ${KEYCLOAK_ADMIN_PASSWORD}
+#common:
+#  keycloak:
+#    token-uri: ${KEYCLOAK_HOST}/auth/realms/${REALM}/protocol/openid-connect/token
+#    authorization-uri: ${KEYCLOAK_HOST}/auth/realms/${REALM}/protocol/openid-connect/auth
+#    client-id: ${KEYCLOAK_CLIENT}
+#    client-secret: ${KEYCLOAK_SECRET}

@@ -4,8 +4,8 @@ import com.fasterxml.jackson.databind.exc.InvalidFormatException;
 import lombok.Data;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.converter.HttpMessageNotReadableException;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.MethodArgumentNotValidException;
-import org.thymeleaf.util.StringUtils;
 
 import java.lang.reflect.Field;
 import java.time.LocalDateTime;
@@ -65,14 +65,14 @@ public class ExceptionBody {
 
         return new ExceptionBody(msg, application_name, method_name, exception_name, path, status);
     }
-
-    public static ExceptionBody of(Exception e, String application_name, String method_name, String exception_name, String path) {
-        var status = HttpStatus.INTERNAL_SERVER_ERROR.name();
-        String msg = e.getMessage();
-
-        var exceptionBody = new ExceptionBody(msg, application_name, method_name, exception_name, path, status);
-        exceptionBody.setStackTraceElements(e.getStackTrace());
-        return exceptionBody;
-    }
+//
+//    public static ExceptionBody of(Exception e, String application_name, String method_name, String exception_name, String path) {
+//        var status = HttpStatus.INTERNAL_SERVER_ERROR.name();
+//        String msg = e.getMessage();
+//
+//        var exceptionBody = new ExceptionBody(msg, application_name, method_name, exception_name, path, status);
+//        exceptionBody.setStackTraceElements(e.getStackTrace());
+//        return exceptionBody;
+//    }
 
 }
