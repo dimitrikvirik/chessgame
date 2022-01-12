@@ -25,7 +25,7 @@ class ChessStompHandler : StompSessionHandler {
         val chessMessage = p1 as GameMessage
         val chessGame = BeanContext.getBean(ChessGame::class.java)
 
-        if (chessMessage.step != chessGame.currentStep + 1) {
+        if (chessMessage.step != chessGame.currentStep + 1 && chessMessage.action != "SHAH"  && chessMessage.action != "ENDGAME" ) {
             val bean = BeanContext.getBean(ChessService::class.java)
             bean.loadSteps(chessGame.currentStep)
             println("Miss chess steps! ${chessMessage.step}  from server  and ${chessGame.currentStep} on local!")

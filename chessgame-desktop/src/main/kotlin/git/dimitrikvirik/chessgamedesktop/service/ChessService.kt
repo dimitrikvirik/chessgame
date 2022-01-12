@@ -58,7 +58,6 @@ class ChessService(
     )
 
 
-
     lateinit var game: Game
 
     fun create(server: String) {
@@ -69,10 +68,13 @@ class ChessService(
 
 
     fun loadSteps(from: Int = 0) {
+        val chessGame = BeanContext.getBean(ChessGame::class.java)
+
+
+
         val entity = restTemplate.getForEntity(
             "http://$api/game/load/$gameId", List::class.java, mapOf("from" to from)
         )
-        println()
         val objectMapper = ObjectMapper()
         objectMapper.registerModule(KotlinModule.Builder().build())
         objectMapper.registerModule(JavaTimeModule())
@@ -80,8 +82,10 @@ class ChessService(
         val list = entity.body?.map {
             objectMapper.convertValue(it, GameMessage::class.java)
         } ?: emptyList()
-        val chessGame = BeanContext.getBean(ChessGame::class.java)
+
+
         Platform.runLater {
+          if(from == 0)  chessGame.currentChessPlayer.set(chessGame.firstChessPlayer)
             list.forEach {
                 chessGame.handle(it)
             }
@@ -100,10 +104,12 @@ class ChessService(
 
         playerSession.subscribe("/topic/player/$gameId", playerStompHandler)
         chessSession.subscribe("/topic/chessgame/$gameId", chessStompHandler)
-
         chessSession.send("/app/player/$gameId", PlayerMessage(username))
 
+
+
         FileUtil.createRecord(gameId)
+        Thread.sleep(1000)
         loadSteps()
     }
 
@@ -112,6 +118,8 @@ class ChessService(
         readMode = true
         BeanContext.getBean(ChessGame::class.java).readMode = true
         Thread {
+
+
             FileUtil.readRecord(filename) { gameMessage ->
                 Platform.runLater {
                     BeanContext.getBean(ChessGame::class.java).handle(gameMessage)

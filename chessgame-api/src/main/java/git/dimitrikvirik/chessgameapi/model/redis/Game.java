@@ -20,4 +20,9 @@ public class Game {
     private ChessPlayer blackPlayer;
     private List<GameMessage> messages = new ArrayList<>();
 
+    @Indexed
+    private String whitePlayerSessionId;
+
+    @Indexed
+    private String blackPlayerSessionId;
 }

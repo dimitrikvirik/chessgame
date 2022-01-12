@@ -15,8 +15,8 @@ class ChessGame(
     override fun handle(gameMessage: GameMessage) {
 
 
-
         currentStep = gameMessage.step
+
 
         if (!gameMessage.action.startsWith("BECOME")) {
             if (currentChessPlayer.value == firstChessPlayer) {
@@ -62,9 +62,11 @@ class ChessGame(
                     throw IllegalArgumentException()
             }
         }
-        val figure =
-            figureLayer[gameMessage.fromMove] as AbstractFigure? ?: figureLayer[gameMessage.toMove] as AbstractFigure
-
+        val figure = if (gameMessage.fromMove.first == 0 && gameMessage.fromMove.second == 0) {
+            figureLayer[gameMessage.toMove] as AbstractFigure
+        } else {
+            figureLayer[gameMessage.fromMove] as AbstractFigure
+        }
         action.run(figure)
         if (gameMessage.action == "SHAH") {
             if (currentChessPlayer.value == firstChessPlayer) {

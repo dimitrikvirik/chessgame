@@ -26,4 +26,11 @@ public class GameRedisService {
                 () -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Game not found!")
         );
     }
+
+    public Game getBySessionId(String sessionId) {
+        return gameRepository.findByWhitePlayerSessionId(sessionId).orElse(
+                gameRepository.findByBlackPlayerSessionId(sessionId).orElse(null)
+        );
+    }
+
 }

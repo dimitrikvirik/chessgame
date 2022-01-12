@@ -29,5 +29,5 @@
       </font>
    </Label>
    <TextField fx:id="username" layoutX="151.0" layoutY="121.0" prefHeight="25.0" prefWidth="220.0" promptText="Username" />
-   <TextField fx:id="server" layoutX="145.0" layoutY="35.0" prefHeight="25.0" prefWidth="220.0" promptText="Server Address" text="localhost:8070" />
+   <TextField fx:id="server" layoutX="145.0" layoutY="35.0" prefHeight="25.0" prefWidth="220.0" promptText="Server Address" text="localhost:8090" />
 </Pane>

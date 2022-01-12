@@ -5,64 +5,32 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f1434a4a-6c70-48d3-a432-e8ea8568c679" name="Changes" comment="fixed api uri">
-      <change afterPath="$PROJECT_DIR$/bd814239-c6240-4570-a6c8-1cabf0cfd5df.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/chessgame-desktop/src/main/kotlin/git/dimitrikvirik/chessgamedesktop/config/PlayerStompHandler.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/chessgame-desktop/src/main/kotlin/git/dimitrikvirik/chessgamedesktop/core/model/PlayerMessage.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/chessgame-desktop/src/main/kotlin/git/dimitrikvirik/chessgamedesktop/model/param/GameJoinParam.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dregreg.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/reger.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/c6d64094-39f9-42df-be89-b61d0aabcb90.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/chessgame-api/src/main/java/git/dimitrikvirik/chessgameapi/config/HttpHandshakeInterceptor.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/d613df3b-a7ea-489a-8f7f-aaa472ef2d07.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dc30e147-a934-4c83-9d40-3d2c580fb2fe.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/efbdc3a4-2711-4f05-b76a-ff22d66ec535.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/f19289f8-5fd1-4c78-b915-00ed50518718.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ffedab08-6cab-4d7d-8e9a-56833ea093a1.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/2022-01-06-21-09-54.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/2022-01-10-22-01-07.csv" beforeDir="false" afterPath="$PROJECT_DIR$/189874ed-c983dd-4cb2-a1f8-6205d79081ee.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chessgame-api/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/chessgame-api/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chessgame-api/src/main/java/git/dimitrikvirik/chessgameapi/config/KeycloakConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/chessgame-api/src/main/java/git/dimitrikvirik/chessgameapi/config/KeycloakConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chessgame-api/src/main/java/git/dimitrikvirik/chessgameapi/config/KeycloakRoleConverter.java" beforeDir="false" afterPath="$PROJECT_DIR$/chessgame-api/src/main/java/git/dimitrikvirik/chessgameapi/config/KeycloakRoleConverter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chessgame-api/src/main/java/git/dimitrikvirik/chessgameapi/config/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/chessgame-api/src/main/java/git/dimitrikvirik/chessgameapi/config/SecurityConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chessgame-api/src/main/java/git/dimitrikvirik/chessgameapi/config/SwaggerConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/chessgame-api/src/main/java/git/dimitrikvirik/chessgameapi/config/SwaggerConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/189874ed-c983dd-4cb2-a1f8-6205d79081ee.csv" beforeDir="false" afterPath="$PROJECT_DIR$/5eea21d6-88be-4ddf-8aa0-a6d8623d00c4.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bd814239-c6240-4570-a6c8-1cabf0cfd5df.csv" beforeDir="false" afterPath="$PROJECT_DIR$/85bd74ff-f88b-496f-b1bb-c781eee72f28.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/c29d86dc-2c8e-4c92d-8741-cd362cdabb58.csv" beforeDir="false" afterPath="$PROJECT_DIR$/b1bd2be5-5256-4446-ae23-194baf1a999c.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/chessgame-api/src/main/java/git/dimitrikvirik/chessgameapi/config/WebSocketConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/chessgame-api/src/main/java/git/dimitrikvirik/chessgameapi/config/WebSocketConfig.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/chessgame-api/src/main/java/git/dimitrikvirik/chessgameapi/controller/ChessGameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/chessgame-api/src/main/java/git/dimitrikvirik/chessgameapi/controller/ChessGameController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chessgame-api/src/main/java/git/dimitrikvirik/chessgameapi/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/chessgame-api/src/main/java/git/dimitrikvirik/chessgameapi/controller/UserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chessgame-api/src/main/java/git/dimitrikvirik/chessgameapi/exception/ExceptionBody.java" beforeDir="false" afterPath="$PROJECT_DIR$/chessgame-api/src/main/java/git/dimitrikvirik/chessgameapi/exception/ExceptionBody.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chessgame-api/src/main/java/git/dimitrikvirik/chessgameapi/exception/GlobalExceptionHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/chessgame-api/src/main/java/git/dimitrikvirik/chessgameapi/exception/GlobalExceptionHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chessgame-api/src/main/java/git/dimitrikvirik/chessgameapi/facade/AuthFacade.java" beforeDir="false" afterPath="$PROJECT_DIR$/chessgame-api/src/main/java/git/dimitrikvirik/chessgameapi/facade/AuthFacade.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chessgame-api/src/main/java/git/dimitrikvirik/chessgameapi/model/domain/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/chessgame-api/src/main/java/git/dimitrikvirik/chessgameapi/model/domain/Game.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chessgame-api/src/main/java/git/dimitrikvirik/chessgameapi/model/domain/GameHistory.java" beforeDir="false" afterPath="$PROJECT_DIR$/chessgame-api/src/main/java/git/dimitrikvirik/chessgameapi/model/domain/GameHistory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chessgame-api/src/main/java/git/dimitrikvirik/chessgameapi/model/domain/UserAccount.java" beforeDir="false" afterPath="$PROJECT_DIR$/chessgame-api/src/main/java/git/dimitrikvirik/chessgameapi/model/domain/UserAccount.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chessgame-api/src/main/java/git/dimitrikvirik/chessgameapi/model/dto/UserAccountDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/chessgame-api/src/main/java/git/dimitrikvirik/chessgameapi/model/dto/UserAccountDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chessgame-api/src/main/java/git/dimitrikvirik/chessgameapi/model/dto/UserDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/chessgame-api/src/main/java/git/dimitrikvirik/chessgameapi/model/dto/UserDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chessgame-api/src/main/java/git/dimitrikvirik/chessgameapi/model/mapper/KeycloakMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/chessgame-api/src/main/java/git/dimitrikvirik/chessgameapi/model/mapper/KeycloakMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chessgame-api/src/main/java/git/dimitrikvirik/chessgameapi/model/param/GameJoinParam.java" beforeDir="false" afterPath="$PROJECT_DIR$/chessgame-api/src/main/java/git/dimitrikvirik/chessgameapi/model/param/GameJoinParam.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chessgame-api/src/main/java/git/dimitrikvirik/chessgameapi/repository/GameRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/chessgame-api/src/main/java/git/dimitrikvirik/chessgameapi/repository/GameRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chessgame-api/src/main/java/git/dimitrikvirik/chessgameapi/repository/UserAccountRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/chessgame-api/src/main/java/git/dimitrikvirik/chessgameapi/repository/UserAccountRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chessgame-api/src/main/java/git/dimitrikvirik/chessgameapi/service/AuthService.java" beforeDir="false" afterPath="$PROJECT_DIR$/chessgame-api/src/main/java/git/dimitrikvirik/chessgameapi/service/AuthService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/chessgame-api/src/main/java/git/dimitrikvirik/chessgameapi/model/redis/ChessPlayer.java" beforeDir="false" afterPath="$PROJECT_DIR$/chessgame-api/src/main/java/git/dimitrikvirik/chessgameapi/model/redis/ChessPlayer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/chessgame-api/src/main/java/git/dimitrikvirik/chessgameapi/model/redis/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/chessgame-api/src/main/java/git/dimitrikvirik/chessgameapi/model/redis/Game.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/chessgame-api/src/main/java/git/dimitrikvirik/chessgameapi/repository/GameRedisRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/chessgame-api/src/main/java/git/dimitrikvirik/chessgameapi/repository/GameRedisRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/chessgame-api/src/main/java/git/dimitrikvirik/chessgameapi/service/GameRedisService.java" beforeDir="false" afterPath="$PROJECT_DIR$/chessgame-api/src/main/java/git/dimitrikvirik/chessgameapi/service/GameRedisService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chessgame-api/src/main/java/git/dimitrikvirik/chessgameapi/service/GameService.java" beforeDir="false" afterPath="$PROJECT_DIR$/chessgame-api/src/main/java/git/dimitrikvirik/chessgameapi/service/GameService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chessgame-api/src/main/java/git/dimitrikvirik/chessgameapi/service/KeycloakService.java" beforeDir="false" afterPath="$PROJECT_DIR$/chessgame-api/src/main/java/git/dimitrikvirik/chessgameapi/service/KeycloakService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chessgame-api/src/main/java/git/dimitrikvirik/chessgameapi/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/chessgame-api/src/main/java/git/dimitrikvirik/chessgameapi/service/UserService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chessgame-api/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/chessgame-api/src/main/resources/application.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/chessgame-desktop/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/chessgame-desktop/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chessgame-desktop/src/main/kotlin/git/dimitrikvirik/chessgamedesktop/StageInitializer.kt" beforeDir="false" afterPath="$PROJECT_DIR$/chessgame-desktop/src/main/kotlin/git/dimitrikvirik/chessgamedesktop/StageInitializer.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/chessgame-desktop/src/main/kotlin/git/dimitrikvirik/chessgamedesktop/config/ChessStompHandler.kt" beforeDir="false" afterPath="$PROJECT_DIR$/chessgame-desktop/src/main/kotlin/git/dimitrikvirik/chessgamedesktop/config/ChessStompHandler.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/chessgame-desktop/src/main/kotlin/git/dimitrikvirik/chessgamedesktop/config/PlayerStompHandler.kt" beforeDir="false" afterPath="$PROJECT_DIR$/chessgame-desktop/src/main/kotlin/git/dimitrikvirik/chessgamedesktop/config/PlayerStompHandler.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/chessgame-desktop/src/main/kotlin/git/dimitrikvirik/chessgamedesktop/controller/GameBoardController.kt" beforeDir="false" afterPath="$PROJECT_DIR$/chessgame-desktop/src/main/kotlin/git/dimitrikvirik/chessgamedesktop/controller/GameBoardController.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chessgame-desktop/src/main/kotlin/git/dimitrikvirik/chessgamedesktop/controller/GameMenuController.kt" beforeDir="false" afterPath="$PROJECT_DIR$/chessgame-desktop/src/main/kotlin/git/dimitrikvirik/chessgamedesktop/controller/GameMenuController.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chessgame-desktop/src/main/kotlin/git/dimitrikvirik/chessgamedesktop/controller/RegistrationMenuController.kt" beforeDir="false" afterPath="$PROJECT_DIR$/chessgame-desktop/src/main/kotlin/git/dimitrikvirik/chessgamedesktop/controller/RegistrationMenuController.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chessgame-desktop/src/main/kotlin/git/dimitrikvirik/chessgamedesktop/core/FXMLScanner.kt" beforeDir="false" afterPath="$PROJECT_DIR$/chessgame-desktop/src/main/kotlin/git/dimitrikvirik/chessgamedesktop/core/FXMLScanner.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chessgame-desktop/src/main/kotlin/git/dimitrikvirik/chessgamedesktop/core/GameEngine.kt" beforeDir="false" afterPath="$PROJECT_DIR$/chessgame-desktop/src/main/kotlin/git/dimitrikvirik/chessgamedesktop/core/GameEngine.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chessgame-desktop/src/main/kotlin/git/dimitrikvirik/chessgamedesktop/core/model/Coordination.kt" beforeDir="false" afterPath="$PROJECT_DIR$/chessgame-desktop/src/main/kotlin/git/dimitrikvirik/chessgamedesktop/core/model/Coordination.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chessgame-desktop/src/main/kotlin/git/dimitrikvirik/chessgamedesktop/core/model/Player.kt" beforeDir="false" afterPath="$PROJECT_DIR$/chessgame-desktop/src/main/kotlin/git/dimitrikvirik/chessgamedesktop/core/model/ChessPlayer.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/chessgame-desktop/src/main/kotlin/git/dimitrikvirik/chessgamedesktop/game/ChessGame.kt" beforeDir="false" afterPath="$PROJECT_DIR$/chessgame-desktop/src/main/kotlin/git/dimitrikvirik/chessgamedesktop/game/ChessGame.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chessgame-desktop/src/main/kotlin/git/dimitrikvirik/chessgamedesktop/game/action/EndgameAction.kt" beforeDir="false" afterPath="$PROJECT_DIR$/chessgame-desktop/src/main/kotlin/git/dimitrikvirik/chessgamedesktop/game/action/EndgameAction.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chessgame-desktop/src/main/kotlin/git/dimitrikvirik/chessgamedesktop/game/figure/ChessFigure.kt" beforeDir="false" afterPath="$PROJECT_DIR$/chessgame-desktop/src/main/kotlin/git/dimitrikvirik/chessgamedesktop/game/figure/ChessFigure.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/chessgame-desktop/src/main/kotlin/git/dimitrikvirik/chessgamedesktop/service/ChessService.kt" beforeDir="false" afterPath="$PROJECT_DIR$/chessgame-desktop/src/main/kotlin/git/dimitrikvirik/chessgamedesktop/service/ChessService.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chessgame-desktop/src/main/kotlin/git/dimitrikvirik/chessgamedesktop/service/UserService.kt" beforeDir="false" afterPath="$PROJECT_DIR$/chessgame-desktop/src/main/kotlin/git/dimitrikvirik/chessgamedesktop/service/UserService.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chessgame-desktop/src/main/kotlin/git/dimitrikvirik/chessgamedesktop/util/FileUtil.kt" beforeDir="false" afterPath="$PROJECT_DIR$/chessgame-desktop/src/main/kotlin/git/dimitrikvirik/chessgamedesktop/util/FileUtil.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chessgame-desktop/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/chessgame-desktop/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chessgame-desktop/src/main/resources/view/alert-message.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/chessgame-desktop/src/main/resources/view/alert-message.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/chessgame-desktop/src/main/resources/view/game-menu.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/chessgame-desktop/src/main/resources/view/game-menu.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chessgame-desktop/src/main/resources/view/passwordreset-menu.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/chessgame-desktop/src/main/resources/view-stored/passwordreset-menu.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chessgame-desktop/src/main/resources/view/registration-menu.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/chessgame-desktop/src/main/resources/view-stored/registration-menu.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chessgame-desktop/src/main/resources/view/welcome-menu.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/chessgame-desktop/src/main/resources/view-stored/welcome-menu.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chessgame-desktop/target/chessgamedesktop-0.0.1-SNAPSHOT.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/defewf.csv" beforeDir="false" afterPath="$PROJECT_DIR$/c3e2f94d-3b32-46cb-84fa-8e7c443a51c4.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dregreg.csv" beforeDir="false" afterPath="$PROJECT_DIR$/cb43daf2-9a09-473c-9ee6-3a7f4cb71267.csv" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -76,9 +44,9 @@
         <option value="Kotlin Annotation" />
         <option value="Kotlin Interface" />
         <option value="Interface" />
-        <option value="Class" />
         <option value="Kotlin Class" />
         <option value="Kotlin Data Class" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -139,6 +107,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="database.data.extractors.current.export.id" value="Comma-separated (CSV)_id" />
     <property name="database.data.extractors.current.id" value="Comma-separated (CSV)_id" />
+    <property name="extract.method.default.visibility" value="private" />
     <property name="jdk.selected.JAVA_MODULE" value="17" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.eslint" value="true" />
@@ -213,7 +182,7 @@
       </set>
     </option>
   </component>
-  <component name="RunManager" selected="Spring Boot.ChessGameApiApplication">
+  <component name="RunManager" selected="Spring Boot.ChessgameApplication ">
     <configuration default="true" type="JetRunConfigurationType">
       <module name="chessgame-api" />
       <method v="2">
@@ -386,6 +355,8 @@
       <workItem from="1641892385368" duration="1010000" />
       <workItem from="1641896800125" duration="514000" />
       <workItem from="1641967256035" duration="3623000" />
+      <workItem from="1641983900142" duration="19000" />
+      <workItem from="1641989495237" duration="14359000" />
     </task>
     <task id="LOCAL-00001" summary="Chess Board Draw">
       <created>1637506665590</created>
@@ -579,6 +550,21 @@
           <line>20</line>
           <option name="timeStamp" value="60" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="kotlin-line">
+          <url>file://$PROJECT_DIR$/chessgame-desktop/src/main/kotlin/git/dimitrikvirik/chessgamedesktop/controller/GameMenuController.kt</url>
+          <line>58</line>
+          <option name="timeStamp" value="255" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="kotlin-line">
+          <url>file://$PROJECT_DIR$/chessgame-desktop/src/main/kotlin/git/dimitrikvirik/chessgamedesktop/game/ChessGame.kt</url>
+          <line>65</line>
+          <option name="timeStamp" value="258" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="kotlin-line">
+          <url>file://$PROJECT_DIR$/chessgame-desktop/src/main/kotlin/git/dimitrikvirik/chessgamedesktop/game/ChessGame.kt</url>
+          <line>67</line>
+          <option name="timeStamp" value="259" />
+        </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/chessgame-api/src/main/java/git/dimitrikvirik/chessgameapi/exception/GlobalExceptionHandler.java</url>
           <line>37</line>
@@ -589,6 +575,7 @@
     <pin-to-top-manager>
       <pinned-members>
         <PinnedItemInfo parentTag="org.springframework.messaging.simp.stomp.DefaultStompSession" memberName="subscriptions" />
+        <PinnedItemInfo parentTag="org.springframework.web.socket.messaging.SessionDisconnectEvent" memberName="message" />
       </pinned-members>
     </pin-to-top-manager>
     <watches-manager>

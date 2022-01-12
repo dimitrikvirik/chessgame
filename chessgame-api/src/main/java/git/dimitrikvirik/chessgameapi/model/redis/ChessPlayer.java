@@ -10,4 +10,6 @@ public class ChessPlayer {
 
     private String userId;
 
+    private Boolean connected;
+
 }

@@ -53,31 +53,40 @@ class GameBoardController(
     lateinit var figureLayer: Layer
     lateinit var actionLayer: Layer
 
-
-    fun setUser(playerMessage: PlayerMessage) {
-
-        val whitePlayer = if (!playerMessage.whiteConnected) {
-            ChessPlayer("Not Connected", ChessFigureColor.WHITE)
-        } else ChessPlayer(playerMessage.whitePlayerName!!, ChessFigureColor.WHITE)
-
-        val blackPlayer = if (!playerMessage.blackConnected) {
-            ChessPlayer("Not Connected", ChessFigureColor.BLACK)
-        } else ChessPlayer(playerMessage.blackPlayerName!!, ChessFigureColor.BLACK)
-        if(chessGame.chessService.username == whitePlayer.userId){
-            chessGame.joinedChessPlayer = whitePlayer
-        }
-        else{
-            chessGame.joinedChessPlayer = blackPlayer
-        }
+    lateinit var whitePlayer: ChessPlayer
+    lateinit var blackPlayer: ChessPlayer
 
 
+    fun updateUserText(){
         whitePlayerUsername.text = whitePlayer.userId
         blackPlayerUsername.text = blackPlayer.userId
+    }
+
+
+    fun setUser(playerMessage: PlayerMessage) {
+         whitePlayer = if (!playerMessage.whiteConnected) {
+            val msg = if (playerMessage.whitePlayerName != null) {
+                "${playerMessage.whitePlayerName} disconnected"
+            } else "Not Connected"
+
+            ChessPlayer(msg, ChessFigureColor.WHITE)
+        } else {
+            ChessPlayer(playerMessage.whitePlayerName!!, ChessFigureColor.WHITE)
+        }
+         blackPlayer = if (!playerMessage.blackConnected) {
+            val msg = if (playerMessage.blackPlayerName != null) {
+                "${playerMessage.blackPlayerName} disconnected"
+            } else "Not Connected"
+
+            ChessPlayer(msg, ChessFigureColor.BLACK)
+        } else ChessPlayer(playerMessage.blackPlayerName!!, ChessFigureColor.BLACK)
+        if (chessGame.chessService.username == whitePlayer.userId) {
+            chessGame.joinedChessPlayer = whitePlayer
+        } else {
+            chessGame.joinedChessPlayer = blackPlayer
+        }
         chessGame.firstChessPlayer = whitePlayer
         chessGame.secondChessPlayer = blackPlayer
-        chessGame.currentChessPlayer.value = chessGame.firstChessPlayer
-
-
 
     }
 

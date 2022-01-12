@@ -20,8 +20,10 @@ class PlayerStompHandler : StompSessionHandler {
     override fun handleFrame(headers: StompHeaders, payload: Any?) {
         println(payload)
 
+        val gameBoardController = BeanContext.getBean(GameBoardController::class.java)
+        gameBoardController.setUser(payload as PlayerMessage)
         Platform.runLater {
-            BeanContext.getBean(GameBoardController::class.java).setUser(payload as PlayerMessage)
+            gameBoardController.updateUserText()
         }
     }
 
