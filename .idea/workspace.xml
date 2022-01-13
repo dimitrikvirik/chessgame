@@ -4,157 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f1434a4a-6c70-48d3-a432-e8ea8568c679" name="Changes" comment="fixed api uri">
-      <change afterPath="$PROJECT_DIR$/.idea/jpa-buddy.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_datatype_jackson_datatype_jsr310_2_13_1.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_module_jackson_module_kotlin_2_13_1.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_mashape_unirest_unirest_java_1_4_9.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_opencsv_opencsv_5_5_2.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__commons_beanutils_commons_beanutils_1_9_4.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__commons_codec_commons_codec_1_15.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__commons_collections_commons_collections_3_2_2.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__commons_logging_commons_logging_1_2.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__io_lettuce_lettuce_core_6_1_5_RELEASE.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__io_netty_netty_buffer_4_1_69_Final.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__io_netty_netty_codec_4_1_69_Final.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__io_netty_netty_common_4_1_69_Final.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__io_netty_netty_handler_4_1_69_Final.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__io_netty_netty_resolver_4_1_69_Final.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__io_netty_netty_transport_4_1_69_Final.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__io_projectreactor_reactor_core_3_4_11.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__javax_validation_validation_api_2_0_1_Final.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_commons_commons_collections4_4_4.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_commons_commons_pool2_2_9_0.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_commons_commons_text_1_9.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_httpcomponents_httpasyncclient_4_1_4.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_httpcomponents_httpclient_4_5_13.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_httpcomponents_httpcore_4_4_14.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_httpcomponents_httpcore_nio_4_4_14.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_httpcomponents_httpmime_4_5_13.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apiguardian_apiguardian_api_1_1_0.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_json_json_20160212.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_junit_jupiter_junit_jupiter_api_5_7_2.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_junit_jupiter_junit_jupiter_engine_5_7_2.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_base_linux_17_0_0_1.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_controls_linux_17_0_0_1.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_fxml_linux_17_0_0_1.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_graphics_linux_17_0_0_1.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_media_linux_17_0_0_1.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_web_linux_17_0_0_1.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_reactivestreams_reactive_streams_1_0_3.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_data_redis_2_5_5.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_data_spring_data_commons_2_5_6.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_data_spring_data_keyvalue_2_5_6.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_data_spring_data_redis_2_5_6.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_context_support_5_3_12.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_oxm_5_3_12.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_tx_5_3_12.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__redis_clients_jedis_3_3_0.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+    <list default="true" id="f1434a4a-6c70-48d3-a432-e8ea8568c679" name="Changes" comment="fixed shah exception finally">
+      <change afterPath="$PROJECT_DIR$/0d7f244b-d31b-4809-b32a-82281c76d967.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/47248f10-763a-470a-b307-e3baa26cc72c.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/5e77f2d2-f33f-4a5a-91d4-0adab6c065f8.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/189874ed-c983dd-4cb2-a1f8-6205d79081ee.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd814239-c6240-4570-a6c8-1cabf0cfd5df.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/c29d86dc-2c8e-4c92d-8741-cd362cdabb58.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/chessgame-desktop/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/chessgamedesktop/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chessgame-desktop/.mvn/wrapper/MavenWrapperDownloader.java" beforeDir="false" afterPath="$PROJECT_DIR$/chessgamedesktop/.mvn/wrapper/MavenWrapperDownloader.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chessgame-desktop/.mvn/wrapper/maven-wrapper.jar" beforeDir="false" afterPath="$PROJECT_DIR$/chessgamedesktop/.mvn/wrapper/maven-wrapper.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chessgame-desktop/.mvn/wrapper/maven-wrapper.properties" beforeDir="false" afterPath="$PROJECT_DIR$/chessgamedesktop/.mvn/wrapper/maven-wrapper.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chessgame-desktop/mvnw" beforeDir="false" afterPath="$PROJECT_DIR$/chessgamedesktop/mvnw" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chessgame-desktop/mvnw.cmd" beforeDir="false" afterPath="$PROJECT_DIR$/chessgamedesktop/mvnw.cmd" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chessgame-desktop/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/chessgamedesktop/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chessgame-desktop/src/main/kotlin/git/dimitrikvirik/chessgamedesktop/ChartApplication.kt" beforeDir="false" afterPath="$PROJECT_DIR$/chessgamedesktop/src/main/kotlin/git/dimitrikvirik/chessgamedesktop/ChartApplication.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chessgame-desktop/src/main/kotlin/git/dimitrikvirik/chessgamedesktop/ChessgameApplication.kt" beforeDir="false" afterPath="$PROJECT_DIR$/chessgamedesktop/src/main/kotlin/git/dimitrikvirik/chessgamedesktop/ChessgameApplication.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chessgame-desktop/src/main/kotlin/git/dimitrikvirik/chessgamedesktop/StageInitializer.kt" beforeDir="false" afterPath="$PROJECT_DIR$/chessgamedesktop/src/main/kotlin/git/dimitrikvirik/chessgamedesktop/StageInitializer.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chessgame-desktop/src/main/kotlin/git/dimitrikvirik/chessgamedesktop/config/ChessStompHandler.kt" beforeDir="false" afterPath="$PROJECT_DIR$/chessgamedesktop/src/main/kotlin/git/dimitrikvirik/chessgamedesktop/config/ChessStompHandler.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chessgame-desktop/src/main/kotlin/git/dimitrikvirik/chessgamedesktop/config/PlayerStompHandler.kt" beforeDir="false" afterPath="$PROJECT_DIR$/chessgamedesktop/src/main/kotlin/git/dimitrikvirik/chessgamedesktop/config/PlayerStompHandler.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chessgame-desktop/src/main/kotlin/git/dimitrikvirik/chessgamedesktop/controller/AlertController.kt" beforeDir="false" afterPath="$PROJECT_DIR$/chessgamedesktop/src/main/kotlin/git/dimitrikvirik/chessgamedesktop/controller/AlertController.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chessgame-desktop/src/main/kotlin/git/dimitrikvirik/chessgamedesktop/controller/GameBoardController.kt" beforeDir="false" afterPath="$PROJECT_DIR$/chessgamedesktop/src/main/kotlin/git/dimitrikvirik/chessgamedesktop/controller/GameBoardController.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chessgame-desktop/src/main/kotlin/git/dimitrikvirik/chessgamedesktop/controller/GameMenuController.kt" beforeDir="false" afterPath="$PROJECT_DIR$/chessgamedesktop/src/main/kotlin/git/dimitrikvirik/chessgamedesktop/controller/GameMenuController.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chessgame-desktop/src/main/kotlin/git/dimitrikvirik/chessgamedesktop/controller/PasswordresetMenuController.kt" beforeDir="false" afterPath="$PROJECT_DIR$/chessgamedesktop/src/main/kotlin/git/dimitrikvirik/chessgamedesktop/controller/PasswordresetMenuController.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chessgame-desktop/src/main/kotlin/git/dimitrikvirik/chessgamedesktop/controller/RegistrationMenuController.kt" beforeDir="false" afterPath="$PROJECT_DIR$/chessgamedesktop/src/main/kotlin/git/dimitrikvirik/chessgamedesktop/controller/RegistrationMenuController.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chessgame-desktop/src/main/kotlin/git/dimitrikvirik/chessgamedesktop/controller/WelcomeMenuController.kt" beforeDir="false" afterPath="$PROJECT_DIR$/chessgamedesktop/src/main/kotlin/git/dimitrikvirik/chessgamedesktop/controller/WelcomeMenuController.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chessgame-desktop/src/main/kotlin/git/dimitrikvirik/chessgamedesktop/core/AssertLoader.kt" beforeDir="false" afterPath="$PROJECT_DIR$/chessgamedesktop/src/main/kotlin/git/dimitrikvirik/chessgamedesktop/core/AssertLoader.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chessgame-desktop/src/main/kotlin/git/dimitrikvirik/chessgamedesktop/core/BeanContext.kt" beforeDir="false" afterPath="$PROJECT_DIR$/chessgamedesktop/src/main/kotlin/git/dimitrikvirik/chessgamedesktop/core/BeanContext.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chessgame-desktop/src/main/kotlin/git/dimitrikvirik/chessgamedesktop/core/Controller.kt" beforeDir="false" afterPath="$PROJECT_DIR$/chessgamedesktop/src/main/kotlin/git/dimitrikvirik/chessgamedesktop/core/Controller.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chessgame-desktop/src/main/kotlin/git/dimitrikvirik/chessgamedesktop/core/FXMLScanner.kt" beforeDir="false" afterPath="$PROJECT_DIR$/chessgamedesktop/src/main/kotlin/git/dimitrikvirik/chessgamedesktop/core/FXMLScanner.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chessgame-desktop/src/main/kotlin/git/dimitrikvirik/chessgamedesktop/core/GameEngine.kt" beforeDir="false" afterPath="$PROJECT_DIR$/chessgamedesktop/src/main/kotlin/git/dimitrikvirik/chessgamedesktop/core/GameEngine.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chessgame-desktop/src/main/kotlin/git/dimitrikvirik/chessgamedesktop/core/SceneBuilder.kt" beforeDir="false" afterPath="$PROJECT_DIR$/chessgamedesktop/src/main/kotlin/git/dimitrikvirik/chessgamedesktop/core/SceneBuilder.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chessgame-desktop/src/main/kotlin/git/dimitrikvirik/chessgamedesktop/core/SceneContext.kt" beforeDir="false" afterPath="$PROJECT_DIR$/chessgamedesktop/src/main/kotlin/git/dimitrikvirik/chessgamedesktop/core/SceneContext.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chessgame-desktop/src/main/kotlin/git/dimitrikvirik/chessgamedesktop/core/SceneContextHolder.kt" beforeDir="false" afterPath="$PROJECT_DIR$/chessgamedesktop/src/main/kotlin/git/dimitrikvirik/chessgamedesktop/core/SceneContextHolder.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chessgame-desktop/src/main/kotlin/git/dimitrikvirik/chessgamedesktop/core/model/AbstractAction.kt" beforeDir="false" afterPath="$PROJECT_DIR$/chessgamedesktop/src/main/kotlin/git/dimitrikvirik/chessgamedesktop/core/model/AbstractAction.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chessgame-desktop/src/main/kotlin/git/dimitrikvirik/chessgamedesktop/core/model/AbstractFigure.kt" beforeDir="false" afterPath="$PROJECT_DIR$/chessgamedesktop/src/main/kotlin/git/dimitrikvirik/chessgamedesktop/core/model/AbstractFigure.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chessgame-desktop/src/main/kotlin/git/dimitrikvirik/chessgamedesktop/core/model/AbstractSquare.kt" beforeDir="false" afterPath="$PROJECT_DIR$/chessgamedesktop/src/main/kotlin/git/dimitrikvirik/chessgamedesktop/core/model/AbstractSquare.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chessgame-desktop/src/main/kotlin/git/dimitrikvirik/chessgamedesktop/core/model/ChessPlayer.kt" beforeDir="false" afterPath="$PROJECT_DIR$/chessgamedesktop/src/main/kotlin/git/dimitrikvirik/chessgamedesktop/core/model/ChessPlayer.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chessgame-desktop/src/main/kotlin/git/dimitrikvirik/chessgamedesktop/core/model/Coordination.kt" beforeDir="false" afterPath="$PROJECT_DIR$/chessgamedesktop/src/main/kotlin/git/dimitrikvirik/chessgamedesktop/core/model/Coordination.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chessgame-desktop/src/main/kotlin/git/dimitrikvirik/chessgamedesktop/core/model/GameHistory.kt" beforeDir="false" afterPath="$PROJECT_DIR$/chessgamedesktop/src/main/kotlin/git/dimitrikvirik/chessgamedesktop/core/model/GameHistory.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chessgame-desktop/src/main/kotlin/git/dimitrikvirik/chessgamedesktop/core/model/GameMessage.kt" beforeDir="false" afterPath="$PROJECT_DIR$/chessgamedesktop/src/main/kotlin/git/dimitrikvirik/chessgamedesktop/core/model/GameMessage.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chessgame-desktop/src/main/kotlin/git/dimitrikvirik/chessgamedesktop/core/model/GameObject.kt" beforeDir="false" afterPath="$PROJECT_DIR$/chessgamedesktop/src/main/kotlin/git/dimitrikvirik/chessgamedesktop/core/model/GameObject.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chessgame-desktop/src/main/kotlin/git/dimitrikvirik/chessgamedesktop/core/model/Layer.kt" beforeDir="false" afterPath="$PROJECT_DIR$/chessgamedesktop/src/main/kotlin/git/dimitrikvirik/chessgamedesktop/core/model/Layer.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chessgame-desktop/src/main/kotlin/git/dimitrikvirik/chessgamedesktop/core/model/ObjectIndex.kt" beforeDir="false" afterPath="$PROJECT_DIR$/chessgamedesktop/src/main/kotlin/git/dimitrikvirik/chessgamedesktop/core/model/ObjectIndex.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chessgame-desktop/src/main/kotlin/git/dimitrikvirik/chessgamedesktop/core/model/PlayerMessage.kt" beforeDir="false" afterPath="$PROJECT_DIR$/chessgamedesktop/src/main/kotlin/git/dimitrikvirik/chessgamedesktop/core/model/PlayerMessage.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chessgame-desktop/src/main/kotlin/git/dimitrikvirik/chessgamedesktop/game/ChessGame.kt" beforeDir="false" afterPath="$PROJECT_DIR$/chessgamedesktop/src/main/kotlin/git/dimitrikvirik/chessgamedesktop/game/ChessGame.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chessgame-desktop/src/main/kotlin/git/dimitrikvirik/chessgamedesktop/game/action/BecomeAction.kt" beforeDir="false" afterPath="$PROJECT_DIR$/chessgamedesktop/src/main/kotlin/git/dimitrikvirik/chessgamedesktop/game/action/BecomeAction.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chessgame-desktop/src/main/kotlin/git/dimitrikvirik/chessgamedesktop/game/action/EndgameAction.kt" beforeDir="false" afterPath="$PROJECT_DIR$/chessgamedesktop/src/main/kotlin/git/dimitrikvirik/chessgamedesktop/game/action/EndgameAction.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chessgame-desktop/src/main/kotlin/git/dimitrikvirik/chessgamedesktop/game/action/KillAction.kt" beforeDir="false" afterPath="$PROJECT_DIR$/chessgamedesktop/src/main/kotlin/git/dimitrikvirik/chessgamedesktop/game/action/KillAction.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chessgame-desktop/src/main/kotlin/git/dimitrikvirik/chessgamedesktop/game/action/MoveAction.kt" beforeDir="false" afterPath="$PROJECT_DIR$/chessgamedesktop/src/main/kotlin/git/dimitrikvirik/chessgamedesktop/game/action/MoveAction.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chessgame-desktop/src/main/kotlin/git/dimitrikvirik/chessgamedesktop/game/action/ShahAction.kt" beforeDir="false" afterPath="$PROJECT_DIR$/chessgamedesktop/src/main/kotlin/git/dimitrikvirik/chessgamedesktop/game/action/ShahAction.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chessgame-desktop/src/main/kotlin/git/dimitrikvirik/chessgamedesktop/game/action/SpecialAction.kt" beforeDir="false" afterPath="$PROJECT_DIR$/chessgamedesktop/src/main/kotlin/git/dimitrikvirik/chessgamedesktop/game/action/SpecialAction.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chessgame-desktop/src/main/kotlin/git/dimitrikvirik/chessgamedesktop/game/action/SpecialKillAction.kt" beforeDir="false" afterPath="$PROJECT_DIR$/chessgamedesktop/src/main/kotlin/git/dimitrikvirik/chessgamedesktop/game/action/SpecialKillAction.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chessgame-desktop/src/main/kotlin/git/dimitrikvirik/chessgamedesktop/game/action/SpecialMoveAction.kt" beforeDir="false" afterPath="$PROJECT_DIR$/chessgamedesktop/src/main/kotlin/git/dimitrikvirik/chessgamedesktop/game/action/SpecialMoveAction.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chessgame-desktop/src/main/kotlin/git/dimitrikvirik/chessgamedesktop/game/action/SwapAction.kt" beforeDir="false" afterPath="$PROJECT_DIR$/chessgamedesktop/src/main/kotlin/git/dimitrikvirik/chessgamedesktop/game/action/SwapAction.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chessgame-desktop/src/main/kotlin/git/dimitrikvirik/chessgamedesktop/game/figure/ChessBishop.kt" beforeDir="false" afterPath="$PROJECT_DIR$/chessgamedesktop/src/main/kotlin/git/dimitrikvirik/chessgamedesktop/game/figure/ChessBishop.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chessgame-desktop/src/main/kotlin/git/dimitrikvirik/chessgamedesktop/game/figure/ChessFigure.kt" beforeDir="false" afterPath="$PROJECT_DIR$/chessgamedesktop/src/main/kotlin/git/dimitrikvirik/chessgamedesktop/game/figure/ChessFigure.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chessgame-desktop/src/main/kotlin/git/dimitrikvirik/chessgamedesktop/game/figure/ChessKing.kt" beforeDir="false" afterPath="$PROJECT_DIR$/chessgamedesktop/src/main/kotlin/git/dimitrikvirik/chessgamedesktop/game/figure/ChessKing.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chessgame-desktop/src/main/kotlin/git/dimitrikvirik/chessgamedesktop/game/figure/ChessKnight.kt" beforeDir="false" afterPath="$PROJECT_DIR$/chessgamedesktop/src/main/kotlin/git/dimitrikvirik/chessgamedesktop/game/figure/ChessKnight.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chessgame-desktop/src/main/kotlin/git/dimitrikvirik/chessgamedesktop/game/figure/ChessPawn.kt" beforeDir="false" afterPath="$PROJECT_DIR$/chessgamedesktop/src/main/kotlin/git/dimitrikvirik/chessgamedesktop/game/figure/ChessPawn.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chessgame-desktop/src/main/kotlin/git/dimitrikvirik/chessgamedesktop/game/figure/ChessQueen.kt" beforeDir="false" afterPath="$PROJECT_DIR$/chessgamedesktop/src/main/kotlin/git/dimitrikvirik/chessgamedesktop/game/figure/ChessQueen.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chessgame-desktop/src/main/kotlin/git/dimitrikvirik/chessgamedesktop/game/figure/ChessRook.kt" beforeDir="false" afterPath="$PROJECT_DIR$/chessgamedesktop/src/main/kotlin/git/dimitrikvirik/chessgamedesktop/game/figure/ChessRook.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chessgame-desktop/src/main/kotlin/git/dimitrikvirik/chessgamedesktop/game/figure/FigureBuilder.kt" beforeDir="false" afterPath="$PROJECT_DIR$/chessgamedesktop/src/main/kotlin/git/dimitrikvirik/chessgamedesktop/game/figure/FigureBuilder.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chessgame-desktop/src/main/kotlin/git/dimitrikvirik/chessgamedesktop/game/figure/model/ChessFigureColor.kt" beforeDir="false" afterPath="$PROJECT_DIR$/chessgamedesktop/src/main/kotlin/git/dimitrikvirik/chessgamedesktop/game/figure/model/ChessFigureColor.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chessgame-desktop/src/main/kotlin/git/dimitrikvirik/chessgamedesktop/game/square/BlackSquare.kt" beforeDir="false" afterPath="$PROJECT_DIR$/chessgamedesktop/src/main/kotlin/git/dimitrikvirik/chessgamedesktop/game/square/BlackSquare.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chessgame-desktop/src/main/kotlin/git/dimitrikvirik/chessgamedesktop/game/square/SquareFactory.kt" beforeDir="false" afterPath="$PROJECT_DIR$/chessgamedesktop/src/main/kotlin/git/dimitrikvirik/chessgamedesktop/game/square/SquareFactory.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chessgame-desktop/src/main/kotlin/git/dimitrikvirik/chessgamedesktop/game/square/WhiteSquare.kt" beforeDir="false" afterPath="$PROJECT_DIR$/chessgamedesktop/src/main/kotlin/git/dimitrikvirik/chessgamedesktop/game/square/WhiteSquare.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chessgame-desktop/src/main/kotlin/git/dimitrikvirik/chessgamedesktop/model/dto/UserAccountDTO.kt" beforeDir="false" afterPath="$PROJECT_DIR$/chessgamedesktop/src/main/kotlin/git/dimitrikvirik/chessgamedesktop/model/dto/UserAccountDTO.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chessgame-desktop/src/main/kotlin/git/dimitrikvirik/chessgamedesktop/model/dto/UserDTO.kt" beforeDir="false" afterPath="$PROJECT_DIR$/chessgamedesktop/src/main/kotlin/git/dimitrikvirik/chessgamedesktop/model/dto/UserDTO.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chessgame-desktop/src/main/kotlin/git/dimitrikvirik/chessgamedesktop/model/param/GameJoinParam.kt" beforeDir="false" afterPath="$PROJECT_DIR$/chessgamedesktop/src/main/kotlin/git/dimitrikvirik/chessgamedesktop/model/param/GameJoinParam.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chessgame-desktop/src/main/kotlin/git/dimitrikvirik/chessgamedesktop/model/param/UserRegParam.kt" beforeDir="false" afterPath="$PROJECT_DIR$/chessgamedesktop/src/main/kotlin/git/dimitrikvirik/chessgamedesktop/model/param/UserRegParam.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chessgame-desktop/src/main/kotlin/git/dimitrikvirik/chessgamedesktop/service/ChessService.kt" beforeDir="false" afterPath="$PROJECT_DIR$/chessgamedesktop/src/main/kotlin/git/dimitrikvirik/chessgamedesktop/service/ChessService.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chessgame-desktop/src/main/kotlin/git/dimitrikvirik/chessgamedesktop/service/UserService.kt" beforeDir="false" afterPath="$PROJECT_DIR$/chessgamedesktop/src/main/kotlin/git/dimitrikvirik/chessgamedesktop/service/UserService.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chessgame-desktop/src/main/kotlin/git/dimitrikvirik/chessgamedesktop/util/FileUtil.kt" beforeDir="false" afterPath="$PROJECT_DIR$/chessgamedesktop/src/main/kotlin/git/dimitrikvirik/chessgamedesktop/util/FileUtil.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chessgame-desktop/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/chessgamedesktop/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chessgame-desktop/src/main/resources/assert.csv" beforeDir="false" afterPath="$PROJECT_DIR$/chessgamedesktop/src/main/resources/assert.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chessgame-desktop/src/main/resources/assert/b_bishop_1x.png" beforeDir="false" afterPath="$PROJECT_DIR$/chessgamedesktop/src/main/resources/assert/b_bishop_1x.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chessgame-desktop/src/main/resources/assert/b_king_1x.png" beforeDir="false" afterPath="$PROJECT_DIR$/chessgamedesktop/src/main/resources/assert/b_king_1x.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chessgame-desktop/src/main/resources/assert/b_knight_1x.png" beforeDir="false" afterPath="$PROJECT_DIR$/chessgamedesktop/src/main/resources/assert/b_knight_1x.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chessgame-desktop/src/main/resources/assert/b_pawn_1x.png" beforeDir="false" afterPath="$PROJECT_DIR$/chessgamedesktop/src/main/resources/assert/b_pawn_1x.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chessgame-desktop/src/main/resources/assert/b_queen_1x.png" beforeDir="false" afterPath="$PROJECT_DIR$/chessgamedesktop/src/main/resources/assert/b_queen_1x.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chessgame-desktop/src/main/resources/assert/b_rook_1x.png" beforeDir="false" afterPath="$PROJECT_DIR$/chessgamedesktop/src/main/resources/assert/b_rook_1x.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chessgame-desktop/src/main/resources/assert/square_black_1x.png" beforeDir="false" afterPath="$PROJECT_DIR$/chessgamedesktop/src/main/resources/assert/square_black_1x.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chessgame-desktop/src/main/resources/assert/square_red_1x.png" beforeDir="false" afterPath="$PROJECT_DIR$/chessgamedesktop/src/main/resources/assert/square_red_1x.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chessgame-desktop/src/main/resources/assert/square_s_kill_1x.png" beforeDir="false" afterPath="$PROJECT_DIR$/chessgamedesktop/src/main/resources/assert/square_s_kill_1x.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chessgame-desktop/src/main/resources/assert/square_s_move_1x.png" beforeDir="false" afterPath="$PROJECT_DIR$/chessgamedesktop/src/main/resources/assert/square_s_move_1x.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chessgame-desktop/src/main/resources/assert/square_white_1x.png" beforeDir="false" afterPath="$PROJECT_DIR$/chessgamedesktop/src/main/resources/assert/square_white_1x.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chessgame-desktop/src/main/resources/assert/square_yellow_1x.png" beforeDir="false" afterPath="$PROJECT_DIR$/chessgamedesktop/src/main/resources/assert/square_yellow_1x.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chessgame-desktop/src/main/resources/assert/virtual.png" beforeDir="false" afterPath="$PROJECT_DIR$/chessgamedesktop/src/main/resources/assert/virtual.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chessgame-desktop/src/main/resources/assert/w_bishop_1x.png" beforeDir="false" afterPath="$PROJECT_DIR$/chessgamedesktop/src/main/resources/assert/w_bishop_1x.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chessgame-desktop/src/main/resources/assert/w_king_1x.png" beforeDir="false" afterPath="$PROJECT_DIR$/chessgamedesktop/src/main/resources/assert/w_king_1x.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chessgame-desktop/src/main/resources/assert/w_knight_1x.png" beforeDir="false" afterPath="$PROJECT_DIR$/chessgamedesktop/src/main/resources/assert/w_knight_1x.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chessgame-desktop/src/main/resources/assert/w_pawn_1x.png" beforeDir="false" afterPath="$PROJECT_DIR$/chessgamedesktop/src/main/resources/assert/w_pawn_1x.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chessgame-desktop/src/main/resources/assert/w_queen_1x.png" beforeDir="false" afterPath="$PROJECT_DIR$/chessgamedesktop/src/main/resources/assert/w_queen_1x.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chessgame-desktop/src/main/resources/assert/w_rook_1x.png" beforeDir="false" afterPath="$PROJECT_DIR$/chessgamedesktop/src/main/resources/assert/w_rook_1x.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chessgame-desktop/src/main/resources/img/default_profile.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/chessgamedesktop/src/main/resources/img/default_profile.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chessgame-desktop/src/main/resources/img/logo.png" beforeDir="false" afterPath="$PROJECT_DIR$/chessgamedesktop/src/main/resources/img/logo.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chessgame-desktop/src/main/resources/view-stored/passwordreset-menu.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/chessgamedesktop/src/main/resources/view-stored/passwordreset-menu.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chessgame-desktop/src/main/resources/view-stored/registration-menu.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/chessgamedesktop/src/main/resources/view-stored/registration-menu.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chessgame-desktop/src/main/resources/view-stored/welcome-menu.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/chessgamedesktop/src/main/resources/view-stored/welcome-menu.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chessgame-desktop/src/main/resources/view/alert-message.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/chessgamedesktop/src/main/resources/view/alert-message.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chessgame-desktop/src/main/resources/view/game-board.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/chessgamedesktop/src/main/resources/view/game-board.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chessgame-desktop/src/main/resources/view/game-menu.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/chessgamedesktop/src/main/resources/view/game-menu.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chessgame-desktop/src/test/kotlin/git/dimitrikvirik/chessgame/ChessgameApplicationTests.kt" beforeDir="false" afterPath="$PROJECT_DIR$/chessgamedesktop/src/test/kotlin/git/dimitrikvirik/chessgame/ChessgameApplicationTests.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/chessgamedesktop/src/main/kotlin/git/dimitrikvirik/chessgamedesktop/game/action/BecomeAction.kt" beforeDir="false" afterPath="$PROJECT_DIR$/chessgamedesktop/src/main/kotlin/git/dimitrikvirik/chessgamedesktop/game/action/BecomeAction.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/chessgamedesktop/src/main/kotlin/git/dimitrikvirik/chessgamedesktop/game/figure/ChessPawn.kt" beforeDir="false" afterPath="$PROJECT_DIR$/chessgamedesktop/src/main/kotlin/git/dimitrikvirik/chessgamedesktop/game/figure/ChessPawn.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -306,7 +162,7 @@
       </set>
     </option>
   </component>
-  <component name="RunManager" selected="Spring Boot.ChessGameApiApplication">
+  <component name="RunManager" selected="Spring Boot.ChessgameApplication">
     <configuration default="true" type="JetRunConfigurationType">
       <module name="chessgame-api" />
       <method v="2">
@@ -581,7 +437,14 @@
       <option name="project" value="LOCAL" />
       <updated>1641838580344</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="fixed shah exception finally">
+      <created>1642059407284</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1642059407284</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -618,7 +481,8 @@
     <MESSAGE value="added some feuteres" />
     <MESSAGE value="fixed" />
     <MESSAGE value="fixed api uri" />
-    <option name="LAST_COMMIT_MESSAGE" value="fixed api uri" />
+    <MESSAGE value="fixed shah exception finally" />
+    <option name="LAST_COMMIT_MESSAGE" value="fixed shah exception finally" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

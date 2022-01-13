@@ -6,7 +6,7 @@ import git.dimitrikvirik.chessgamedesktop.core.model.Coordination
 import git.dimitrikvirik.chessgamedesktop.game.figure.*
 
 class BecomeAction(coordination: Coordination, override val type: String) :
-    AbstractAction(coordination, Coordination(0, 0, 0), "Become") {
+    AbstractAction(coordination, coordination, "Become") {
     override fun run(figure: AbstractFigure) {
         val becomeType = type.split("-")[1]
         val pawn = (figure as ChessPawn)

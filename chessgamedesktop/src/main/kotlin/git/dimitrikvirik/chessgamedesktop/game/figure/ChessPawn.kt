@@ -19,7 +19,8 @@ class ChessPawn(
 
 
     private fun become() {
-        chessGame.send(BecomeAction(this.cord, "BECOME-QUEEN"))
+        if (chessGame.joinedChessPlayer.color == color)
+            chessGame.send(BecomeAction(this.cord, "BECOME-QUEEN"))
     }
 
 
