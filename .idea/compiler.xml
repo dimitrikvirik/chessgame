@@ -8,20 +8,21 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="chessgame-api" />
-        <module name="chessgame-desktop" />
+        <module name="chessgamedesktop" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="chessgame" target="17" />
       <module name="chessgame-api" target="11" />
       <module name="chessgame-desktop" target="11" />
-      <module name="chessgamedesktop" target="17" />
+      <module name="chessgamedesktop" target="11" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="chessgame-api" options="-parameters" />
       <module name="chessgame-desktop" options="-parameters" />
+      <module name="chessgamedesktop" options="-parameters" />
     </option>
   </component>
 </project>

@@ -19,7 +19,7 @@
     </properties>
 
     <modules>
-        <module>chessgame-desktop</module>
+        <module>chessgamedesktop</module>
         <module>chessgame-api</module>
     </modules>
 
