@@ -151,7 +151,7 @@ abstract class ChessFigure(
                 it.killableBlocks().isEmpty() && it.movableBlocks().isEmpty()
             }
         if (isEndgame) {
-            chessGame.send(EndgameAction(this.cord, "ENDGAME"))
+            EndgameAction(this.cord, "ENDGAME").run(this)
         }
 
     }
