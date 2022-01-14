@@ -23,6 +23,7 @@ import org.springframework.web.socket.messaging.SessionDisconnectEvent;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Random;
 import java.util.stream.Collectors;
 
 @RestController
@@ -65,40 +66,46 @@ public class ChessGameController {
     }
 
     private void setPlayer(SimpMessageHeaderAccessor headerAccessor, GameJoinParam gameJoinParam, Game game) {
-        if (game.getWhitePlayer() == null) {
-            if (game.getBlackPlayer() != null) {
-                if (gameJoinParam.getSenderPlayerName().equals(game.getBlackPlayer().getUserId())) {
-                    game.setBlackPlayerSessionId(headerAccessor.getSessionId());
-                    game.getBlackPlayer().setConnected(true);
-                    return;
-                }
-            }
-            ChessPlayer whitePlayer = new ChessPlayer();
-            whitePlayer.setColor(ChessPlayerColor.WHITE);
-            whitePlayer.setUserId(gameJoinParam.getSenderPlayerName());
-            game.setWhitePlayer(whitePlayer);
+        if (game.getBlackPlayer() != null &&  gameJoinParam.getSenderPlayerName().equals(game.getBlackPlayer().getUserId())) {
+            game.setBlackPlayerSessionId(headerAccessor.getSessionId());
+            game.getBlackPlayer().setConnected(true);
+            return;
+        }
+        if (game.getWhitePlayer() != null &&   gameJoinParam.getSenderPlayerName().equals(game.getWhitePlayer().getUserId())) {
             game.setWhitePlayerSessionId(headerAccessor.getSessionId());
             game.getWhitePlayer().setConnected(true);
-        } else if (game.getBlackPlayer() == null) {
-            if (game.getWhitePlayer() != null) {
-                if (gameJoinParam.getSenderPlayerName().equals(game.getWhitePlayer().getUserId())) {
-                    game.setWhitePlayerSessionId(headerAccessor.getSessionId());
-                    game.getWhitePlayer().setConnected(true);
-                    return;
-                }
-            }
-
-            ChessPlayer blackPlayer = new ChessPlayer();
-            blackPlayer.setColor(ChessPlayerColor.BLACK);
-            blackPlayer.setUserId(gameJoinParam.getSenderPlayerName());
-            game.setBlackPlayerSessionId(headerAccessor.getSessionId());
-            game.setBlackPlayer(blackPlayer);
-            game.getBlackPlayer().setConnected(true);
-        } else if (!(game.getBlackPlayer().getUserId().equals(gameJoinParam.getSenderPlayerName()) ||
-                game.getWhitePlayer().getUserId().equals(gameJoinParam.getSenderPlayerName())
-        )) {
+            return;
+        }
+        if (game.getWhitePlayer() == null && game.getBlackPlayer() == null) {
+            final int random = new Random().nextInt(2);
+            if (random == 0) {
+                addWhitePlayer(headerAccessor, gameJoinParam, game);
+            } else addBlackPlayer(headerAccessor, gameJoinParam, game);
+        } else if (game.getWhitePlayer() == null) {
+            addBlackPlayer(headerAccessor, gameJoinParam, game);
+        } else if (game.getBlackPlayer() != null) {
+            addWhitePlayer(headerAccessor, gameJoinParam, game);
+        } else {
             throw new ResponseStatusException(HttpStatus.CONFLICT, "Game started!");
         }
+    }
+
+    private void addBlackPlayer(SimpMessageHeaderAccessor headerAccessor, GameJoinParam gameJoinParam, Game game) {
+        ChessPlayer blackPlayer = new ChessPlayer();
+        blackPlayer.setColor(ChessPlayerColor.BLACK);
+        blackPlayer.setUserId(gameJoinParam.getSenderPlayerName());
+        game.setBlackPlayerSessionId(headerAccessor.getSessionId());
+        game.setBlackPlayer(blackPlayer);
+        game.getBlackPlayer().setConnected(true);
+    }
+
+    private void addWhitePlayer(SimpMessageHeaderAccessor headerAccessor, GameJoinParam gameJoinParam, Game game) {
+        ChessPlayer whitePlayer = new ChessPlayer();
+        whitePlayer.setColor(ChessPlayerColor.WHITE);
+        whitePlayer.setUserId(gameJoinParam.getSenderPlayerName());
+        game.setWhitePlayer(whitePlayer);
+        game.setWhitePlayerSessionId(headerAccessor.getSessionId());
+        game.getWhitePlayer().setConnected(true);
     }
 
     @GetMapping("/load/{gameId}")

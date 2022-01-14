@@ -4,17 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f1434a4a-6c70-48d3-a432-e8ea8568c679" name="Changes" comment="rotated board">
-      <change afterPath="$PROJECT_DIR$/0bed45f4-3020-4735-9792-baef5363a643.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/6062cfdc-2b63-453f-a670-c2dfeb106ed4.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/6c0d6078-48b5-4b92-ab73-7932b97a4d2f.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/80766450-d27c-4999-8da3-ba40c77da3a5.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/9d205abe-d913-45c8-b90e-92436ead0c2d.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/c2436d0b-74b6-4b48-8df3-2ed55d1e8bac.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/c817cc75-0177-42da-8ba0-b37cd96c7c64.csv" afterDir="false" />
+    <list default="true" id="f1434a4a-6c70-48d3-a432-e8ea8568c679" name="Changes" comment="changed user profile">
+      <change afterPath="$PROJECT_DIR$/8f286ced-4195-4fe3-8163-817f4becc2fc.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ad1f2a85-f97e-415e-a09f-8ffe0042b27c.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/d9d31717-fe39-47af-9752-fb06e8935c5d.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/e5373129-f9f8-469e-b88b-1d8e9cb89c2c.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chessgamedesktop/src/main/kotlin/git/dimitrikvirik/chessgamedesktop/controller/GameBoardController.kt" beforeDir="false" afterPath="$PROJECT_DIR$/chessgamedesktop/src/main/kotlin/git/dimitrikvirik/chessgamedesktop/controller/GameBoardController.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chessgamedesktop/src/main/resources/view/game-board.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/chessgamedesktop/src/main/resources/view/game-board.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/chessgame-api/src/main/java/git/dimitrikvirik/chessgameapi/controller/ChessGameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/chessgame-api/src/main/java/git/dimitrikvirik/chessgameapi/controller/ChessGameController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -482,7 +478,14 @@
       <option name="project" value="LOCAL" />
       <updated>1642155508522</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="changed user profile">
+      <created>1642156775280</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1642156775280</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -535,7 +538,8 @@
     <MESSAGE value="fixed pawn become" />
     <MESSAGE value="fixed moves" />
     <MESSAGE value="rotated board" />
-    <option name="LAST_COMMIT_MESSAGE" value="rotated board" />
+    <MESSAGE value="changed user profile" />
+    <option name="LAST_COMMIT_MESSAGE" value="changed user profile" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -597,22 +601,17 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/chessgame-api/src/main/java/git/dimitrikvirik/chessgameapi/controller/ChessGameController.java</url>
-          <line>50</line>
-          <option name="timeStamp" value="286" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/chessgame-api/src/main/java/git/dimitrikvirik/chessgameapi/controller/ChessGameController.java</url>
-          <line>117</line>
+          <line>124</line>
           <option name="timeStamp" value="287" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/chessgame-api/src/main/java/git/dimitrikvirik/chessgameapi/controller/ChessGameController.java</url>
-          <line>135</line>
+          <line>142</line>
           <option name="timeStamp" value="288" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/chessgame-api/src/main/java/git/dimitrikvirik/chessgameapi/controller/ChessGameController.java</url>
-          <line>62</line>
+          <line>63</line>
           <option name="timeStamp" value="289" />
         </line-breakpoint>
       </breakpoints>
