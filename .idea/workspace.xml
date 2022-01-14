@@ -4,27 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f1434a4a-6c70-48d3-a432-e8ea8568c679" name="Changes" comment="fixed moves">
-      <change afterPath="$PROJECT_DIR$/02e5ee64-0e96-4ca0-8c3e-ccdedbdf449b.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/3c76331c-12ce-4e9a-96f9-ffb29a83cac2.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/47771a2b-e2bd-44c0-ae96-e84e1571c273.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/6c3c42b5-55fd-4aad-9d0a-b7a646b2d298.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/6c40d442-3df9-4a0f-a58d-0a11fb43f035.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/7d6c88d9-462e-4c35-b3c3-de6cd7c1d055.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/8900928f-612b-41ef-be1a-e0920d2cd6c7.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/8f322196-f6e8-4de2-af70-bbaa52ddcc0e.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/99f0054c-f6f1-4880-905a-e1586b5cc8e5.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/9b632648-7e69-4533-abe7-db1314d9880e.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/9b8b4c4b-a286-4261-888a-c09d1b9f9eb1.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ac6136a1-3a63-41ca-a33f-0c9fe18d6485.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/d0511201-ada5-483f-8533-080df7b463ea.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/f38ae3e3-8389-43ea-9f78-3f015f14dd69.csv" afterDir="false" />
+    <list default="true" id="f1434a4a-6c70-48d3-a432-e8ea8568c679" name="Changes" comment="rotated board">
+      <change afterPath="$PROJECT_DIR$/0bed45f4-3020-4735-9792-baef5363a643.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/6062cfdc-2b63-453f-a670-c2dfeb106ed4.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/6c0d6078-48b5-4b92-ab73-7932b97a4d2f.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/80766450-d27c-4999-8da3-ba40c77da3a5.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/9d205abe-d913-45c8-b90e-92436ead0c2d.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/c2436d0b-74b6-4b48-8df3-2ed55d1e8bac.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/c817cc75-0177-42da-8ba0-b37cd96c7c64.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chessgame-api/src/main/java/git/dimitrikvirik/chessgameapi/controller/ChessGameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/chessgame-api/src/main/java/git/dimitrikvirik/chessgameapi/controller/ChessGameController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/chessgamedesktop/src/main/kotlin/git/dimitrikvirik/chessgamedesktop/controller/GameBoardController.kt" beforeDir="false" afterPath="$PROJECT_DIR$/chessgamedesktop/src/main/kotlin/git/dimitrikvirik/chessgamedesktop/controller/GameBoardController.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chessgamedesktop/src/main/kotlin/git/dimitrikvirik/chessgamedesktop/core/model/Layer.kt" beforeDir="false" afterPath="$PROJECT_DIR$/chessgamedesktop/src/main/kotlin/git/dimitrikvirik/chessgamedesktop/core/model/Layer.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chessgamedesktop/src/main/kotlin/git/dimitrikvirik/chessgamedesktop/core/model/ObjectIndex.kt" beforeDir="false" afterPath="$PROJECT_DIR$/chessgamedesktop/src/main/kotlin/git/dimitrikvirik/chessgamedesktop/core/model/ObjectIndex.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chessgamedesktop/src/main/kotlin/git/dimitrikvirik/chessgamedesktop/service/ChessService.kt" beforeDir="false" afterPath="$PROJECT_DIR$/chessgamedesktop/src/main/kotlin/git/dimitrikvirik/chessgamedesktop/service/ChessService.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/chessgamedesktop/src/main/resources/view/game-board.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/chessgamedesktop/src/main/resources/view/game-board.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -486,7 +475,14 @@
       <option name="project" value="LOCAL" />
       <updated>1642145044331</updated>
     </task>
-    <option name="localTasksCounter" value="21" />
+    <task id="LOCAL-00021" summary="rotated board">
+      <created>1642155508522</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1642155508522</updated>
+    </task>
+    <option name="localTasksCounter" value="22" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -538,7 +534,8 @@
     <MESSAGE value="fixed shah exception finally" />
     <MESSAGE value="fixed pawn become" />
     <MESSAGE value="fixed moves" />
-    <option name="LAST_COMMIT_MESSAGE" value="fixed moves" />
+    <MESSAGE value="rotated board" />
+    <option name="LAST_COMMIT_MESSAGE" value="rotated board" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

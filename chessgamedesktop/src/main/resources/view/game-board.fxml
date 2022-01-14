@@ -17,7 +17,7 @@
 
     <VBox layoutY="50.0"  layoutX="14" fx:id="blackBox">
 
-        <Label fx:id="blackPlayerUsername"  layoutY="140.0">
+        <Label fx:id="blackPlayerUsername" alignment="CENTER"  maxWidth="150"   layoutY="140.0">
             <font>
                 <Font size="22.0"/>
             </font>
@@ -26,7 +26,7 @@
     </VBox>
     <VBox layoutY="600.0" layoutX="14" fx:id="whiteBox">
 
-        <Label fx:id="whitePlayerUsername"  layoutY="140.0">
+        <Label fx:id="whitePlayerUsername" alignment="CENTER" maxWidth="100"  layoutY="140.0">
             <font>
                 <Font size="22.0"/>
             </font>
