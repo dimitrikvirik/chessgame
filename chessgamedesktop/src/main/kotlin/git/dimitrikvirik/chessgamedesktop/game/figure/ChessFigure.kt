@@ -106,7 +106,7 @@ abstract class ChessFigure(
 
     override fun killableBlocks(): List<Pair<Int, Int>> {
         return allKillableBlocks().filter {
-            checkShahOn(it, true)
+            checkShahOn(it)
         }
     }
 
@@ -117,13 +117,15 @@ abstract class ChessFigure(
     }
 
 
-    protected fun checkShahOn(coordination: Pair<Int, Int>, forKillable: Boolean = false): Boolean {
+    protected fun checkShahOn(coordination: Pair<Int, Int>): Boolean {
 
         val existedFigure = figureLayer[coordination] as ChessFigure?
         val savedFigure = this
         val saveCord = this.pair
 
-
+        figureLayer.remove(saveCord)
+        figureLayer.remove(coordination)
+        this.cord = Coordination(coordination, ObjectIndex.FIGURE)
         figureLayer[coordination] = this
 
         val filter = figureLayer.values
@@ -132,14 +134,15 @@ abstract class ChessFigure(
             .none { each ->
                 each.isKillableKing()
             }
+
+
+        figureLayer.remove(savedFigure.cord.pair)
+        savedFigure.cord = Coordination(saveCord, ObjectIndex.FIGURE)
+        figureLayer[saveCord] = savedFigure
+
         if (existedFigure != null) {
             figureLayer[existedFigure.pair] = existedFigure
         }
-        if (forKillable)
-            savedFigure.cord = Coordination(this.pair, ObjectIndex.FIGURE)
-        figureLayer[saveCord] = savedFigure
-
-
         return filter
     }
 

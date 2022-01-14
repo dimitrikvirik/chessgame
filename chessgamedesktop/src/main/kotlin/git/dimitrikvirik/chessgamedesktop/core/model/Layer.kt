@@ -2,18 +2,51 @@ package git.dimitrikvirik.chessgamedesktop.core.model
 
 import javafx.scene.image.ImageView
 import javafx.scene.layout.GridPane
+import org.apache.commons.lang3.StringUtils
 import org.slf4j.LoggerFactory
 
 class Layer(
-     val gridPane: GridPane,
+    val gridPane: GridPane,
     private val override: Boolean = true,
     private val zIndex: Int
 ) : MutableMap<Pair<Int, Int>, GameObject> {
     private val logger = LoggerFactory.getLogger(Layer::class.java)
 
 
-    private val objectMap: MutableMap<Coordination, GameObject> = mutableMapOf()
+    private val container: MutableMap<Pair<Int, Int>, GameObject> = mutableMapOf()
 
+    private fun getNodes(): List<ImageView> {
+        return gridPane.children.filterIsInstance<ImageView>().filter {
+            it.id.endsWith(zIndex.toString())
+        }
+    }
+
+    private fun imageviewToObject(imageView: ImageView): GameObject {
+        try {
+            val charArray = StringUtils.right(imageView.id, 3).toCharArray()
+            val x = charArray[0].toString().toInt()
+            val y = charArray[1].toString().toInt()
+            return container[x to y]!!
+        }catch (e: NullPointerException){
+            e.printStackTrace()
+            throw Exception()
+        }
+    }
+
+    private fun imageviewToObject(imageViews: List<ImageView>): List<GameObject> {
+        return imageViews.map {
+            imageviewToObject(it)
+        }
+
+    }
+
+    private fun getLayer(): Map<Pair<Int, Int>, GameObject> {
+        return imageviewToObject(getNodes()).associateBy { it.cord.pair }
+    }
+
+    private fun getAll(): MutableMap<Pair<Int, Int>, GameObject> {
+        return getLayer().toMutableMap()
+    }
 
     private fun objectToImageView(gameObject: GameObject): ImageView {
         try {
@@ -38,63 +71,46 @@ class Layer(
 
 
     override val entries: MutableSet<MutableMap.MutableEntry<Pair<Int, Int>, GameObject>>
-        get() = objectMap.entries.associate {
-            (it.key.x to it.key.y) to it.value
-        }.toMutableMap().entries
+        get() = getAll().entries
 
     override val keys: MutableSet<Pair<Int, Int>>
-        get() = objectMap.map { it.key.x to it.key.y }.toMutableSet()
+        get() = getAll().keys
     override val size: Int
-        get() = objectMap.size
+        get() = getAll().size
     override val values: MutableCollection<GameObject>
-        get() = objectMap.values
+        get() = getAll().values
 
 
     override fun containsKey(key: Pair<Int, Int>): Boolean {
-        return objectMap.any { it.key.x == key.first && it.key.y == key.second }
+        return getAll().containsKey(key)
     }
 
     override fun containsValue(value: GameObject): Boolean {
-        return objectMap.containsValue(value)
+        return getAll().containsValue(value)
     }
 
     override fun isEmpty(): Boolean {
-        return objectMap.isEmpty()
+        return getAll().isEmpty()
     }
 
     override fun get(key: Pair<Int, Int>): GameObject? {
-        return objectMap[Coordination(key, zIndex)]
+        return getAll()[key]
     }
 
 
     override fun clear() {
-        objectMap.keys.forEach { key ->
-            val gameObject = get(key.pair) ?: throw IllegalArgumentException("gameObject not found")
-            gridPane.children.removeIf { it.id == gameObject.prefix + gameObject.cord }
+
+        getAll().keys.forEach {
+            remove(it)
         }
-        objectMap.clear()
     }
 
-
     override fun put(key: Pair<Int, Int>, value: GameObject): GameObject {
-
-        if (containsValue(value)) {
-            if (!override) {
-                throw IllegalArgumentException("Can't override existed gameObject")
-            }
-            val gameObject = values.first { it == value }
-            gridPane.children.removeIf { it.id == gameObject.prefix + gameObject.cord }
-            values.removeIf { it == gameObject }
+        if (containsKey(key) || containsValue(value)) {
+            throw IllegalArgumentException("Can't override existed gameObject")
         }
-        if(containsKey(key)){
-            if (!override) {
-                throw IllegalArgumentException("Can't override existed gameObject")
-            }
-            remove(key)
-        }
-
         val imageView = objectToImageView(value)
-        objectMap[Coordination(key, zIndex)] = value
+        container[key] = value
         gridPane.children.add(imageView)
         return value
     }
@@ -106,11 +122,17 @@ class Layer(
         }
     }
 
-    override fun remove(key: Pair<Int, Int>): GameObject {
-        val gameObject = get(key) ?: throw IllegalArgumentException("gameObject not found")
-        gridPane.children.removeIf { it.id == gameObject.prefix + gameObject.cord }
-        objectMap.remove(Coordination(key, zIndex))
-        return gameObject
+    override fun remove(key: Pair<Int, Int>): GameObject? {
+        val result = get(key)
+        if (result != null) {
+            if (!gridPane.children.removeIf { it.id != null && it.id.endsWith(Coordination(key, zIndex).toString()) }) {
+                throw IllegalArgumentException("Element with key $key not been removed from gridpane!")
+            }
+            if (!container.remove(key, result)) {
+                throw IllegalArgumentException("Element with key $key not been removed from container!")
+            }
+        }
+        return result
     }
 
 

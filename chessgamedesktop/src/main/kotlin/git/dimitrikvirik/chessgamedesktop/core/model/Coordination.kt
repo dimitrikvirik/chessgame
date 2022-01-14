@@ -12,6 +12,10 @@ data class Coordination(
             return x to y
         }
 
+    override fun toString(): String {
+        return "$x$y$z"
+    }
+
     companion object {
         fun toChess(pair: Pair<Int, Int>): String {
             if (pair.first == 0 && pair.second == 0) {

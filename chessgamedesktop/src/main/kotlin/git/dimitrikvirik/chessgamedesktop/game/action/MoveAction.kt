@@ -4,6 +4,7 @@ import git.dimitrikvirik.chessgamedesktop.core.BeanContext
 import git.dimitrikvirik.chessgamedesktop.core.model.AbstractAction
 import git.dimitrikvirik.chessgamedesktop.core.model.AbstractFigure
 import git.dimitrikvirik.chessgamedesktop.core.model.Coordination
+import git.dimitrikvirik.chessgamedesktop.core.model.ObjectIndex
 import git.dimitrikvirik.chessgamedesktop.game.ChessGame
 import javafx.event.EventHandler
 import javafx.scene.input.MouseEvent
@@ -19,8 +20,8 @@ open class MoveAction(coordination: Coordination, targetCoordination: Coordinati
     override fun run(figure: AbstractFigure) {
         figure.move(coordination.pair)
         val specialSquareLayer = BeanContext.getBean(ChessGame::class.java).specialActionLayer
-        specialSquareLayer[coordination.pair] = SpecialMoveAction(coordination, "SMOVE")
-        specialSquareLayer[targetCoordination.pair] = SpecialMoveAction(targetCoordination, "SMOVE")
+        specialSquareLayer[coordination.pair] = SpecialMoveAction(Coordination(coordination.pair, ObjectIndex.S_ACTION), "SMOVE")
+        specialSquareLayer[targetCoordination.pair] = SpecialMoveAction(Coordination(targetCoordination.pair, ObjectIndex.S_ACTION), "SMOVE")
     }
 
 
