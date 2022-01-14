@@ -2,8 +2,7 @@ package git.dimitrikvirik.chessgamedesktop.core
 
 import com.opencsv.CSVReader
 import git.dimitrikvirik.chessgamedesktop.game.ChessGame
-import javafx.scene.media.Media
-import javafx.scene.media.MediaPlayer
+import javafx.scene.media.AudioClip
 import org.apache.commons.io.IOUtils
 import org.apache.commons.io.input.CharSequenceReader
 import org.springframework.stereotype.Component
@@ -35,10 +34,13 @@ class AssertLoader {
     }
 
     fun loadSound(name: String) {
-        if (BeanContext.getBean(ChessGame::class.java).gameLoaded) {
-            val url = AssertLoader::class.java.getResource("/sounds/$name.mp3")
-            val sound = Media(url.toString())
-            MediaPlayer(sound).play()
+        val bean = BeanContext.getBean(ChessGame::class.java)
+        if (bean.gameLoaded || bean.readMode) {
+            val url = AssertLoader::class.java.getResource("/sounds/$name.mp3")!!
+            val sound = AudioClip(url.toString())
+            sound.play()
+
+
         }
     }
 

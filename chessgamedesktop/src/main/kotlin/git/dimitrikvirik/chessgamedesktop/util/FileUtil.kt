@@ -130,7 +130,7 @@ object FileUtil {
                         val fromTime = fromInstant.toEpochMilli()
                         diffTime = currentInstant.toEpochMilli() - fromTime
                     }
-                    val time = gameMessage.sendTime!!.plus(Duration.ofMillis(diffTime)).plus(Duration.ofMillis(550))
+                    val time = gameMessage.sendTime!!.plus(Duration.ofMillis(diffTime))
                     var nowTime = LocalDateTime.now()
 
                     while (!nowTime.truncatedTo(ChronoUnit.MILLIS)
@@ -142,7 +142,7 @@ object FileUtil {
                     handler(gameMessage)
                     println("READING ${gameMessage.step} STEP")
                 }
-                Thread.sleep(500)
+
                 line = csvReader.readNext()
 
             }

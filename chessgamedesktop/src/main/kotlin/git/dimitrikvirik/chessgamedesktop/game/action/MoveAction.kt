@@ -19,11 +19,12 @@ open class MoveAction(coordination: Coordination, targetCoordination: Coordinati
     }
 
     override fun run(figure: AbstractFigure) {
+        BeanContext.getBean(AssertLoader::class.java).loadSound("move")
         figure.move(coordination.pair)
         val specialSquareLayer = BeanContext.getBean(ChessGame::class.java).specialActionLayer
         specialSquareLayer[coordination.pair] = SpecialMoveAction(Coordination(coordination.pair, ObjectIndex.S_ACTION), "SMOVE")
         specialSquareLayer[targetCoordination.pair] = SpecialMoveAction(Coordination(targetCoordination.pair, ObjectIndex.S_ACTION), "SMOVE")
-        BeanContext.getBean(AssertLoader::class.java).loadSound("move")
+
     }
 
 

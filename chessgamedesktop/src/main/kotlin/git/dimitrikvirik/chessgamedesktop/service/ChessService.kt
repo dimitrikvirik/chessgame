@@ -121,8 +121,8 @@ class ChessService(
     fun read(filename: String) {
         readMode = true
         BeanContext.getBean(ChessGame::class.java).readMode = true
-
-
+        BeanContext.getBean(AssertLoader::class.java).loadSound("game-start")
+        Thread.sleep(1200)
         Thread {
             FileUtil.readRecord(filename) { gameMessage ->
                 Platform.runLater {
