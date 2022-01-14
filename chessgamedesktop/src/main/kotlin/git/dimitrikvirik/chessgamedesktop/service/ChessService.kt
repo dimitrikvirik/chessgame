@@ -6,6 +6,7 @@ import com.fasterxml.jackson.module.kotlin.KotlinModule
 import git.dimitrikvirik.chessgamedesktop.config.ChessStompHandler
 import git.dimitrikvirik.chessgamedesktop.config.PlayerStompHandler
 import git.dimitrikvirik.chessgamedesktop.controller.GameBoardController
+import git.dimitrikvirik.chessgamedesktop.core.AssertLoader
 import git.dimitrikvirik.chessgamedesktop.core.BeanContext
 import git.dimitrikvirik.chessgamedesktop.core.model.ChessPlayer
 import git.dimitrikvirik.chessgamedesktop.core.model.GameMessage
@@ -112,6 +113,8 @@ class ChessService(
         Thread.sleep(1000)
         BeanContext.getBean(GameBoardController::class.java).loadGame()
         loadSteps()
+        BeanContext.getBean(ChessGame::class.java).gameLoaded = true
+        BeanContext.getBean(AssertLoader::class.java).loadSound("game-start")
     }
 
 

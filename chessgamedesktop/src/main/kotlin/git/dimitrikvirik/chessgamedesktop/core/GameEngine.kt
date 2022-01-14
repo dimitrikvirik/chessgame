@@ -14,6 +14,7 @@ abstract class GameEngine {
     var currentStep: Int = 0
     var ended = false
     var readMode = false
+    var gameLoaded = false
 
 
     lateinit var gameId: String

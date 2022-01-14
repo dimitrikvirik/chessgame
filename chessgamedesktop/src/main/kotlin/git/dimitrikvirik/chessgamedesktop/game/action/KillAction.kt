@@ -1,5 +1,6 @@
 package git.dimitrikvirik.chessgamedesktop.game.action
 
+import git.dimitrikvirik.chessgamedesktop.core.AssertLoader
 import git.dimitrikvirik.chessgamedesktop.core.BeanContext
 import git.dimitrikvirik.chessgamedesktop.core.model.AbstractAction
 import git.dimitrikvirik.chessgamedesktop.core.model.AbstractFigure
@@ -23,6 +24,7 @@ class KillAction(coordination: Coordination, targetCoordination: Coordination, o
         val specialSquareLayer = BeanContext.getBean(ChessGame::class.java).specialActionLayer
         specialSquareLayer[coordination.pair] = SpecialKillAction(Coordination(coordination.pair, ObjectIndex.S_ACTION), "SKILL")
         specialSquareLayer[targetCoordination.pair] = SpecialMoveAction(Coordination(targetCoordination.pair, ObjectIndex.S_ACTION), "SMOVE")
+    BeanContext.getBean(AssertLoader::class.java).loadSound("kill")
     }
 
 

@@ -1,10 +1,12 @@
 package git.dimitrikvirik.chessgamedesktop.core
 
 import com.opencsv.CSVReader
+import git.dimitrikvirik.chessgamedesktop.game.ChessGame
+import javafx.scene.media.Media
+import javafx.scene.media.MediaPlayer
 import org.apache.commons.io.IOUtils
 import org.apache.commons.io.input.CharSequenceReader
 import org.springframework.stereotype.Component
-import java.io.FileReader
 import java.io.Reader
 
 @Component
@@ -31,4 +33,13 @@ class AssertLoader {
         val end = "_1x.png"
         return "$root${records[id]}$end"
     }
+
+    fun loadSound(name: String) {
+        if (BeanContext.getBean(ChessGame::class.java).gameLoaded) {
+            val url = AssertLoader::class.java.getResource("/sounds/$name.mp3")
+            val sound = Media(url.toString())
+            MediaPlayer(sound).play()
+        }
+    }
+
 }

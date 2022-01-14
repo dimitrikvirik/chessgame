@@ -1,5 +1,7 @@
 package git.dimitrikvirik.chessgamedesktop.game.action
 
+import git.dimitrikvirik.chessgamedesktop.core.AssertLoader
+import git.dimitrikvirik.chessgamedesktop.core.BeanContext
 import git.dimitrikvirik.chessgamedesktop.core.model.AbstractFigure
 import git.dimitrikvirik.chessgamedesktop.core.model.Coordination
 import git.dimitrikvirik.chessgamedesktop.core.model.ObjectIndex
@@ -22,7 +24,7 @@ class ShahAction(coordination: Coordination, override val type: String = "SHAH")
         }
         chessFigure.chessGame.specialActionLayer[king.cord.pair] =
             ShahAction(Coordination(king.cord.pair, ObjectIndex.S_ACTION))
-
+        BeanContext.getBean(AssertLoader::class.java).loadSound("shah")
     }
 
 

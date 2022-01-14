@@ -4,19 +4,23 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f1434a4a-6c70-48d3-a432-e8ea8568c679" name="Changes" comment="added figure color random">
-      <change afterPath="$PROJECT_DIR$/f556396a-235b-498e-8e0f-8f4637e3f21a.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/fa723cb3-8bd3-48d4-a032-68f5f7b85a3d.csv" afterDir="false" />
+    <list default="true" id="f1434a4a-6c70-48d3-a432-e8ea8568c679" name="Changes" comment="ALPHA 0.0.1 RELEASE">
+      <change afterPath="$PROJECT_DIR$/chessgamedesktop/src/main/resources/sounds/endgame.mp3" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/chessgamedesktop/src/main/resources/sounds/game-start.mp3" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/chessgamedesktop/src/main/resources/sounds/kill.mp3" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/chessgamedesktop/src/main/resources/sounds/move.mp3" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/chessgamedesktop/src/main/resources/sounds/shah.mp3" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/chessgamedesktop/src/main/resources/sounds/swap.mp3" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chessgame-api/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/chessgame-api/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chessgame-api/src/main/java/git/dimitrikvirik/chessgameapi/controller/ChessGameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/chessgame-api/src/main/java/git/dimitrikvirik/chessgameapi/controller/ChessGameController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chessgamedesktop/src/main/kotlin/git/dimitrikvirik/chessgamedesktop/config/PlayerStompHandler.kt" beforeDir="false" afterPath="$PROJECT_DIR$/chessgamedesktop/src/main/kotlin/git/dimitrikvirik/chessgamedesktop/config/PlayerStompHandler.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chessgamedesktop/src/main/kotlin/git/dimitrikvirik/chessgamedesktop/controller/GameBoardController.kt" beforeDir="false" afterPath="$PROJECT_DIR$/chessgamedesktop/src/main/kotlin/git/dimitrikvirik/chessgamedesktop/controller/GameBoardController.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/chessgamedesktop/src/main/kotlin/git/dimitrikvirik/chessgamedesktop/core/AssertLoader.kt" beforeDir="false" afterPath="$PROJECT_DIR$/chessgamedesktop/src/main/kotlin/git/dimitrikvirik/chessgamedesktop/core/AssertLoader.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/chessgamedesktop/src/main/kotlin/git/dimitrikvirik/chessgamedesktop/core/GameEngine.kt" beforeDir="false" afterPath="$PROJECT_DIR$/chessgamedesktop/src/main/kotlin/git/dimitrikvirik/chessgamedesktop/core/GameEngine.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/chessgamedesktop/src/main/kotlin/git/dimitrikvirik/chessgamedesktop/game/ChessGame.kt" beforeDir="false" afterPath="$PROJECT_DIR$/chessgamedesktop/src/main/kotlin/git/dimitrikvirik/chessgamedesktop/game/ChessGame.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/chessgamedesktop/src/main/kotlin/git/dimitrikvirik/chessgamedesktop/game/action/EndgameAction.kt" beforeDir="false" afterPath="$PROJECT_DIR$/chessgamedesktop/src/main/kotlin/git/dimitrikvirik/chessgamedesktop/game/action/EndgameAction.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/chessgamedesktop/src/main/kotlin/git/dimitrikvirik/chessgamedesktop/game/action/KillAction.kt" beforeDir="false" afterPath="$PROJECT_DIR$/chessgamedesktop/src/main/kotlin/git/dimitrikvirik/chessgamedesktop/game/action/KillAction.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/chessgamedesktop/src/main/kotlin/git/dimitrikvirik/chessgamedesktop/game/action/MoveAction.kt" beforeDir="false" afterPath="$PROJECT_DIR$/chessgamedesktop/src/main/kotlin/git/dimitrikvirik/chessgamedesktop/game/action/MoveAction.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/chessgamedesktop/src/main/kotlin/git/dimitrikvirik/chessgamedesktop/game/action/ShahAction.kt" beforeDir="false" afterPath="$PROJECT_DIR$/chessgamedesktop/src/main/kotlin/git/dimitrikvirik/chessgamedesktop/game/action/ShahAction.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/chessgamedesktop/src/main/kotlin/git/dimitrikvirik/chessgamedesktop/game/action/SwapAction.kt" beforeDir="false" afterPath="$PROJECT_DIR$/chessgamedesktop/src/main/kotlin/git/dimitrikvirik/chessgamedesktop/game/action/SwapAction.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/chessgamedesktop/src/main/kotlin/git/dimitrikvirik/chessgamedesktop/service/ChessService.kt" beforeDir="false" afterPath="$PROJECT_DIR$/chessgamedesktop/src/main/kotlin/git/dimitrikvirik/chessgamedesktop/service/ChessService.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chessgamedesktop/src/main/kotlin/git/dimitrikvirik/chessgamedesktop/util/FileUtil.kt" beforeDir="false" afterPath="$PROJECT_DIR$/chessgamedesktop/src/main/kotlin/git/dimitrikvirik/chessgamedesktop/util/FileUtil.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chessgamedesktop/src/main/resources/view/game-board.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/chessgamedesktop/src/main/resources/view/game-board.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -95,7 +99,7 @@
     <property name="database.data.extractors.current.id" value="Comma-separated (CSV)_id" />
     <property name="extract.method.default.visibility" value="private" />
     <property name="jdk.selected.JAVA_MODULE" value="17" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/chessgamedesktop/src/main/resources" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
@@ -111,11 +115,11 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\dimitri\IdeaProjects\chessgame\chessgamedesktop\src\main\resources" />
       <recent name="C:\Users\dimitri\IdeaProjects\chessgame" />
       <recent name="C:\Users\dimitri\IdeaProjects\chessgame\chessgame-api\src\main\kotlin\git\dimitrikvirik\chessgameapi\service" />
       <recent name="C:\Users\dimitri\IdeaProjects\chessgame\chessgame-api\src\main\kotlin\git\dimitrikvirik\chessgameapi\exception" />
       <recent name="C:\Users\dimitri\IdeaProjects\chessgame\chessgame-api\src\main\kotlin\git\dimitrikvirik\chessgameapi\config" />
-      <recent name="C:\Users\dimitri\IdeaProjects\chessgame\chessgame-desktop\src\main\kotlin\git\dimitrikvirik\chessgamedesktop\model" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\dimitri\IdeaProjects\chessgame\chessgame-desktop\src\main\resources\view-stored" />
@@ -336,7 +340,7 @@
       <workItem from="1641967256035" duration="3623000" />
       <workItem from="1641983900142" duration="19000" />
       <workItem from="1641989495237" duration="14359000" />
-      <workItem from="1642169639933" duration="6259000" />
+      <workItem from="1642169639933" duration="7664000" />
     </task>
     <task id="LOCAL-00001" summary="Chess Board Draw">
       <created>1637506665590</created>
@@ -499,7 +503,14 @@
       <option name="project" value="LOCAL" />
       <updated>1642157624674</updated>
     </task>
-    <option name="localTasksCounter" value="24" />
+    <task id="LOCAL-00024" summary="ALPHA 0.0.1 RELEASE">
+      <created>1642175981894</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1642175981894</updated>
+    </task>
+    <option name="localTasksCounter" value="25" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -554,7 +565,8 @@
     <MESSAGE value="rotated board" />
     <MESSAGE value="changed user profile" />
     <MESSAGE value="added figure color random" />
-    <option name="LAST_COMMIT_MESSAGE" value="added figure color random" />
+    <MESSAGE value="ALPHA 0.0.1 RELEASE" />
+    <option name="LAST_COMMIT_MESSAGE" value="ALPHA 0.0.1 RELEASE" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

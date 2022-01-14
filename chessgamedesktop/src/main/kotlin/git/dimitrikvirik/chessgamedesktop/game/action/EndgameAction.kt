@@ -1,6 +1,7 @@
 package git.dimitrikvirik.chessgamedesktop.game.action
 
 import git.dimitrikvirik.chessgamedesktop.controller.GameBoardController
+import git.dimitrikvirik.chessgamedesktop.core.AssertLoader
 import git.dimitrikvirik.chessgamedesktop.core.BeanContext
 import git.dimitrikvirik.chessgamedesktop.core.model.AbstractAction
 import git.dimitrikvirik.chessgamedesktop.core.model.AbstractFigure
@@ -32,6 +33,7 @@ class EndgameAction(coordination: Coordination, override val type: String) :
         winnerText.alignment = Pos.CENTER;
         val pane = BeanContext.getBean(GameBoardController::class.java).pane
         pane.children.add(winnerText)
+        BeanContext.getBean(AssertLoader::class.java).loadSound("endgame")
 
     }
 
