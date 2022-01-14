@@ -1,5 +1,8 @@
 package git.dimitrikvirik.chessgamedesktop.core.model
 
+import git.dimitrikvirik.chessgamedesktop.core.BeanContext
+import git.dimitrikvirik.chessgamedesktop.game.ChessGame
+import git.dimitrikvirik.chessgamedesktop.game.figure.model.ChessFigureColor
 import javafx.scene.image.ImageView
 import javafx.scene.layout.GridPane
 import org.apache.commons.lang3.StringUtils
@@ -55,7 +58,9 @@ class Layer(
             //TODO remove
             imageView.fitWidth = gridPane.prefWidth / 8
             imageView.fitHeight = gridPane.prefHeight / 8
-
+            if(zIndex == ObjectIndex.FIGURE && BeanContext.getBean(ChessGame::class.java).joinedChessPlayer.color == ChessFigureColor.BLACK){
+                imageView.rotate = 180.0
+            }
             imageView.viewOrder = gameObject.cord.z.toDouble()
             imageView.id = gameObject.prefix + gameObject.cord
             GridPane.setColumnIndex(imageView, gameObject.cord.x)

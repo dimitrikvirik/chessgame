@@ -51,9 +51,11 @@ public class ChessGameController {
         setPlayer(headerAccessor, gameJoinParam, game);
         setPlayer(game, gameJoinParam);
         if (gameJoinParam.getSenderPlayerName().equals(gameJoinParam.getWhitePlayerName())) {
+            game.getWhitePlayer().setConnected(true);
             gameJoinParam.setWhiteConnected(true);
             gameJoinParam.setWhitePlayerName(gameJoinParam.getWhitePlayerName());
         } else {
+            game.getBlackPlayer().setConnected(true);
             gameJoinParam.setBlackConnected(true);
             gameJoinParam.setBlackPlayerName(gameJoinParam.getBlackPlayerName());
         }
@@ -125,13 +127,14 @@ public class ChessGameController {
                 game.getBlackPlayer().setConnected(false);
                 gameJoinParam.setBlackConnected(false);
             }
-            template.convertAndSend("/topic/player/" + game.getId(), gameJoinParam);
             if (game.getWhitePlayer() != null) {
                 gameJoinParam.setWhiteConnected(gameJoinParam.getWhiteConnected());
             }
             if (game.getBlackPlayer() != null) {
                 gameJoinParam.setBlackConnected(gameJoinParam.getBlackConnected());
             }
+            template.convertAndSend("/topic/player/" + game.getId(), gameJoinParam);
+
 
             gameRedisService.update(game);
 

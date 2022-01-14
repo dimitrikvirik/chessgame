@@ -57,14 +57,14 @@ class GameBoardController(
     lateinit var blackPlayer: ChessPlayer
 
 
-    fun updateUserText(){
+    fun updateUserText() {
         whitePlayerUsername.text = whitePlayer.userId
         blackPlayerUsername.text = blackPlayer.userId
     }
 
 
     fun setUser(playerMessage: PlayerMessage) {
-         whitePlayer = if (!playerMessage.whiteConnected) {
+        whitePlayer = if (!playerMessage.whiteConnected) {
             val msg = if (playerMessage.whitePlayerName != null) {
                 "${playerMessage.whitePlayerName} disconnected"
             } else "Not Connected"
@@ -73,7 +73,7 @@ class GameBoardController(
         } else {
             ChessPlayer(playerMessage.whitePlayerName!!, ChessFigureColor.WHITE)
         }
-         blackPlayer = if (!playerMessage.blackConnected) {
+        blackPlayer = if (!playerMessage.blackConnected) {
             val msg = if (playerMessage.blackPlayerName != null) {
                 "${playerMessage.blackPlayerName} disconnected"
             } else "Not Connected"
@@ -87,11 +87,13 @@ class GameBoardController(
         }
         chessGame.firstChessPlayer = whitePlayer
         chessGame.secondChessPlayer = blackPlayer
-
+        if (chessGame.joinedChessPlayer.color == ChessFigureColor.BLACK) {
+            gridPanel.rotate = 180.0
+        }
     }
 
-    @FXML
-    fun initialize() {
+
+    fun loadGame() {
 
         chessGame.setPane(gridPanel)
 
@@ -127,14 +129,17 @@ class GameBoardController(
             val label = Label((7 - i + 1).toString())
             label.font = Font(50.0)
             GridPane.setConstraints(label, 0, i)
+            if (chessGame.joinedChessPlayer.color == ChessFigureColor.BLACK)
+                label.rotate = 180.0
             gridPanel.children.add(label)
 
             val labelAlphabet = Label(alphabets[i].toString())
+            if (chessGame.joinedChessPlayer.color == ChessFigureColor.BLACK)
+                labelAlphabet.rotate = 180.0
             labelAlphabet.font = Font(50.0)
             GridPane.setConstraints(labelAlphabet, i + 1, 9)
             gridPanel.children.add(labelAlphabet)
-//            chessGame.currentChessPlayer.set(secondChessPlayer)
-//            chessGame.currentChessPlayer.set(firstChessPlayer)
+
 
         }
     }

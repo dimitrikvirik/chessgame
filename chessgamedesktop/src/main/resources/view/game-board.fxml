@@ -6,22 +6,31 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
 <AnchorPane xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
             fx:controller="git.dimitrikvirik.chessgamedesktop.controller.GameBoardController" fx:id="pane"
-           >
-    <GridPane fx:id="gridPanel" style="-fx-padding: 50"  >
+>
+    <GridPane fx:id="gridPanel" style="-fx-padding: 50">
 
     </GridPane>
-    <ImageView fx:id="blackPlayerPhoto"  layoutX="10" layoutY="50.0" fitHeight="100" fitWidth="100"/>
-    <Label   fx:id="blackPlayerUsername"   layoutX="10.0" layoutY="10.0">
-        <font>
-            <Font size="22.0"/>
-        </font>
-    </Label>
-    <ImageView fx:id="whitePlayerPhoto" layoutX="14.0" layoutY="650.0" fitHeight="100" fitWidth="100"/>
-    <Label fx:id="whitePlayerUsername" layoutX="14.0" layoutY="650.0">
-        <font>
-            <Font size="22.0"/>
-        </font>
-    </Label>
+
+    <VBox layoutY="50.0"  layoutX="14" fx:id="blackBox">
+
+        <Label fx:id="blackPlayerUsername"  layoutY="140.0">
+            <font>
+                <Font size="22.0"/>
+            </font>
+        </Label>
+        <ImageView fx:id="blackPlayerPhoto"   fitHeight="100" fitWidth="100"/>
+    </VBox>
+    <VBox layoutY="600.0" layoutX="14" fx:id="whiteBox">
+
+        <Label fx:id="whitePlayerUsername"  layoutY="140.0">
+            <font>
+                <Font size="22.0"/>
+            </font>
+        </Label>
+        <ImageView fx:id="whitePlayerPhoto" fitHeight="100" fitWidth="100"/>
+    </VBox>
 </AnchorPane>

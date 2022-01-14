@@ -110,6 +110,7 @@ class ChessService(
 
         FileUtil.createRecord(gameId)
         Thread.sleep(1000)
+        BeanContext.getBean(GameBoardController::class.java).loadGame()
         loadSteps()
     }
 
