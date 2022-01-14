@@ -3,6 +3,7 @@ package git.dimitrikvirik.chessgamedesktop.config
 import git.dimitrikvirik.chessgamedesktop.controller.GameBoardController
 import git.dimitrikvirik.chessgamedesktop.core.BeanContext
 import git.dimitrikvirik.chessgamedesktop.core.model.PlayerMessage
+import git.dimitrikvirik.chessgamedesktop.util.FileUtil
 import javafx.application.Platform
 import org.springframework.messaging.simp.stomp.StompCommand
 import org.springframework.messaging.simp.stomp.StompHeaders
@@ -25,6 +26,7 @@ class PlayerStompHandler : StompSessionHandler {
         Platform.runLater {
             gameBoardController.updateUserText()
         }
+        FileUtil.writePlayersRecord(payload)
     }
 
     override fun afterConnected(session: StompSession, connectedHeaders: StompHeaders) {

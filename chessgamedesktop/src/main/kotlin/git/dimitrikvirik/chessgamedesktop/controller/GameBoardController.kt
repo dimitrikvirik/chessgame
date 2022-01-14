@@ -21,6 +21,7 @@ import javafx.scene.layout.VBox
 import javafx.scene.text.Font
 import org.springframework.beans.factory.annotation.Value
 import org.springframework.stereotype.Service
+import javax.swing.JLabel
 
 @Service
 class GameBoardController(
@@ -70,6 +71,7 @@ class GameBoardController(
         whitePlayerUsername.alignment = Pos.CENTER
         blackPlayerUsername.text = blackPlayer.userId
         blackPlayerUsername.alignment = Pos.CENTER
+
     }
 
 
@@ -90,21 +92,29 @@ class GameBoardController(
 
             ChessPlayer(msg, ChessFigureColor.BLACK)
         } else ChessPlayer(playerMessage.blackPlayerName!!, ChessFigureColor.BLACK)
-        if (chessGame.chessService.username == whitePlayer.userId) {
-            chessGame.joinedChessPlayer = whitePlayer
-        } else {
-            chessGame.joinedChessPlayer = blackPlayer
+
+        if(!chessGame.readMode) {
+            if (chessGame.chessService.username == whitePlayer.userId) {
+                chessGame.joinedChessPlayer = whitePlayer
+            } else {
+                chessGame.joinedChessPlayer = blackPlayer
+            }
+
+            if (chessGame.joinedChessPlayer.color == ChessFigureColor.BLACK) {
+                gridPanel.rotate = 180.0
+            }
         }
         chessGame.firstChessPlayer = whitePlayer
         chessGame.secondChessPlayer = blackPlayer
-        if (chessGame.joinedChessPlayer.color == ChessFigureColor.BLACK) {
-            gridPanel.rotate = 180.0
-        }
+
     }
 
 
     fun loadGame() {
 
+        if(chessGame.readMode){
+            chessGame.joinedChessPlayer = ChessPlayer("UNKNOWN", ChessFigureColor.WHITE)
+        }
         chessGame.setPane(gridPanel)
 
 
@@ -121,7 +131,7 @@ class GameBoardController(
         gridPanel.layoutX = 100.0
         whitePlayerUsername.layoutY = prefHeight.toDouble() - 180
 
-//80766450-d27c-4999-8da3-ba40c77da3a5
+
         val squareLayer = chessGame.squareLayer
         figureLayer = chessGame.figureLayer
         actionLayer = chessGame.actionLayer
@@ -154,6 +164,7 @@ class GameBoardController(
             GridPane.setConstraints(labelAlphabet, i + 1, 9)
             gridPanel.children.add(labelAlphabet)
             //6c0d6078-48b5-4b92-ab73-7932b97a4d2f
+
 
         }
     }

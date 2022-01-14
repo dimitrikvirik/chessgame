@@ -65,6 +65,13 @@ public class ChessGameController {
         return gameJoinParam;
     }
 
+
+    @GetMapping("/game-record/{gameId}")
+    public Game getGame(@PathVariable String gameId){
+        return gameRedisService.get(gameId);
+    }
+
+
     private void setPlayer(SimpMessageHeaderAccessor headerAccessor, GameJoinParam gameJoinParam, Game game) {
         if (game.getBlackPlayer() != null &&  gameJoinParam.getSenderPlayerName().equals(game.getBlackPlayer().getUserId())) {
             game.setBlackPlayerSessionId(headerAccessor.getSessionId());
@@ -81,12 +88,10 @@ public class ChessGameController {
             if (random == 0) {
                 addWhitePlayer(headerAccessor, gameJoinParam, game);
             } else addBlackPlayer(headerAccessor, gameJoinParam, game);
-        } else if (game.getWhitePlayer() == null) {
+        } else if (game.getWhitePlayer() != null) {
             addBlackPlayer(headerAccessor, gameJoinParam, game);
         } else if (game.getBlackPlayer() != null) {
             addWhitePlayer(headerAccessor, gameJoinParam, game);
-        } else {
-            throw new ResponseStatusException(HttpStatus.CONFLICT, "Game started!");
         }
     }
 

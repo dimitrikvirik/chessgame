@@ -38,6 +38,10 @@ abstract class GameEngine {
         specialActionLayer = Layer(gridPane, false, ObjectIndex.S_ACTION)
     }
 
+    fun isInit(): Boolean {
+        return this::joinedChessPlayer.isInitialized
+    }
+
     fun end(firstWin: Boolean) {
         winnerChessPlayer = if (firstWin) {
             firstChessPlayer

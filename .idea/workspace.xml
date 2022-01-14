@@ -4,13 +4,19 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f1434a4a-6c70-48d3-a432-e8ea8568c679" name="Changes" comment="changed user profile">
-      <change afterPath="$PROJECT_DIR$/8f286ced-4195-4fe3-8163-817f4becc2fc.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ad1f2a85-f97e-415e-a09f-8ffe0042b27c.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/d9d31717-fe39-47af-9752-fb06e8935c5d.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/e5373129-f9f8-469e-b88b-1d8e9cb89c2c.csv" afterDir="false" />
+    <list default="true" id="f1434a4a-6c70-48d3-a432-e8ea8568c679" name="Changes" comment="added figure color random">
+      <change afterPath="$PROJECT_DIR$/f556396a-235b-498e-8e0f-8f4637e3f21a.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/fa723cb3-8bd3-48d4-a032-68f5f7b85a3d.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/chessgame-api/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/chessgame-api/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/chessgame-api/src/main/java/git/dimitrikvirik/chessgameapi/controller/ChessGameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/chessgame-api/src/main/java/git/dimitrikvirik/chessgameapi/controller/ChessGameController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/chessgamedesktop/src/main/kotlin/git/dimitrikvirik/chessgamedesktop/config/PlayerStompHandler.kt" beforeDir="false" afterPath="$PROJECT_DIR$/chessgamedesktop/src/main/kotlin/git/dimitrikvirik/chessgamedesktop/config/PlayerStompHandler.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/chessgamedesktop/src/main/kotlin/git/dimitrikvirik/chessgamedesktop/controller/GameBoardController.kt" beforeDir="false" afterPath="$PROJECT_DIR$/chessgamedesktop/src/main/kotlin/git/dimitrikvirik/chessgamedesktop/controller/GameBoardController.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/chessgamedesktop/src/main/kotlin/git/dimitrikvirik/chessgamedesktop/core/GameEngine.kt" beforeDir="false" afterPath="$PROJECT_DIR$/chessgamedesktop/src/main/kotlin/git/dimitrikvirik/chessgamedesktop/core/GameEngine.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/chessgamedesktop/src/main/kotlin/git/dimitrikvirik/chessgamedesktop/game/ChessGame.kt" beforeDir="false" afterPath="$PROJECT_DIR$/chessgamedesktop/src/main/kotlin/git/dimitrikvirik/chessgamedesktop/game/ChessGame.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/chessgamedesktop/src/main/kotlin/git/dimitrikvirik/chessgamedesktop/service/ChessService.kt" beforeDir="false" afterPath="$PROJECT_DIR$/chessgamedesktop/src/main/kotlin/git/dimitrikvirik/chessgamedesktop/service/ChessService.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/chessgamedesktop/src/main/kotlin/git/dimitrikvirik/chessgamedesktop/util/FileUtil.kt" beforeDir="false" afterPath="$PROJECT_DIR$/chessgamedesktop/src/main/kotlin/git/dimitrikvirik/chessgamedesktop/util/FileUtil.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/chessgamedesktop/src/main/resources/view/game-board.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/chessgamedesktop/src/main/resources/view/game-board.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -222,7 +228,7 @@
       </extension>
       <option name="SPRING_BOOT_MAIN_CLASS" value="git.dimitrikvirik.chessgamedesktop.ChessgameApplication" />
       <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="SHORTEN_COMMAND_LINE" value="ARGS_FILE" />
+      <option name="SHORTEN_COMMAND_LINE" value="NONE" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -330,6 +336,7 @@
       <workItem from="1641967256035" duration="3623000" />
       <workItem from="1641983900142" duration="19000" />
       <workItem from="1641989495237" duration="14359000" />
+      <workItem from="1642169639933" duration="6259000" />
     </task>
     <task id="LOCAL-00001" summary="Chess Board Draw">
       <created>1637506665590</created>
@@ -485,7 +492,14 @@
       <option name="project" value="LOCAL" />
       <updated>1642156775280</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="added figure color random">
+      <created>1642157624674</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1642157624674</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -539,7 +553,8 @@
     <MESSAGE value="fixed moves" />
     <MESSAGE value="rotated board" />
     <MESSAGE value="changed user profile" />
-    <option name="LAST_COMMIT_MESSAGE" value="changed user profile" />
+    <MESSAGE value="added figure color random" />
+    <option name="LAST_COMMIT_MESSAGE" value="added figure color random" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -584,35 +599,10 @@
           <line>33</line>
           <option name="timeStamp" value="267" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="kotlin-line">
-          <url>file://$PROJECT_DIR$/chessgamedesktop/src/main/kotlin/git/dimitrikvirik/chessgamedesktop/core/model/Layer.kt</url>
-          <line>113</line>
-          <option name="timeStamp" value="290" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="kotlin-line">
-          <url>file://$PROJECT_DIR$/chessgamedesktop/src/main/kotlin/git/dimitrikvirik/chessgamedesktop/core/model/Layer.kt</url>
-          <line>118</line>
-          <option name="timeStamp" value="291" />
-        </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/chessgame-api/src/main/java/git/dimitrikvirik/chessgameapi/exception/GlobalExceptionHandler.java</url>
           <line>37</line>
           <option name="timeStamp" value="211" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/chessgame-api/src/main/java/git/dimitrikvirik/chessgameapi/controller/ChessGameController.java</url>
-          <line>124</line>
-          <option name="timeStamp" value="287" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/chessgame-api/src/main/java/git/dimitrikvirik/chessgameapi/controller/ChessGameController.java</url>
-          <line>142</line>
-          <option name="timeStamp" value="288" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/chessgame-api/src/main/java/git/dimitrikvirik/chessgameapi/controller/ChessGameController.java</url>
-          <line>63</line>
-          <option name="timeStamp" value="289" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

@@ -71,7 +71,6 @@ class ChessService(
         val chessGame = BeanContext.getBean(ChessGame::class.java)
 
 
-
         val entity = restTemplate.getForEntity(
             "http://$api/game/load/$gameId", List::class.java, mapOf("from" to from)
         )
@@ -85,7 +84,7 @@ class ChessService(
 
 
         Platform.runLater {
-          if(from == 0)  chessGame.currentChessPlayer.set(chessGame.firstChessPlayer)
+            if (from == 0) chessGame.currentChessPlayer.set(chessGame.firstChessPlayer)
             list.forEach {
                 chessGame.handle(it)
             }
@@ -94,6 +93,7 @@ class ChessService(
     }
 
     fun connect(gameId: String, username: String, server: String) {
+        FileUtil.createRecord(gameId)
         this.gameId = gameId
         this.username = username
         this.api = server
@@ -108,7 +108,7 @@ class ChessService(
 
 
 
-        FileUtil.createRecord(gameId)
+
         Thread.sleep(1000)
         BeanContext.getBean(GameBoardController::class.java).loadGame()
         loadSteps()
@@ -118,9 +118,9 @@ class ChessService(
     fun read(filename: String) {
         readMode = true
         BeanContext.getBean(ChessGame::class.java).readMode = true
+
+
         Thread {
-
-
             FileUtil.readRecord(filename) { gameMessage ->
                 Platform.runLater {
                     BeanContext.getBean(ChessGame::class.java).handle(gameMessage)

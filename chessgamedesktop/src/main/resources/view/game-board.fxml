@@ -10,6 +10,8 @@
 <?import javafx.scene.layout.VBox?>
 <AnchorPane xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
             fx:controller="git.dimitrikvirik.chessgamedesktop.controller.GameBoardController" fx:id="pane"
+            prefWidth="800"
+            prefHeight="800"
 >
     <GridPane fx:id="gridPanel" style="-fx-padding: 50">
 
@@ -17,18 +19,18 @@
 
     <VBox layoutY="50.0"  layoutX="14" fx:id="blackBox">
 
-        <Label fx:id="blackPlayerUsername" alignment="CENTER"  maxWidth="150"   layoutY="140.0">
+        <Label fx:id="blackPlayerUsername" alignment="CENTER"  maxWidth="200"    layoutY="140.0">
             <font>
-                <Font size="22.0"/>
+                <Font size="17.5"/>
             </font>
         </Label>
         <ImageView fx:id="blackPlayerPhoto"   fitHeight="100" fitWidth="100"/>
     </VBox>
     <VBox layoutY="600.0" layoutX="14" fx:id="whiteBox">
 
-        <Label fx:id="whitePlayerUsername" alignment="CENTER" maxWidth="100"  layoutY="140.0">
+        <Label fx:id="whitePlayerUsername" alignment="CENTER" maxWidth="200"  layoutY="140.0">
             <font>
-                <Font size="22.0"/>
+                <Font size="17.5"/>
             </font>
         </Label>
         <ImageView fx:id="whitePlayerPhoto" fitHeight="100" fitWidth="100"/>
